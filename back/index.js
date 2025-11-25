@@ -13,7 +13,7 @@ async function startApp() {
     //UserModel(sequelize);
 
     // synchronisation des tables
-    await sequelize.sync({ force: false });
+    await sequelize.sync({ alter: true });
     console.log('✅ Tables synchronisées');
 }
 
