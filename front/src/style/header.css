@@ -1,0 +1,40 @@
+.style-header {
+  display: flex;
+  justify-content: space-between;
+  max-width: 95%;
+  margin: 0 auto;
+  height: 15vh;
+  align-items: center;
+}
+.style-header .header-div-logo {
+  display: flex;
+  align-items: center;
+}
+.style-header .header-div-logo div {
+  width: 11vmin;
+  height: 11vmin;
+  margin-right: 1rem;
+}
+
+.style-header .header-div-logo div img {
+  width: 100%;
+  height: 100%;
+}
+.style-header .menu ul {
+  display: flex;
+}
+.style-header .menu ul li {
+  list-style-type: none;
+}
+.style-header .menu ul li:not(:last-of-type) {
+  margin-right: 1rem;
+}
+.style-header .menu ul li:hover a {
+  color: red;
+}
+.style-header .menu ul li a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+  font-size: 18px;
+}
