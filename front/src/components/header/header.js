@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import Menu from "../menu/Menu.js";
+import Menu from "../menu/Menu.js"
 import "../../style/header.css";
 
 
