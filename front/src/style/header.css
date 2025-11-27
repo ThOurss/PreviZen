@@ -1,4 +1,7 @@
 .style-header {
+  border-bottom: 1px solid black;
+}
+.style-header .div-style-header {
   display: flex;
   justify-content: space-between;
   max-width: 95%;
@@ -6,35 +9,278 @@
   height: 15vh;
   align-items: center;
 }
-.style-header .header-div-logo {
+.style-header .div-style-header .header-div-logo {
   display: flex;
   align-items: center;
 }
-.style-header .header-div-logo div {
+.style-header .div-style-header .header-div-logo div {
   width: 11vmin;
   height: 11vmin;
   margin-right: 1rem;
+  @media screen and (max-width: 992px) {
+    width: 9vmin;
+    height: 9vmin;
+  }
+  @media screen and (max-width: 767px) {
+    width: 15vmin;
+    height: 15vmin;
+  }
 }
 
-.style-header .header-div-logo div img {
+.style-header .div-style-header .header-div-logo div img {
   width: 100%;
   height: 100%;
 }
-.style-header .menu ul {
+.style-header .div-style-header .form-search {
   display: flex;
+  border: 1px solid black;
+  background-color: #f6ece1;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  width: 400px;
+  @media screen and (max-width: 1200px) {
+    width: 300px;
+  }
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 }
-.style-header .menu ul li {
+.style-header .div-style-header .form-search input {
+  outline: none;
+  border: 0;
+  background-color: transparent;
+  margin-left: 0.5rem;
+}
+.style-header .div-style-header .form-search div {
+  width: 20px;
+  height: 20px;
+}
+.style-header .div-style-header .form-search div img {
+  width: 100%;
+  height: 100%;
+}
+.style-header .div-style-header .menu .menu-laptop {
+  display: flex;
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
+}
+.style-header .div-style-header .menu .menu-laptop li {
   list-style-type: none;
 }
-.style-header .menu ul li:not(:last-of-type) {
+.style-header .div-style-header .menu .menu-laptop li:not(:last-of-type) {
   margin-right: 1rem;
 }
-.style-header .menu ul li:hover a {
+.style-header .div-style-header .menu .menu-laptop li:hover a {
   color: red;
 }
-.style-header .menu ul li a {
+.style-header .div-style-header .menu .menu-laptop li a {
   text-decoration: none;
   color: #000000;
   font-weight: bold;
   font-size: 18px;
 }
+.style-header .div-style-header .menu .menu-laptop li .link-connexion {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+.style-header .div-style-header .menu .menu-laptop li .link-connexion img {
+  width: 100%;
+  height: 100%;
+}
+.style-header .div-style-header .menu .menu-tab-mobile,
+.style-header .div-style-header .menu #openBurger {
+  display: none;
+}
+.style-header .div-style-header .menu #openBurger {
+  @media screen and (max-width: 992px) {
+    display: inline;
+    margin-right: 0.5rem;
+  }
+}
+.style-header .div-style-header .menu #openBurger span {
+  display: block;
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 6px 0;
+}
+.style-header .div-style-header .menu .menu-tab-mobile {
+  @media screen and (max-width: 992px) {
+  }
+}
+.style-header .div-style-header .menu .bgc-menu {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0.9;
+}
+.style-header .div-style-header .menu .menu-tab-mobile.actif {
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+.style-header .div-style-header .menu .menu-tab-mobile.actif .menu-fixed {
+  max-height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px;
+  background-color: #fff;
+  border-left: 1px solid #dfdcda;
+  border-bottom: 1px solid #dfdcda;
+  padding-bottom: 3rem;
+  overflow: auto;
+  height: 100%;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+}
+.style-header
+  .div-style-header
+  .menu
+  .menu-tab-mobile.actif
+  .menu-fixed
+  .head-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f4f2f1;
+  padding: 0 min(5.5vw, 5.5rem);
+  height: 70px;
+  margin-bottom: 30px;
+}
+.style-header
+  .div-style-header
+  .menu
+  .menu-tab-mobile.actif
+  .menu-fixed
+  .head-menu
+  button {
+  width: 1.7rem;
+  border: 0;
+  background-color: transparent;
+}
+.style-header
+  .div-style-header
+  .menu
+  .menu-tab-mobile.actif
+  .menu-fixed
+  .head-menu
+  button
+  img {
+  width: 100%;
+}
+.style-header .div-style-header .menu .menu-tab-mobile.actif .menu-fixed ul {
+  padding: 0 min(5.5vw, 5.5rem);
+}
+.style-header
+  .div-style-header
+  .menu
+  .menu-tab-mobile.actif
+  .menu-fixed
+  ul
+  li
+  a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.style-header .div-style-header .menu .menu-tab-mobile.actif .menu-fixed ul li {
+  list-style: none;
+}
+.style-header
+  .div-style-header
+  .menu
+  .menu-tab-mobile.actif
+  .menu-fixed
+  ul
+  li:not(:last-of-type) {
+  margin-bottom: 2rem;
+}
+.style-header
+  .div-style-header
+  .menu
+  .menu-tab-mobile.actif
+  .menu-fixed
+  ul
+  li
+  a
+  img {
+  width: 30px;
+  height: 30px;
+  margin-right: 2rem;
+}
+.style-header
+  .div-style-header
+  .menu
+  .menu-tab-mobile.actif
+  .menu-fixed
+  .search-mobile {
+  display: none;
+  @media screen and (max-width: 767px) {
+    display: block;
+    padding: 0 min(5.5vw, 5.5rem);
+  }
+}
+.style-header
+  .div-style-header
+  .menu
+  .menu-tab-mobile.actif
+  .menu-fixed
+  .search-mobile
+  form {
+  display: flex;
+  border: 1px solid black;
+  background-color: #f6ece1;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  margin-bottom: 30px;
+}
+
+.style-header
+  .div-style-header
+  .menu
+  .menu-tab-mobile.actif
+  .menu-fixed
+  .search-mobile
+  form
+  input {
+  outline: none;
+  border: 0;
+  background-color: transparent;
+  margin-left: 0.5rem;
+}
+.style-header
+  .div-style-header
+  .menu
+  .menu-tab-mobile.actif
+  .menu-fixed
+  .search-mobile
+  form
+  div {
+  width: 20px;
+  height: 20px;
+}
+.style-header
+  .div-style-header
+  .menu
+  .menu-tab-mobile.actif
+  .menu-fixed
+  .search-mobile
+  form
+  div
+  img {
+  width: 100%;
+  height: 100%;
+}
+/* .style-header .menu .menu-tab-mobile li {
+  position: absolute;
+} */

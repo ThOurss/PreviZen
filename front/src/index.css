@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  background-color: #eee;
 }
 
 code {
@@ -22,6 +24,23 @@ code {
 }
 
 .roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+h1 {
+  @media screen and (max-width: 767px) {
+    font-size: 25px;
+  }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
