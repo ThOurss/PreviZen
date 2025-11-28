@@ -1,0 +1,46 @@
+.search-home {
+  height: 270px;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.search-home h2 {
+  color: #fff;
+  margin: 2rem 0 1.5rem;
+  @media screen and (max-width: 767px) {
+    margin: 1.5rem 0;
+  }
+}
+
+.search-home .phrase-accroche p {
+  color: #fff;
+}
+.search-home .phrase-accroche {
+  margin-bottom: 1.5rem;
+}
+.search-home form button {
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  background-color: #000;
+  color: #fff;
+  border: 0;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.search-home form .input-loupe {
+  display: flex;
+  margin-bottom: 1.5rem;
+  justify-content: space-between;
+  border: 1px solid black;
+  background-color: #f6ece1;
+  padding: 0.5rem;
+  width: 250px;
+}
+.search-home form .input-loupe input {
+  outline: none;
+  border: 0;
+  background-color: transparent;
+  margin-left: 0.5rem;
+  width: 100%;
+}
