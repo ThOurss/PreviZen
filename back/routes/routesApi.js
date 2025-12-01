@@ -1,7 +1,9 @@
 import { Router } from "express";
+
+import { getMap, getPreviByVille, getWeather } from "../controller/controllerHome.js";
 const router = Router();
-import { getWeather } from "../controller/controllerHome.js";
-
 router.get("/weather", getWeather);
-
+console.log('here')
+router.get("/weather/:ville", getPreviByVille)
+router.get("/tiles/:layer/:z/:x/:y", getMap);
 export default router;

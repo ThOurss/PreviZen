@@ -1,17 +1,50 @@
 import "../../style/home.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import MapPrevi from "../map/Map.js";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-    const [weather, setWeather] = useState(null);
-
+    const [villes, setVille] = useState(null);
+    const [villeSearch, setVilleSearch] = useState([]);// résultats
+    const [inputVille, setInputVille] = useState("");
+    const [previsu, setPrevisu] = useState(false);
+    const containerFermer = useRef(null)
     useEffect(() => {
         fetch("http://localhost:5000/api/weather")
             .then(res => res.json())
-            .then(data => setWeather(data))
+            .then(data => setVille(data))
             .catch(err => console.error(err));
     }, []);
+
+    const searchVille = async (e) => {
+        e.preventDefault();
+        if (!inputVille) return; // rien à chercher
+
+
+        await fetch(`http://localhost:5000/api/weather/${encodeURIComponent(inputVille)}`)
+            .then((res) => res.json())
+            .then((data) => setVilleSearch(data))
+            .catch((err) => console.error(err));
+
+        setPrevisu(true);
+
+
+    };
+
+    useEffect(() => {
+        // Fonction pour détecter les clics en dehors
+        const handleClickOutside = (event) => {
+            if (containerFermer.current && !containerFermer.current.contains(event.target)) {
+                setPrevisu(false);
+            }
+        };
+
+        // Ajouter l'écouteur sur tout le document
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
     // if (!weather) return <p>Chargement...</p>;
-    console.log(weather)
+    console.log(villeSearch)
     return (
         <section className="section-home">
             <section className="search-home">
@@ -21,20 +54,35 @@ const Home = () => {
                 </div>
                 <form action="">
                     <div className="input-loupe">
-                        <input type="text" name="" id="" placeholder="Entrer une ville" />
-
+                        <input className={previsu && (`input-previsu`)} type="text" id="" onChange={(e) => setInputVille(e.target.value)} placeholder="Entrer une ville" />
+                        {previsu && (
+                            <ul ref={containerFermer}>
+                                {villeSearch.map((uneVille, index) => (
+                                    <li key={index}><Link to={`${uneVille.name.toLowerCase()}`}>{uneVille.name}, {uneVille.country}</Link></li>
+                                ))}
+                            </ul>
+                        )}
                     </div>
 
-                    <button type="submit">rechercher</button>
+
+                    <button type="button" onClick={searchVille}>rechercher</button>
 
                 </form>
             </section>
-            <section>
-                <h2>Explorer les villes</h2>
-                <section className="differente-ville">
+            {villes && (
+                <section ref={containerFermer} className="section-dif-ville">
+                    <h2>Explorer les villes</h2>
+                    <section className="differente-ville">
+                        {villes.map(ville => (
 
+                            <MapPrevi key={ville.name} ville={ville} />
+
+                        ))}
+
+                    </section>
                 </section>
-            </section>
+            )}
+
         </section>
 
     )

@@ -1,0 +1,24 @@
+footer {
+  border-top: 1px solid black;
+  height: 15vh;
+}
+footer ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+  }
+}
+footer ul li {
+  list-style: none;
+}
+footer ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+}
+footer ul li:hover a {
+  color: red;
+}
