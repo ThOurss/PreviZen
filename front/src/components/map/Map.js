@@ -10,13 +10,13 @@ const MapPrevi = ({ ville, layer = "rain" }) => {
 
                 {/* Couche météo via backend */}
                 {/* <TileLayer
-                url={`http://localhost:5000/api/tiles/${layer}/{z}/{x}/{y}`}
-                opacity={0.6}
-            /> */}
+                    url={`http://localhost:5000/api/tiles/${layer}/{z}/{x}/{y}`}
+                    opacity={0.6}
+                /> */}
 
             </MapContainer>
             <div className="data-ville">
-                <h3> <Link to={`/${ville.name.toLowerCase()}`}>{ville.name}</Link>  </h3>
+                <h3> <Link to={`/prevision/${ville.name.toLowerCase()}`}>{ville.name}</Link>  </h3>
                 <div className="temp-previ">
                     <p>{Math.round(ville.main.temp)} °C, {ville.weather[0].description} </p>
 

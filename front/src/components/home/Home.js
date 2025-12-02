@@ -46,7 +46,7 @@ const Home = () => {
     // if (!weather) return <p>Chargement...</p>;
     console.log(villeSearch)
     return (
-        <section className="section-home">
+        <main className="section-home">
             <section className="search-home">
                 <h2>Bienvenue sur PreviZen</h2>
                 <div className="phrase-accroche">
@@ -54,11 +54,11 @@ const Home = () => {
                 </div>
                 <form action="">
                     <div className="input-loupe">
-                        <input className={previsu && (`input-previsu`)} type="text" id="" onChange={(e) => setInputVille(e.target.value)} placeholder="Entrer une ville" />
+                        <input type="text" id="homeSearch" onChange={(e) => setInputVille(e.target.value)} placeholder="Entrer une ville" />
                         {previsu && (
                             <ul ref={containerFermer}>
                                 {villeSearch.map((uneVille, index) => (
-                                    <li key={index}><Link to={`${uneVille.name.toLowerCase()}`}>{uneVille.name}, {uneVille.country}</Link></li>
+                                    <li key={index}><Link to={`/prevision/${uneVille.name.toLowerCase()}`}>{uneVille.name}, {uneVille.country} <img src={`../assets/drapeaux/${uneVille.country.toLowerCase()}.svg`} alt="" /></Link></li>
                                 ))}
                             </ul>
                         )}
@@ -83,7 +83,7 @@ const Home = () => {
                 </section>
             )}
 
-        </section>
+        </main>
 
     )
 }

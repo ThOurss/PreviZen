@@ -9,6 +9,10 @@
   height: 15vh;
   align-items: center;
 }
+.style-header .div-style-header a {
+  text-decoration: none;
+  color: #000;
+}
 .style-header .div-style-header .header-div-logo {
   display: flex;
   align-items: center;

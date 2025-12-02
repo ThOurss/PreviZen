@@ -69,6 +69,11 @@
 }
 .search-home form .input-loupe ul li a {
   text-decoration: none;
+  width: 100%;
+  display: block;
+}
+.search-home form .input-loupe ul li a img {
+  width: 20px;
 }
 .search-home form .input-loupe ul li:hover a {
   color: beige;

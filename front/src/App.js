@@ -1,4 +1,5 @@
 import './App.css';
+import ConnectionInscription from './components/connection_inscription/connection_inscription.js';
 import Footer from './components/footer/Footer.js';
 import Header from './components/header/header.js';
 import Home from './components/home/Home.js';
@@ -11,7 +12,9 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
+
           <Route path="/" element={<Home />} />
+          <Route path="/connexion" element={<ConnectionInscription />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>

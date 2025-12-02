@@ -1,0 +1,195 @@
+.connexion_inscription {
+  width: 50%;
+  background-color: #fff;
+
+  padding: 2rem 0;
+  margin: 3rem auto;
+}
+.connexion_inscription .choix-connection_inscription {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+.connexion_inscription .choix-connection_inscription .connection,
+.connexion_inscription .choix-connection_inscription .inscription {
+  width: 40%;
+}
+.connexion_inscription .choix-connection_inscription .connection.sectActive,
+.connexion_inscription .choix-connection_inscription .inscription.sectActive {
+  border: 1px solid black;
+  border-bottom: 0;
+}
+
+.connexion_inscription
+  .choix-connection_inscription
+  .connection:not(.sectActive),
+.connexion_inscription
+  .choix-connection_inscription
+  .inscription:not(.sectActive) {
+  border: 0;
+  border-bottom: 1px solid black;
+}
+.connexion_inscription .choix-connection_inscription .connection button,
+.connexion_inscription .choix-connection_inscription .inscription button {
+  width: 100%;
+  padding: 15px;
+  background-color: #fff;
+  border: 0;
+  cursor: pointer;
+}
+.connexion_inscription .choix-connection_inscription .connection button span,
+.connexion_inscription .choix-connection_inscription .inscription button span {
+  font-size: 20px;
+  font-weight: bold;
+}
+.connexion_inscription .contenu-connection_inscription {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.connexion_inscription .contenu-connection_inscription section {
+  display: none;
+}
+.connexion_inscription .contenu-connection_inscription .actif {
+  display: block;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-connection
+  .div-id {
+  margin-bottom: 1rem;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-connection
+  .div-id
+  p {
+  text-align: left;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-connection
+  form
+  div
+  fieldset
+  legend {
+  text-align: left;
+  padding: 0.2rem;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-connection
+  form
+  div
+  fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-connection
+  form
+  div
+  fieldset
+  div
+  input {
+  outline: none;
+  width: 100%;
+  border: 0;
+  font-size: 16px;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-connection
+  form
+  div
+  fieldset
+  div {
+  display: flex;
+  justify-content: space-between;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-connection
+  form
+  div
+  fieldset
+  div
+  img {
+  width: 20px;
+  cursor: pointer;
+  display: none;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-connection
+  form
+  div
+  fieldset
+  div
+  img.oeilActif {
+  display: block;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-connection
+  form
+  div.div-email {
+  margin-bottom: 1rem;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-connection
+  form
+  div.div-mdp {
+  margin-bottom: 2rem;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-connection
+  form
+  .btn-connecter {
+  width: 100%;
+  background-color: #fff;
+  border: solid 1px black;
+  height: 50px;
+  font-size: 16px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-connection
+  form
+  div.connecter-oublier {
+  display: flex;
+  justify-content: space-between;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-connection
+  form
+  div.connecter-oublier
+  .sect-connecter
+  input {
+  cursor: pointer;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-connection
+  form
+  div.connecter-oublier
+  .sect-connecter
+  label {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-connection
+  form
+  div.connecter-oublier
+  .sect-oublier
+  p
+  a {
+  text-underline-offset: 0.5rem;
+}

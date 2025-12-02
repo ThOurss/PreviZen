@@ -12,7 +12,7 @@ const Menu = () => {
                 <li ><Link to="/" className="roboto-regular">Accueil</Link></li>
                 <li ><Link to="/prevision" className="roboto-regular">Prévision</Link></li>
                 <li><Link to="/alert" className="roboto-regular">Alerte</Link></li>
-                <li><Link to="/connexion" className="roboto-regular link-connexion"><img src="assets/picto/utilisateur.png" alt="picto utilisateur" /></Link></li>
+                <li><Link to="/connexion" className="roboto-regular link-connexion"><img src="../assets/picto/utilisateur.png" alt="picto utilisateur" /></Link></li>
 
             </ul>
             {

@@ -11,7 +11,7 @@ export const getWeather = async (req, res) => {
             return axios.get(url).then(response => response.data);
         });
 
-
+        //https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid={API key}
         const weatherData = await Promise.all(promises);
 
         // Renvoie un array avec les données météo de chaque ville
