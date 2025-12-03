@@ -1,12 +1,9 @@
 import { createDatabase } from './db/createDatabase.js';
-import { Sequelize } from 'sequelize';
-import { DB, USER, PASSWORD, HOST, dialect, port, KEY_API } from './config/db.config.js';
-//import UserModel from './models/user.model.js';
 import express from "express";
 import weatherRoutes from "./routes/routesAPI.js";
-
+import { User, Role, initRoles, initCivilite, importCountriesSQL } from './models/index.js';
 import cors from "cors";
-
+import { sequelize } from './config/db.config.js';
 
 const app = express();
 app.use(cors()); // autorise toutes les origines (pour dev)
@@ -20,14 +17,17 @@ app.listen(5000, () => console.log("Serveur sur 5000"));
 async function startApp() {
     await createDatabase();  // création de la BDD si elle n'existe pas
 
-    // connexion à la BDD nouvellement créée
-    const sequelize = new Sequelize(DB, USER, PASSWORD, { host: HOST, dialect, port });
+
 
     // initialisation des modèles
     //UserModel(sequelize);
 
     // synchronisation des tables
-    await sequelize.sync({ alter: true });
+
+    await sequelize.sync({ force: true });
+    await initRoles();
+    await initCivilite();
+    await importCountriesSQL();
     console.log('✅ Tables synchronisées');
 }
 
