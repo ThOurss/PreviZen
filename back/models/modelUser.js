@@ -1,29 +1,61 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../config/db.config.js';
-
+import bcrypt from "bcrypt";
 
 const User = sequelize.define('User', {
 
     id_User: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
+
     },
     username: {
         type: DataTypes.STRING,
-        allowNull: false // Ce champ est obligatoire
+        allowNull: false,
+        validate: {
+            notNull: {
+                msg: 'Veuillez renseigner votre nom',
+            },
+        },
+        set(value) {
+            this.setDataValue('username', value)
+        },
+        get() {
+            const rawValue = this.getDataValue('username');
+
+            return rawValue ? rawValue.toUpperCase() : null;
+        }
     },
     firstname: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notNull: {
+                msg: 'Veuillez renseigner votre prénom',
+            },
+        }, set(value) {
+            this.setDataValue('firstname', value)
+        },
+        get() {
+            const rawValue = this.getDataValue('firstname');
+
+            return rawValue ? rawValue.toUpperCase() : null;
+        }
     },
     email: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            isEmail: true // Validation automatique de l'email
+            isEmail: true, // Validation automatique de l'email
+            notNull: {
+                msg: 'Veuillez renseigner votre adresse mail',
+            },
         },
-        unique: true
+        unique: true,
+        set(value) {
+            this.setDataValue('email', value.toLowerCase())
+        }
     },
     password: {
         type: DataTypes.STRING,
@@ -54,10 +86,28 @@ const User = sequelize.define('User', {
                 }
             }
         }
+
     }
 
-}, {
-    // Options du modèle
+}, {// Options du modèle
+    hooks: {
+        // Ce hook se lance APRES la validation, mais AVANT l'enregistrement
+        beforeCreate: async (user) => {
+            if (user.password) {
+                const salt = await bcrypt.genSalt(10);
+                user.password = await bcrypt.hash(user.password, salt);
+            }
+        },
+
+        beforeUpdate: async (user) => {
+            // re-hache que si le mot de passe a été modifié !
+            if (user.changed('password')) {
+                const salt = await bcrypt.genSalt(10);
+                user.password = await bcrypt.hash(user.password, salt);
+            }
+        }
+    },
+
     timestamps: false // Ajoute automatiquement createdAt et updatedAt
 });
 
