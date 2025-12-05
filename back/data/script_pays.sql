@@ -235,5 +235,5 @@ INSERT INTO pays (id_pays,nom_fr,nom_en,code_iso2,code_iso3,isUE) VALUES
 	 (219,'YÉMEN','YEMEN','YE','YEM',0),
 	 (220,'AFRIQUE DU SUD','SOUTH AFRICA','ZA','ZAF',0),
 	 (221,'ZAMBIE','ZAMBIA','ZM','ZMB',0),
-	 (222,'ZIMBABWE','ZIMBABWE','ZW','ZWE',0),
-	 (225,'','','NC','NC',0);
+	 (222,'ZIMBABWE','ZIMBABWE','ZW','ZWE',0)
+	 

@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../config/db.config.js';
-const Pays = sequelize.define('pays', {
+const Pays = sequelize.define('Pays', {
     id_pays: {
         type: DataTypes.INTEGER,
         autoIncrement: true,

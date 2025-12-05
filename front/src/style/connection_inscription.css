@@ -85,6 +85,7 @@
   fieldset,
 .contenu-inscription form div fieldset {
   padding: 0.35em 0.75em 0.625em;
+  position: relative;
 }
 .connexion_inscription
   .contenu-connection_inscription
@@ -217,7 +218,9 @@
   .contenu-connection_inscription
   .contenu-inscription
   form
-  div.div-mdp {
+  div.div-mdp,
+.div-civilite,
+.div-pays {
   margin-bottom: 1rem;
 }
 .connexion_inscription
@@ -233,8 +236,86 @@
 .message-informatif {
   text-align: right;
 }
+
 .error {
   text-align: left;
   color: red;
   margin-top: 0.5rem;
+}
+
+#passRequirements {
+  height: fit-content;
+  position: absolute;
+  min-height: 100px;
+  flex-wrap: wrap;
+  margin-top: 0;
+  left: -1px;
+  bottom: 95px;
+  padding: 0 0.5rem;
+  z-index: 199;
+  background: #fafafa;
+  border: solid 1px gray;
+  width: 250px;
+  transform: translateY(25%);
+  display: none;
+}
+#passRequirements.visible {
+  display: flex;
+}
+#passRequirements .requirement {
+  color: gray;
+  position: relative;
+  top: initial;
+  right: initial;
+  font-size: 14px;
+  min-width: max-content;
+  width: 100%;
+  margin-bottom: 5px;
+  text-align: left;
+}
+#passRequirements .requirement:first-of-type {
+  margin-top: 5px;
+}
+.legend-mdp {
+  padding: 0 5px;
+  position: relative;
+  bottom: 2px;
+  display: flex;
+  align-items: center;
+}
+.legend-mdp .infobulleMdp {
+  cursor: pointer;
+  margin-left: 0.5rem;
+  background-color: transparent;
+  border: 0;
+}
+.legend-mdp .infobulleMdp .icon-info {
+  width: 16px;
+  height: 16px;
+}
+.div-civilite .civilite-no-error,
+.div-pays .pays-no-error {
+  display: flex;
+  align-items: center;
+}
+.div-civilite div p,
+.div-pays div p {
+  font-weight: bold;
+}
+.listeCivilite {
+  display: flex;
+  margin-left: 1.5rem;
+}
+.listeCivilite div label {
+  margin-left: 10px;
+}
+.listeCivilite div:not(:last-of-type) {
+  margin-right: 2rem;
+}
+.listePays {
+  margin-left: 1.5rem;
+}
+.listePays select {
+  height: 30px;
+  outline: none;
 }

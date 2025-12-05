@@ -17,6 +17,7 @@ const User = sequelize.define('User', {
             notNull: {
                 msg: 'Veuillez renseigner votre nom',
             },
+            notEmpty: { msg: 'Veuillez renseigner votre nom' }
         },
         set(value) {
             this.setDataValue('username', value)
@@ -33,7 +34,7 @@ const User = sequelize.define('User', {
         validate: {
             notNull: {
                 msg: 'Veuillez renseigner votre prénom',
-            },
+            }, notEmpty: { msg: 'Veuillez renseigner votre prénom' }
         }, set(value) {
             this.setDataValue('firstname', value)
         },
@@ -51,6 +52,7 @@ const User = sequelize.define('User', {
             notNull: {
                 msg: 'Veuillez renseigner votre adresse mail',
             },
+            notEmpty: { msg: 'Veuillez renseigner votre mail' }
         },
         unique: true,
         set(value) {
@@ -87,12 +89,55 @@ const User = sequelize.define('User', {
             }
         }
 
+    },
+    id_civilite: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+            notNull: { msg: "La civilité est requise." },
+            isInt: { msg: "La civilité doit être un identifiant valide." },
+
+            async checkCiviliteExists(value) {
+
+                const civilite = await sequelize.models.Civilite.findByPk(value);
+                if (!civilite) {
+                    throw new Error("Cette civilité n'existe pas.");
+                }
+            }
+        }
+    },
+
+    // 👇 VALIDATION PAYS
+    id_pays: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+            notNull: { msg: "Le pays est requis." },
+            isInt: { msg: "Le pays doit être un identifiant valide." },
+
+            async checkPaysExists(value) {
+                const pays = await sequelize.models.Pays.findByPk(value);
+                if (!pays) {
+                    throw new Error("Ce pays n'existe pas ou n'est plus disponible.");
+                }
+            }
+        }
+    },
+    // 👇 AJOUT DE LA COLONNE ID_ROLE
+    id_role: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 3,
+
     }
 
 }, {// Options du modèle
     hooks: {
         // Ce hook se lance APRES la validation, mais AVANT l'enregistrement
         beforeCreate: async (user) => {
+            if (!user.id_role) {
+                user.id_role = 3;
+            }
             if (user.password) {
                 const salt = await bcrypt.genSalt(10);
                 user.password = await bcrypt.hash(user.password, salt);
