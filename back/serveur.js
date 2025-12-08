@@ -7,10 +7,15 @@ import paysRoutes from './routes/routesPays.js'
 import { User, Role, initRoles, initCivilite, importCountriesSQL } from './models/index.js';
 import cors from "cors";
 import { sequelize } from './config/db.config.js';
+import cookieParser from 'cookie-parser';
 
 const app = express();
-app.use(cors()); // autorise toutes les origines (pour dev)
+app.use(cors({
+    origin: 'http://localhost:3000', // ⚠️ L'URL exacte de ton React (pas *)
+    credentials: true // ⚠️ OBLIGATOIRE
+})); // autorise toutes les origines (pour dev)
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/api", weatherRoutes);
 app.use("/user", userRoutes);

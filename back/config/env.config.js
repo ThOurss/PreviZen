@@ -10,3 +10,4 @@ export const DB_NAME = process.env.DB_NAME;
 export const DB_PORT = process.env.DB_PORT;
 export const DB_DIALECT = process.env.DB_DIALECT;
 export const API_KEY = process.env.API_KEY;
+export const JWT_SECRET = process.env.JWT_SECRET;

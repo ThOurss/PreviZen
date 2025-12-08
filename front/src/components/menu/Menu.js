@@ -1,18 +1,47 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-const Menu = () => {
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
+
+const Menu = ({ isConnected, setIsConnected, user }) => {
     const [open, setOpen] = useState();
+    const [showConfirm, setShowConfirm] = useState(false)
     const menuBurger = () => {
         setOpen(open => !open);
     }
     const location = useLocation();
+    const navigate = useNavigate();
+
+    const confirmLogout = async () => {
+        try {
+            await fetch('http://localhost:5000/user/logout', {
+                method: 'POST',
+                credentials: 'include'
+            });
+        } catch (err) { console.error(err); }
+
+        Cookies.remove('user_infos');
+        setIsConnected(false);
+        setShowConfirm(false); // On ferme la modale
+        setOpen(false)
+        navigate('/connexion');
+    };
+
+    // 3. Fonction quand on clique sur le bouton "Se déconnecter"
+    const handleLogoutClick = () => {
+        setShowConfirm(true); // On ouvre juste la fenêtre
+    };
     return (
         <nav className="menu">
             <ul className="menu-laptop">
                 <li ><Link to="/" className="roboto-regular">Accueil</Link></li>
                 <li ><Link to="/prevision" className="roboto-regular">Prévision</Link></li>
                 <li><Link to="/alert" className="roboto-regular">Alerte</Link></li>
-                <li><Link to="/connexion" className="roboto-regular link-connexion"><img src="../assets/picto/utilisateur.png" alt="picto utilisateur" /></Link></li>
+                {isConnected ? (
+                    <li>
+                        <Link onClick={handleLogoutClick} className="roboto-regular link-connexion"><img src="../assets/picto/utilisateur.png" alt="picto utilisateur" /></Link>
+                    </li>
+                ) : (<li><Link to="/connexion" className="roboto-regular link-connexion" ><img src="../assets/picto/utilisateur.png" alt="picto utilisateur" /></Link></li>)}
+
 
             </ul>
             {
@@ -46,15 +75,42 @@ const Menu = () => {
                     )}
 
                     <ul>
-                        <li ><Link to="/" className="roboto-regular"><img src="assets/picto/home.png" alt="" />Accueil</Link></li>
-                        <li ><Link to="/prevision" className="roboto-regular"><img src="assets/picto/previsions.png" alt="" />Prévision</Link></li>
-                        <li><Link to="/alert" className="roboto-regular"><img src="assets/picto/cloche.png" alt="" />Alerte</Link></li>
-                        <li><Link to="/connexion" className="roboto-regular"><img src="assets/picto/utilisateur.png" alt="picto utilisateur" />connexion / inscription</Link></li>
+                        <li ><Link to="/" onClick={menuBurger} className="roboto-regular"><img src="assets/picto/home.png" alt="" />Accueil</Link></li>
+                        <li ><Link to="/prevision" onClick={menuBurger} className="roboto-regular"><img src="assets/picto/previsions.png" alt="" />Prévision</Link></li>
+                        <li><Link to="/alert" onClick={menuBurger} className="roboto-regular"><img src="assets/picto/cloche.png" alt="" />Alerte</Link></li>
+                        {isConnected ? (
+                            <li><Link onClick={handleLogoutClick} className="roboto-regular"><img src="assets/picto/utilisateur.png" alt="picto utilisateur" />Se déconnecter</Link></li>) : (<li><Link to="/connexion" onClick={menuBurger} className="roboto-regular"><img src="assets/picto/utilisateur.png" alt="picto utilisateur" />connexion / inscription</Link></li>)}
+
                     </ul>
                 </div>
 
             </div>
+            {showConfirm && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <h3>Déconnexion</h3>
+                        <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
 
+                        <div className="modal-buttons">
+
+                            <button
+                                className="btn-confirm"
+                                onClick={confirmLogout}
+                            >
+                                Oui, me déconnecter
+                            </button>
+
+
+                            <button
+                                className="btn-cancel"
+                                onClick={() => setShowConfirm(false)}
+                            >
+                                Annuler
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
         </nav>
 

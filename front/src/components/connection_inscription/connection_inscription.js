@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import "../../style/connection_inscription.css"
+import Cookies from 'js-cookie';
 
-const ConnectionInscription = () => {
-
+const ConnectionInscription = ({ setIsConnected }) => {
+    const navigate = useNavigate()
 
     const [actif, setActif] = useState(true)
     const [oeilActif, setOeilActif] = useState({
@@ -139,6 +140,61 @@ const ConnectionInscription = () => {
             console.error('Erreur Réseau:', error);
         }
     }
+
+    const submitConnection = async (e) => {
+        let newErrors = {}
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData.entries());
+
+        if (data.emailConnection.trim() === '') {
+            newErrors.emailConnection = "Votre adresse mail est requis";
+        }
+        if (data.passwordUserConnexion.trim() === '') {
+            newErrors.passwordUserConnexion = "Vous devez renseigner un mot de passe ";
+        }
+        const isStayConnected = data.stayConnect === "on";
+        setErrors(newErrors);
+        if (Object.keys(newErrors).length > 0) return;
+
+        const dataToSend = {
+
+            email: data.emailConnection,
+            password: data.passwordUserConnexion,
+            stayConnected: isStayConnected
+        }
+
+        try {
+            const response = await fetch('http://localhost:5000/user/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dataToSend),
+                credentials: 'include'
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                const cookieOptions = isStayConnected ? { expires: 30 } : {};
+
+                // On stocke les infos NON SENSIBLES (pas le token, juste le nom/rôle)
+                Cookies.set('user_infos', JSON.stringify(result), {
+                    ...cookieOptions,
+                    secure: false, // true en production
+                    sameSite: 'strict'
+                });
+
+                // On met à jour l'état global de React
+                setIsConnected(true);
+                navigate('/');
+            } else {
+                setErrors({ generalConnection: result.error || "Erreur de connexion" });
+
+            }
+
+        } catch (error) {
+            console.error('Erreur Réseau:', error);
+        }
+    }
     return (
         <main className="connexion_inscription">
             <section className="choix-connection_inscription">
@@ -158,7 +214,12 @@ const ConnectionInscription = () => {
                     <div className="div-id">
                         <p>Identifiez-vous si vous avez déjà un compte via:</p>
                     </div>
-                    <form action="">
+                    <form action="" onSubmit={submitConnection}>
+                        {errors.generalConnection && (
+                            <div className="error" >
+                                {errors.generalConnection}
+                            </div>
+                        )}
                         <div className="div-email">
                             <fieldset>
                                 <legend>E-mail</legend>
@@ -166,6 +227,7 @@ const ConnectionInscription = () => {
                                     <input type="email" name="emailConnection" id="email-connection" required />
                                 </div>
                             </fieldset>
+                            {errors.emailConnection && <p className="error">{errors.emailConnection}</p>}
                         </div>
                         <div className="div-mdp">
                             <fieldset>
@@ -176,12 +238,13 @@ const ConnectionInscription = () => {
                                     <img src="../assets/picto/oeil_close.png" alt="" className={`${!oeilActif.connection ? 'oeilActif' : ''} `} onClick={() => toggle('connection')} />
                                 </div>
                             </fieldset>
+                            {errors.passwordUserConnexion && <p className="error">{errors.passwordUserConnexion}</p>}
                         </div>
-                        <button className="btn-connecter">Se connecter</button>
+                        <button className="btn-connecter" type="submit">Se connecter</button>
                         <div className="connecter-oublier">
                             <div className="sect-connecter">
                                 <input type="checkbox" name="stayConnect" id="stay-connect" />
-                                <label htmlFor="stayConnect">Rester connecté</label>
+                                <label htmlFor="stay-connect">Rester connecté</label>
                             </div>
                             <div className="sect-oublier">
                                 <p>

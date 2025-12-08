@@ -3,8 +3,9 @@ import Menu from "../menu/Menu.js"
 import "../../style/header.css";
 
 
-const Header = () => {
+const Header = ({ isConnected, setIsConnected, user }) => {
     const location = useLocation();
+
     return (
         <header className="style-header">
             <div className="div-style-header">
@@ -26,7 +27,7 @@ const Header = () => {
                     </form>
                 )}
 
-                <Menu />
+                <Menu isConnected={isConnected} user={user} setIsConnected={setIsConnected} />
             </div>
 
         </header>

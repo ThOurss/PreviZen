@@ -1,9 +1,14 @@
 .connexion_inscription {
   width: 50%;
   background-color: #fff;
-
   padding: 2rem 0;
   margin: 3rem auto;
+  @media screen and (max-width: 1200px) {
+    width: 60%;
+  }
+  @media screen and (max-width: 992px) {
+    width: 95%;
+  }
 }
 .connexion_inscription .choix-connection_inscription {
   display: flex;
@@ -41,6 +46,9 @@
 .connexion_inscription .choix-connection_inscription .inscription button span {
   font-size: 20px;
   font-weight: bold;
+  @media screen and (max-width: 767px) {
+    font-size: 15px;
+  }
 }
 .connexion_inscription .contenu-connection_inscription {
   width: 80%;
@@ -166,6 +174,9 @@
   cursor: pointer;
   font-weight: bold;
   text-transform: uppercase;
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+  }
 }
 .connexion_inscription
   .contenu-connection_inscription
@@ -297,6 +308,10 @@
 .div-pays .pays-no-error {
   display: flex;
   align-items: center;
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 .div-civilite div p,
 .div-pays div p {
@@ -305,17 +320,43 @@
 .listeCivilite {
   display: flex;
   margin-left: 1.5rem;
+  @media screen and (max-width: 767px) {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
 }
 .listeCivilite div label {
   margin-left: 10px;
 }
 .listeCivilite div:not(:last-of-type) {
   margin-right: 2rem;
+  @media screen and (max-width: 767px) {
+    margin-right: 1rem;
+  }
 }
 .listePays {
   margin-left: 1.5rem;
+  @media screen and (max-width: 767px) {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
 }
 .listePays select {
   height: 30px;
   outline: none;
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
+}
+.listePays select option {
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
+}
+p,
+label,
+legend {
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
 }
