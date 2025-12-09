@@ -16,7 +16,7 @@ const MapPrevi = ({ ville, layer = "rain" }) => {
 
             </MapContainer>
             <div className="data-ville">
-                <h3> <Link to={`/prevision/${ville.name.toLowerCase()}`}>{ville.name}</Link>  </h3>
+                <h3> <Link to={`/prevision/${ville.name.toLowerCase()}`} state={{ lat: ville.coord.lat, lon: ville.coord.lon }}>{ville.name}</Link>  </h3>
                 <div className="temp-previ">
                     <p>{Math.round(ville.main.temp)} °C, {ville.weather[0].description} </p>
 

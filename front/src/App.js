@@ -6,6 +6,7 @@ import Home from './components/home/Home.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
+import Prevision from './components/prevision/Prevision.js';
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
@@ -31,6 +32,8 @@ function App() {
 
           <Route path="/" element={<Home />} />
           <Route path="/connexion" element={<ConnectionInscription setIsConnected={setIsConnected} />}></Route>
+          <Route path='/prevision' element={<Prevision />}></Route>
+          <Route path='/prevision/:ville' element={<Prevision />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
+import SearchBar from "../search/SearchBar.js";
 
 const Menu = ({ isConnected, setIsConnected, user }) => {
     const [open, setOpen] = useState();
@@ -63,23 +64,20 @@ const Menu = ({ isConnected, setIsConnected, user }) => {
                 <div className="menu-fixed">
                     <div className="head-menu">
                         <h2>Menu</h2>
-                        <button onClick={menuBurger}><img src="assets/picto/croix.png" alt="Croix pour la fermeture du menu" /></button>
+                        <button onClick={menuBurger}><img src="../assets/picto/croix.png" alt="Croix pour la fermeture du menu" /></button>
                     </div>
                     {location.pathname !== "/" && (
                         <div className="search-mobile">
-                            <form action="" >
-                                <input type="text" name="" id="" placeholder="Entrer une ville" />
-                                <div><img src="assets/picto/icon_search.png" alt="picto loupe" /></div>
-                            </form>
+                            < SearchBar menuBurger={menuBurger} />
                         </div>
                     )}
 
                     <ul>
-                        <li ><Link to="/" onClick={menuBurger} className="roboto-regular"><img src="assets/picto/home.png" alt="" />Accueil</Link></li>
-                        <li ><Link to="/prevision" onClick={menuBurger} className="roboto-regular"><img src="assets/picto/previsions.png" alt="" />Prévision</Link></li>
-                        <li><Link to="/alert" onClick={menuBurger} className="roboto-regular"><img src="assets/picto/cloche.png" alt="" />Alerte</Link></li>
+                        <li ><Link to="/" onClick={menuBurger} className="roboto-regular"><img src="../assets/picto/home.png" alt="" />Accueil</Link></li>
+                        <li ><Link to="/prevision" onClick={menuBurger} className="roboto-regular"><img src="../assets/picto/previsions.png" alt="" />Prévision</Link></li>
+                        <li><Link to="/alert" onClick={menuBurger} className="roboto-regular"><img src="../assets/picto/cloche.png" alt="" />Alerte</Link></li>
                         {isConnected ? (
-                            <li><Link onClick={handleLogoutClick} className="roboto-regular"><img src="assets/picto/utilisateur.png" alt="picto utilisateur" />Se déconnecter</Link></li>) : (<li><Link to="/connexion" onClick={menuBurger} className="roboto-regular"><img src="assets/picto/utilisateur.png" alt="picto utilisateur" />connexion / inscription</Link></li>)}
+                            <li><Link onClick={handleLogoutClick} className="roboto-regular"><img src="../assets/picto/utilisateur.png" alt="picto utilisateur" />Se déconnecter</Link></li>) : (<li><Link to="/connexion" onClick={menuBurger} className="roboto-regular"><img src="../assets/picto/utilisateur.png" alt="picto utilisateur" />connexion / inscription</Link></li>)}
 
                     </ul>
                 </div>

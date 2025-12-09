@@ -8,6 +8,7 @@ const Home = () => {
     const [villeSearch, setVilleSearch] = useState([]);// résultats
     const [inputVille, setInputVille] = useState("");
     const [previsu, setPrevisu] = useState(false);
+
     const containerFermer = useRef(null)
     useEffect(() => {
         fetch("http://localhost:5000/api/weather")
@@ -31,6 +32,7 @@ const Home = () => {
 
     };
 
+
     useEffect(() => {
         // Fonction pour détecter les clics en dehors
         const handleClickOutside = (event) => {
@@ -45,6 +47,7 @@ const Home = () => {
     }, []);
     // if (!weather) return <p>Chargement...</p>;
     console.log(villeSearch)
+
     return (
         <main className="section-home">
             <section className="search-home">
@@ -58,7 +61,7 @@ const Home = () => {
                         {previsu && (
                             <ul ref={containerFermer}>
                                 {villeSearch.map((uneVille, index) => (
-                                    <li key={index}><Link to={`/prevision/${uneVille.name.toLowerCase()}`}>{uneVille.name}, {uneVille.country} <img src={`../assets/drapeaux/${uneVille.country.toLowerCase()}.svg`} alt="" /></Link></li>
+                                    <li key={index}><Link to={`/prevision/${uneVille.name.toLowerCase()}`} state={{ lat: uneVille.lat, lon: uneVille.lon }} >{uneVille.name}, {uneVille.country} <img src={`../assets/drapeaux/${uneVille.country.toLowerCase()}.svg`} alt="" /></Link></li> //
                                 ))}
                             </ul>
                         )}

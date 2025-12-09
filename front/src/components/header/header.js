@@ -2,6 +2,8 @@ import { useLocation, Link } from "react-router-dom";
 import Menu from "../menu/Menu.js"
 import "../../style/header.css";
 
+import SearchBar from "../search/SearchBar.js";
+
 
 const Header = ({ isConnected, setIsConnected, user }) => {
     const location = useLocation();
@@ -21,10 +23,7 @@ const Header = ({ isConnected, setIsConnected, user }) => {
 
 
                 {location.pathname !== "/" && (
-                    <form action="" className="form-search">
-                        <input type="text" name="" id="" placeholder="Entrer une ville" />
-                        <div><img src="../assets/picto/icon_search.png" alt="picto loupe" /></div>
-                    </form>
+                    <SearchBar />
                 )}
 
                 <Menu isConnected={isConnected} user={user} setIsConnected={setIsConnected} />
