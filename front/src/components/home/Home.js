@@ -78,7 +78,7 @@ const Home = () => {
                     <section className="differente-ville">
                         {villes.map(ville => (
 
-                            <MapPrevi key={ville.name} ville={ville} />
+                            <MapPrevi key={ville.name} ville={ville} zoom={7} />
 
                         ))}
 

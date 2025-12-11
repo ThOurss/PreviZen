@@ -1,0 +1,108 @@
+#sect-prevision {
+  display: flex;
+  max-width: 95%;
+  margin: 50px auto;
+  justify-content: space-between;
+}
+#sect-prevision .prevision-ville {
+  width: 55%;
+  @media screen and (max-width: 1200px) {
+    width: 50%;
+  }
+}
+#sect-prevision .prevision-ville article .map-container {
+  width: 100%;
+  height: 55vh;
+  @media screen and (max-width: 1300px) {
+    height: 50vh;
+  }
+}
+#sect-prevision .prevision-jour {
+  width: 35%;
+  @media screen and (max-width: 1600px) {
+    width: 40%;
+  }
+  @media screen and (max-width: 1200px) {
+    width: 45%;
+  }
+}
+
+#sect-prevision .prevision-ville article .data-ville {
+  display: flex;
+  background-color: #d9d9d9;
+  align-items: center;
+  justify-content: space-around;
+  height: 11vh;
+  @media screen and (max-width: 1300px) {
+    height: 12vh;
+  }
+}
+#sect-prevision .prevision-ville article .data-ville .img-temp {
+  height: 100%;
+}
+#sect-prevision .prevision-ville article .data-ville .img-temp img {
+  height: 100%;
+}
+#sect-prevision .prevision-ville article .data-ville h3 span {
+  font-size: 20px;
+  font-weight: bold;
+}
+#sect-prevision .prevision-ville article .data-ville .temp-previ p {
+  font-weight: bold;
+  font-size: 18px;
+}
+#sect-prevision .prevision-ville h2,
+#sect-prevision .prevision-jour h2 {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+#sect-prevision .prevision-jour section {
+  max-height: 66vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  @media screen and (max-width: 1300px) {
+    max-height: 62vh;
+  }
+}
+#sect-prevision .prevision-jour section .forecast-previ {
+  display: flex;
+  background-color: #d9d9d9;
+  height: 11.6vh;
+  align-items: center;
+  justify-content: space-around;
+  @media screen and (max-width: 1300px) {
+    height: 10.5vh;
+  }
+}
+#sect-prevision .prevision-jour section .forecast-previ:not(:last-of-type) {
+  margin-bottom: 20px;
+}
+#sect-prevision .prevision-jour section .forecast-previ h3 {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  align-items: flex-start;
+  width: 35%;
+  @media screen and (max-width: 1200px) {
+    width: 40%;
+  }
+}
+#sect-prevision .prevision-jour section .forecast-previ h3 span {
+  font-size: 20px;
+  @media screen and (max-width: 1600px) {
+    font-size: 16px;
+  }
+}
+#sect-prevision .prevision-jour section .forecast-previ h3 span:nth-of-type(2) {
+  font-weight: bold;
+}
+#sect-prevision .prevision-jour section .forecast-previ .temperature p {
+  font-weight: bold;
+  font-size: 18px;
+}
+#sect-prevision .prevision-jour section .forecast-previ .div-img {
+  height: 100%;
+}
+#sect-prevision .prevision-jour section .forecast-previ .div-img img {
+  height: 100%;
+}

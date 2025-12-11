@@ -4,7 +4,7 @@ import { KEY_API } from "../config/db.config.js";
 export const getWeather = async (req, res) => {
     try {
 
-        const cities = [5128638, 1850147, 2643743, 2968815, 1796236, 292223];
+        const cities = [5128581, 1850147, 2643743, 2968815, 1796236, 292223];
 
         const promises = cities.map(ville => {
             const url = `https://api.openweathermap.org/data/2.5/weather?id=${ville}&appid=${KEY_API}&units=metric&lang=fr`;
@@ -93,6 +93,33 @@ export const getPreviByLonLat = async (req, res) => {
         //     }).then(resp => resp.data)
         // );
         // const promeseVille = await Promise.all(previVille);
+        res.json(data);
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Erreur lors de l'appel à OpenWeatherMap" });
+    }
+
+}
+export const getPreviForecast = async (req, res) => {
+    try {
+        const { lat, lon } = req.params;
+
+        if (!lat || !lon) {
+            return res.status(400).json({ error: "Veuillez fournir le nom d'une ville" });
+        }
+
+        const url = `https://api.openweathermap.org/data/2.5/forecast/daily`
+        const response = await axios.get(url, {
+            params: { lat: lat, lon: lon, cnt: 16, appid: KEY_API, units: 'metric', lang: 'fr' }
+        });
+        // const filtered = response.data.filter(
+        //       c => c.name.toLowerCase() === ville.toLowerCase()
+        //     );
+        const data = response.data;
+
+        data.list = data.list.slice(1)
+        data.cnt = data.list.length
         res.json(data);
 
     } catch (error) {

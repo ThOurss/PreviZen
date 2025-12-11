@@ -36,12 +36,12 @@ const SearchBar = ({ menuBurger }) => {
     }, []);
     console.log(villeSearch)
     return (
-        <form action="" className="form-search">
+        <form action="" onSubmit={searchVille} className="form-search">
             <input type="text" id="headerSearch" onChange={(e) => setInputVille(e.target.value)} placeholder="Entrer une ville" />
             {previsu && (
                 <ul ref={containerFermer} className="liste-search">
                     {villeSearch.map((uneVille, index) => (
-                        <li key={index} ><Link onClick={(e) => { setPrevisu(false); if (menuBurger) menuBurger(); }} to={`/prevision/${uneVille.name.toLowerCase()}`} state={{ lat: uneVille.lat, lon: uneVille.lon }}>{uneVille.name}, {uneVille.country} <img src={`../assets/drapeaux/${uneVille.country.toLowerCase()}.svg`} alt="" /></Link></li>//
+                        <li key={index} ><Link onClick={(e) => { setPrevisu(false); if (menuBurger) menuBurger(); }} to={`/prevision/${uneVille.name.toLowerCase()}`} state={{ lat: uneVille.lat, lon: uneVille.lon }}>{uneVille.name}, {uneVille.country} <img src={`../assets/drapeaux/${uneVille.country.toLowerCase()}.svg`} alt="" /><br /><span>{uneVille.state}</span></Link></li>//
                     ))}
                 </ul>
             )}
