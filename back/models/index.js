@@ -12,6 +12,7 @@ import Conversation from "./modelConversation.js";
 import Message from "./modelMessage.js";
 import UserConversation from "./modelUserConversation.js";
 import ConversationMessage from "./modelConversationMessage.js";
+import Favori from "./modelFavoris.js";
 // server.js ou models/index.js
 
 
@@ -33,11 +34,18 @@ User.belongsTo(Pays, {
     foreignKey: 'id_pays',
     as: 'pays'
 })
+Favori.belongsTo(User, {
+    foreignKey: 'id_user',
+    as: 'favori'
+});
+
 User.belongsToMany(Conversation, {
     through: UserConversation,
     foreignKey: 'id_user',
     as: 'convUser'
 })
+
+
 
 Conversation.belongsToMany(User, {
     through: UserConversation,
@@ -90,7 +98,11 @@ Pays.hasMany(User, {
     foreignKey: 'id_pays',
     as: 'userPays'
 })
-
+User.hasMany(Favori, {
+    foreignKey: 'id_user',
+    as: 'favoriUser',
+    onDelete: 'CASCADE'
+});
 const initRoles = async () => {
     try {
         // Liste des rôles à avoir
@@ -150,4 +162,4 @@ const importCountriesSQL = async () => {
         console.error('❌ Erreur import SQL :', e);
     }
 };
-export { User, Role, Civilite, Message, Conversation, Pays, Alerte, UserConversation, ConversationMessage, initRoles, initCivilite, importCountriesSQL, };
+export { User, Role, Civilite, Message, Conversation, Pays, Alerte, Favori, UserConversation, ConversationMessage, initRoles, initCivilite, importCountriesSQL, };

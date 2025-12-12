@@ -55,6 +55,8 @@
 #sect-prevision .prevision-jour h2 {
   text-align: left;
   margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
 }
 #sect-prevision .prevision-jour section {
   max-height: 66vh;

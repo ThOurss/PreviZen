@@ -54,7 +54,7 @@ const User = sequelize.define('User', {
             },
             notEmpty: { msg: 'Veuillez renseigner votre mail' }
         },
-        unique: true,
+        unique: { msg: 'Cette adresse email est déjà utilisée !' },
         set(value) {
             this.setDataValue('email', value.toLowerCase())
         }

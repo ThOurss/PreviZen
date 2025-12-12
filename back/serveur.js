@@ -4,6 +4,7 @@ import weatherRoutes from "./routes/routesAPI.js";
 import userRoutes from "./routes/routesUser.js";
 import civiliteRoutes from "./routes/routesCivilite.js";
 import paysRoutes from './routes/routesPays.js'
+import favorisRoutes from './routes/routesFavoris.js'
 import { User, Role, initRoles, initCivilite, importCountriesSQL } from './models/index.js';
 import cors from "cors";
 import { sequelize } from './config/db.config.js';
@@ -11,16 +12,17 @@ import cookieParser from 'cookie-parser';
 
 const app = express();
 app.use(cors({
-    origin: 'http://localhost:3000', // ⚠️ L'URL exacte de ton React (pas *)
-    credentials: true // ⚠️ OBLIGATOIRE
-})); // autorise toutes les origines (pour dev)
+    origin: 'http://localhost:3000',
+    credentials: true // autorise toutes les origines (pour dev)
+}));
 app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api", weatherRoutes);
 app.use("/user", userRoutes);
 app.use("/civilite", civiliteRoutes);
-app.use('/pays', paysRoutes)
+app.use('/pays', paysRoutes);
+app.use('/favoris', favorisRoutes);
 app.listen(5000, () => console.log("Serveur sur 5000"));
 
 

@@ -12,6 +12,8 @@ const ConnectionInscription = ({ setIsConnected }) => {
         inscription: true,
         confirmer: true,
     });
+    const [inscriptionConfirm, setInscriptionConfirm] = useState(false)
+
     const [visible, setVisible] = useState(false)
     const toggleRequirement = () => {
         setVisible(prev => !prev);
@@ -105,7 +107,7 @@ const ConnectionInscription = ({ setIsConnected }) => {
             if (response.ok) {
                 console.log('Succès:', result);
                 // Redirection ou message de succès
-                // ex: navigate('/login');
+                setInscriptionConfirm(true)
             } else {
                 newErrors = {}
                 if (result.errors) {
@@ -255,7 +257,7 @@ const ConnectionInscription = ({ setIsConnected }) => {
                     </form>
                 </section>
                 <section className={`contenu-inscription container ${!actif ? "actif" : ""}`}>
-                    <form action="" onSubmit={submitInscription}>
+                    <form action="" onSubmit={submitInscription} id="formInscription">
 
 
                         <div className="div-firstname">
@@ -380,6 +382,24 @@ const ConnectionInscription = ({ setIsConnected }) => {
                     </form>
                 </section>
             </section>
+            {inscriptionConfirm && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <h3>Succès</h3>
+                        <p>Vous êtes maintenant inscrit, veuillez vous connecter. </p>
+
+                        <div className="modal-buttons">
+
+                            <button
+                                className="btn-valid"
+                                onClick={() => { setInscriptionConfirm(false); setActif(true); document.querySelector('#formInscription').reset() }}
+                            >
+                                Valider
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </main>
     )
 }

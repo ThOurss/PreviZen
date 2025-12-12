@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { SECRET_JWT } from '../config/db.config';
+import { SECRET_JWT } from '../config/db.config.js';
 
 export default (req, res, next) => {
     try {

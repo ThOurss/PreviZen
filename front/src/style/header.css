@@ -358,6 +358,7 @@
 .modal-content h3 {
   margin-top: 0;
   color: #333;
+  margin-bottom: 1rem;
 }
 
 .modal-buttons {
@@ -386,4 +387,13 @@
 
 .btn-confirm:hover {
   background: #c0392b;
+}
+
+.btn-valid {
+  background: green;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
 }
