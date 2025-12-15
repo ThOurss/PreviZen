@@ -25,7 +25,14 @@ const Favori = sequelize.define('Favori', {
     }
     // id_user sera ajouté automatiquement par Sequelize grâce à la relation
 }, {
-    timestamps: false
+    timestamps: false,
+    indexes: [
+        {
+            unique: true, // Interdit les doublons
+            fields: ['id_user', 'lat', 'lon'], // Sur la combinaison de ces 3 champs
+            name: 'unique_user_ville_coords'
+        }
+    ]
 });
 
 
