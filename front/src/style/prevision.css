@@ -1,23 +1,45 @@
 #sect-prevision {
-  display: flex;
   max-width: 95%;
   margin: 50px auto;
-  justify-content: space-between;
+  @media screen and (max-width: 767px) {
+    margin: 30px auto;
+  }
 }
-#sect-prevision .prevision-ville {
+#sect-prevision .ville-container {
+  display: flex;
+  justify-content: space-between;
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+  }
+}
+#sect-prevision .ville-container:not(:last-of-type) {
+  padding-bottom: 50px;
+  border-bottom: 1px solid black;
+}
+#sect-prevision .ville-container:not(:first-of-type) {
+  padding-top: 35px;
+}
+#sect-prevision .ville-container .prevision-ville {
   width: 55%;
   @media screen and (max-width: 1200px) {
     width: 50%;
   }
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    margin-bottom: 30px;
+  }
 }
-#sect-prevision .prevision-ville article .map-container {
+#sect-prevision .ville-container .prevision-ville article .map-container {
   width: 100%;
   height: 55vh;
   @media screen and (max-width: 1300px) {
     height: 50vh;
   }
+  @media screen and (max-width: 767px) {
+    height: 30vh;
+  }
 }
-#sect-prevision .prevision-jour {
+#sect-prevision .ville-container .prevision-jour {
   width: 35%;
   @media screen and (max-width: 1600px) {
     width: 40%;
@@ -25,9 +47,12 @@
   @media screen and (max-width: 1200px) {
     width: 45%;
   }
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
 }
 
-#sect-prevision .prevision-ville article .data-ville {
+#sect-prevision .ville-container .prevision-ville article .data-ville {
   display: flex;
   background-color: #d9d9d9;
   align-items: center;
@@ -36,29 +61,63 @@
   @media screen and (max-width: 1300px) {
     height: 12vh;
   }
+  @media screen and (max-width: 767px) {
+    height: auto;
+    flex-wrap: wrap;
+    padding-bottom: 1.5rem;
+  }
 }
-#sect-prevision .prevision-ville article .data-ville .img-temp {
+#sect-prevision
+  .ville-container
+  .prevision-ville
+  article
+  .data-ville
+  .img-temp {
+  height: 100%;
+  @media screen and (max-width: 767px) {
+    height: 80px;
+  }
+}
+#sect-prevision
+  .ville-container
+  .prevision-ville
+  article
+  .data-ville
+  .img-temp
+  img {
   height: 100%;
 }
-#sect-prevision .prevision-ville article .data-ville .img-temp img {
-  height: 100%;
-}
-#sect-prevision .prevision-ville article .data-ville h3 span {
+#sect-prevision .ville-container .prevision-ville article .data-ville h3 span {
   font-size: 20px;
   font-weight: bold;
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+  }
 }
-#sect-prevision .prevision-ville article .data-ville .temp-previ p {
+#sect-prevision
+  .ville-container
+  .prevision-ville
+  article
+  .data-ville
+  .temp-previ
+  p {
   font-weight: bold;
   font-size: 18px;
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+  }
 }
-#sect-prevision .prevision-ville h2,
-#sect-prevision .prevision-jour h2 {
+#sect-prevision .ville-container .prevision-ville h2,
+#sect-prevision .ville-container .prevision-jour h2 {
   text-align: left;
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
+  @media screen and (max-width: 767px) {
+    font-size: 20px;
+  }
 }
-#sect-prevision .prevision-jour section {
+#sect-prevision .ville-container .prevision-jour section {
   max-height: 66vh;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -66,7 +125,7 @@
     max-height: 62vh;
   }
 }
-#sect-prevision .prevision-jour section .forecast-previ {
+#sect-prevision .ville-container .prevision-jour section .forecast-previ {
   display: flex;
   background-color: #d9d9d9;
   height: 11.6vh;
@@ -76,10 +135,14 @@
     height: 10.5vh;
   }
 }
-#sect-prevision .prevision-jour section .forecast-previ:not(:last-of-type) {
+#sect-prevision
+  .ville-container
+  .prevision-jour
+  section
+  .forecast-previ:not(:last-of-type) {
   margin-bottom: 20px;
 }
-#sect-prevision .prevision-jour section .forecast-previ h3 {
+#sect-prevision .ville-container .prevision-jour section .forecast-previ h3 {
   display: flex;
   flex-direction: column;
   row-gap: 0.5rem;
@@ -88,23 +151,55 @@
   @media screen and (max-width: 1200px) {
     width: 40%;
   }
+  @media screen and (max-width: 767px) {
+    text-align: left;
+  }
 }
-#sect-prevision .prevision-jour section .forecast-previ h3 span {
+#sect-prevision
+  .ville-container
+  .prevision-jour
+  section
+  .forecast-previ
+  h3
+  span {
   font-size: 20px;
   @media screen and (max-width: 1600px) {
     font-size: 16px;
   }
 }
-#sect-prevision .prevision-jour section .forecast-previ h3 span:nth-of-type(2) {
+#sect-prevision
+  .ville-container
+  .prevision-jour
+  section
+  .forecast-previ
+  h3
+  span:nth-of-type(2) {
   font-weight: bold;
 }
-#sect-prevision .prevision-jour section .forecast-previ .temperature p {
+#sect-prevision
+  .ville-container
+  .prevision-jour
+  section
+  .forecast-previ
+  .temperature
+  p {
   font-weight: bold;
   font-size: 18px;
 }
-#sect-prevision .prevision-jour section .forecast-previ .div-img {
+#sect-prevision
+  .ville-container
+  .prevision-jour
+  section
+  .forecast-previ
+  .div-img {
   height: 100%;
 }
-#sect-prevision .prevision-jour section .forecast-previ .div-img img {
+#sect-prevision
+  .ville-container
+  .prevision-jour
+  section
+  .forecast-previ
+  .div-img
+  img {
   height: 100%;
 }

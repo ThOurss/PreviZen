@@ -35,11 +35,11 @@ const Menu = ({ isConnected, setIsConnected, user }) => {
         <nav className="menu">
             <ul className="menu-laptop">
                 <li ><Link to="/" className="roboto-regular">Accueil</Link></li>
-                <li ><Link to="/prevision" className="roboto-regular">Prévision</Link></li>
+                <li ><Link to="/prevision" className="roboto-regular">Favoris</Link></li>
                 <li><Link to="/alert" className="roboto-regular">Alerte</Link></li>
                 {isConnected ? (
-                    <li>
-                        <Link onClick={handleLogoutClick} className="roboto-regular link-connexion"><img src="../assets/picto/utilisateur.png" alt="picto utilisateur" /></Link>
+                    <li title="Se deconnecter">
+                        <Link onClick={handleLogoutClick} className="roboto-regular link-connexion" ><img src="../assets/picto/sortie.png" alt="picto se deconnecter" /></Link>
                     </li>
                 ) : (<li><Link to="/connexion" className="roboto-regular link-connexion" ><img src="../assets/picto/utilisateur.png" alt="picto utilisateur" /></Link></li>)}
 
@@ -77,7 +77,7 @@ const Menu = ({ isConnected, setIsConnected, user }) => {
                         <li ><Link to="/prevision" onClick={menuBurger} className="roboto-regular"><img src="../assets/picto/previsions.png" alt="" />Prévision</Link></li>
                         <li><Link to="/alert" onClick={menuBurger} className="roboto-regular"><img src="../assets/picto/cloche.png" alt="" />Alerte</Link></li>
                         {isConnected ? (
-                            <li><Link onClick={handleLogoutClick} className="roboto-regular"><img src="../assets/picto/utilisateur.png" alt="picto utilisateur" />Se déconnecter</Link></li>) : (<li><Link to="/connexion" onClick={menuBurger} className="roboto-regular"><img src="../assets/picto/utilisateur.png" alt="picto utilisateur" />connexion / inscription</Link></li>)}
+                            <li><Link onClick={handleLogoutClick} className="roboto-regular"><img src="../assets/picto/sortie.png" alt="picto utilisateur" />Se déconnecter</Link></li>) : (<li><Link to="/connexion" onClick={menuBurger} className="roboto-regular"><img src="../assets/picto/utilisateur.png" alt="picto utilisateur" />connexion / inscription</Link></li>)}
 
                     </ul>
                 </div>

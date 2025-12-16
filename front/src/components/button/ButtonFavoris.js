@@ -1,18 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import Cookies from 'js-cookie';
 
-const FavoriteButton = ({ villeActuelle, listeFavorisBDD }) => {
-    // Note : j'ai retiré 'refreshFavoris' des props car on suppose qu'il n'existe pas
+// 👇 Ajout de 'onDelete' dans les props reçues
+const FavoriteButton = ({ villeActuelle, listeFavorisBDD, refreshFavoris, onDelete }) => {
 
     const [currentFavoriId, setCurrentFavoriId] = useState(null);
     const [loading, setLoading] = useState(false);
-
-    // 👇 1. LE DRAPEAU "MODE MANUEL"
-    // Si true, cela veut dire que l'utilisateur a modifié l'état manuellement.
-    // On ignorera alors les mises à jour venant de la listeFavorisBDD (car elle est périmée).
     const hasManuallyChanged = useRef(false);
-
-    // Pour détecter si on a changé de ville
     const prevLat = useRef(null);
     const prevLon = useRef(null);
 
@@ -30,22 +24,14 @@ const FavoriteButton = ({ villeActuelle, listeFavorisBDD }) => {
     useEffect(() => {
         if (!lat || !lon) return;
 
-        // A. DÉTECTION CHANGEMENT DE VILLE
-        // Si on change de ville, on remet le "Mode Manuel" à false pour écouter la BDD
         if (prevLat.current !== lat || prevLon.current !== lon) {
             hasManuallyChanged.current = false;
             prevLat.current = lat;
             prevLon.current = lon;
         }
 
-        // B. PROTECTION
-        // Si on est en "Mode Manuel" (on a cliqué), on ne laisse PAS la vieille liste BDD
-        // écraser notre état actuel. On sort de la fonction.
-        if (hasManuallyChanged.current) {
-            return;
-        }
+        if (hasManuallyChanged.current) return;
 
-        // C. LOGIQUE CLASSIQUE (Seulement si on n'a pas touché au bouton)
         if (user) {
             if (listeFavorisBDD && listeFavorisBDD.length > 0) {
                 const favoriTrouve = listeFavorisBDD.find(fav =>
@@ -57,7 +43,6 @@ const FavoriteButton = ({ villeActuelle, listeFavorisBDD }) => {
                 setCurrentFavoriId(null);
             }
         } else {
-            // Logique invité inchangée
             const ls = JSON.parse(localStorage.getItem('favoris_guest')) || [];
             const existe = ls.some(fav =>
                 Math.abs(fav.lat - lat) < 0.001 &&
@@ -66,28 +51,21 @@ const FavoriteButton = ({ villeActuelle, listeFavorisBDD }) => {
             setCurrentFavoriId(existe ? 'guest' : null);
         }
 
-    }, [lat, lon, listeFavorisBDD, user]); // On garde les dépendances
-
+    }, [lat, lon, listeFavorisBDD, user]);
 
     // ==============================================
-    // 2. GESTION DU CLIC (Mise à jour Optimiste)
+    // 2. GESTION DU CLIC
     // ==============================================
     const handleToggle = async () => {
         if (loading || !lat || !lon) return;
 
         setLoading(true);
-
-        // 👇 ACTIVATION DU MODE MANUEL
-        // À partir de maintenant, on ignore la prop listeFavorisBDD pour cette ville
         hasManuallyChanged.current = true;
 
         if (user) {
-
             try {
-                console.log(currentFavoriId)
                 if (currentFavoriId) {
                     // --- SUPPRESSION ---
-                    console.log(currentFavoriId)
                     const res = await fetch('http://localhost:5000/favoris', {
                         method: 'DELETE',
                         headers: { 'Content-Type': 'application/json' },
@@ -96,8 +74,14 @@ const FavoriteButton = ({ villeActuelle, listeFavorisBDD }) => {
                     });
 
                     if (res.ok) {
-                        // On met à jour l'état local NOUS-MÊME, sans attendre le parent
                         setCurrentFavoriId(null);
+
+                        // On rafraichit la liste globale (optionnel si on delete visuellement)
+                        if (refreshFavoris) refreshFavoris();
+
+                        // 👇 ICI : On prévient le parent de supprimer la ville de l'écran
+                        // On passe l'ID OpenWeather (villeActuelle.id) pour que le parent sache qui supprimer
+                        if (onDelete) onDelete(villeActuelle.id);
                     }
                 } else {
                     // --- AJOUT ---
@@ -115,28 +99,29 @@ const FavoriteButton = ({ villeActuelle, listeFavorisBDD }) => {
 
                     if (res.ok) {
                         const data = await res.json();
-                        console.log(data)
-                        // On met à jour l'état local avec l'ID reçu de l'API
                         setCurrentFavoriId(data.id_favori);
+                        if (refreshFavoris) refreshFavoris();
                     }
                 }
             } catch (err) {
                 console.error("Erreur API", err);
-                // Optionnel : En cas d'erreur, on repasse hasManuallyChanged à false 
-                // pour réessayer la sync BDD au prochain rendu
                 hasManuallyChanged.current = false;
             }
         } else {
-            // (Code Invité identique à avant...)
+            // GESTION INVITÉ
             let ls = JSON.parse(localStorage.getItem('favoris_guest')) || [];
             if (currentFavoriId === 'guest') {
                 ls = ls.filter(fav => !(Math.abs(fav.lat - lat) < 0.001 && Math.abs(fav.lon - lon) < 0.001));
                 setCurrentFavoriId(null);
+
+                // 👇 Suppression visuelle immédiate pour l'invité aussi
+                if (onDelete) onDelete(villeActuelle.id);
             } else {
                 ls.push({ nom_ville: nom, pays: pays, lat: lat, lon: lon });
                 setCurrentFavoriId('guest');
             }
             localStorage.setItem('favoris_guest', JSON.stringify(ls));
+            if (refreshFavoris) refreshFavoris();
         }
 
         setLoading(false);
@@ -145,7 +130,7 @@ const FavoriteButton = ({ villeActuelle, listeFavorisBDD }) => {
     const isFavorite = currentFavoriId !== null;
 
     return (
-        <button className='btn-add-ville' onClick={handleToggle} disabled={loading}>
+        <button className='btn-add-ville' onClick={handleToggle} disabled={loading} title={isFavorite ? 'Supprimer des favoris' : 'Ajouter au favoris'}>
             <img
                 src={isFavorite ? '../assets/picto/bouton-supprimer.png' : '../assets/picto/cercle.png'}
                 alt={isFavorite ? "Retirer" : "Ajouter"}
