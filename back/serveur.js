@@ -5,10 +5,13 @@ import userRoutes from "./routes/routesUser.js";
 import civiliteRoutes from "./routes/routesCivilite.js";
 import paysRoutes from './routes/routesPays.js'
 import favorisRoutes from './routes/routesFavoris.js'
+import adminRoutes from './routes/routesAdmin.js';
 import { User, Role, initRoles, initCivilite, importCountriesSQL } from './models/index.js';
 import cors from "cors";
 import { sequelize } from './config/db.config.js';
 import cookieParser from 'cookie-parser';
+import auth from './middleware/auth.js';
+import isAdmin from './middleware/isAdmin.js';
 
 const app = express();
 app.use(cors({
@@ -23,6 +26,7 @@ app.use("/user", userRoutes);
 app.use("/civilite", civiliteRoutes);
 app.use('/pays', paysRoutes);
 app.use('/favoris', favorisRoutes);
+app.use('/admin', auth, isAdmin, adminRoutes);
 app.listen(5000, () => console.log("Serveur sur 5000"));
 
 

@@ -3,14 +3,14 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
 import SearchBar from "../search/SearchBar.js";
 
-const Menu = ({ isConnected, setIsConnected, user }) => {
+const Menu = ({ isConnected, setIsConnected, user, isAdmin, setIsAdmin }) => {
     const [open, setOpen] = useState();
     const [showConfirm, setShowConfirm] = useState(false)
     const menuBurger = () => {
         setOpen(open => !open);
     }
     const location = useLocation();
-    const navigate = useNavigate();
+
 
     const confirmLogout = async () => {
         try {
@@ -22,21 +22,39 @@ const Menu = ({ isConnected, setIsConnected, user }) => {
 
         Cookies.remove('user_infos');
         setIsConnected(false);
+        setIsAdmin(false)
         setShowConfirm(false); // On ferme la modale
         setOpen(false)
-        navigate('/connexion');
+        window.location.href = '/connexion'
     };
 
+    const linkProfil = user ? "/profil" : "/connexion";
     // 3. Fonction quand on clique sur le bouton "Se déconnecter"
     const handleLogoutClick = () => {
         setShowConfirm(true); // On ouvre juste la fenêtre
     };
+
     return (
         <nav className="menu">
             <ul className="menu-laptop">
                 <li ><Link to="/" className="roboto-regular">Accueil</Link></li>
                 <li ><Link to="/prevision" className="roboto-regular">Favoris</Link></li>
-                <li><Link to="/alert" className="roboto-regular">Alerte</Link></li>
+                {isAdmin ? (
+                    // CAS A : L'utilisateur est ADMIN
+                    <li>
+                        <Link to="/admin/dashboard" >
+                            Tableau de bord
+                        </Link>
+                    </li>
+                ) : (
+                    // CAS B : L'utilisateur est LAMBDA ou NON CONNECTÉ
+                    <li>
+                        <Link to={linkProfil}>
+                            Profil
+                        </Link>
+                    </li>
+                )}
+                {/* <li><Link to="/alert" className="roboto-regular">Alerte</Link></li> */}
                 {isConnected ? (
                     <li title="Se deconnecter">
                         <Link onClick={handleLogoutClick} className="roboto-regular link-connexion" ><img src="../assets/picto/sortie.png" alt="picto se deconnecter" /></Link>

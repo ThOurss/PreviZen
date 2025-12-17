@@ -187,7 +187,7 @@ const ConnectionInscription = ({ setIsConnected }) => {
 
                 // On met à jour l'état global de React
                 setIsConnected(true);
-                navigate('/');
+                window.location.href = '/'
             } else {
                 setErrors({ generalConnection: result.error || "Erreur de connexion" });
 

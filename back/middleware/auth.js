@@ -7,6 +7,7 @@ export default (req, res, next) => {
         // Rappel : on l'avait nommé 'auth_token' dans le controller login
         const token = req.cookies.auth_token;
 
+
         // 2. Si pas de token, on bloque tout de suite
         if (!token) {
             return res.status(401).json({ error: 'Non authentifié (Pas de token)' });
@@ -14,7 +15,7 @@ export default (req, res, next) => {
 
         // 3. Vérification de la signature
         const decodedToken = jwt.verify(token, SECRET_JWT);
-
+        console.log(decodedToken)
         // 4. On transmet les infos décodées aux routes suivantes
         // req.auth sera accessible dans tes controllers
         req.auth = {

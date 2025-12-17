@@ -1,0 +1,80 @@
+.main-dashboard-admin {
+  margin: 50px auto;
+  @media screen and (max-width: 767px) {
+    margin: 30px auto;
+  }
+}
+.main-dashboard-admin h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: "Roboto bold", sans-serif;
+
+  @media screen and (min-width: 767px) {
+    margin-bottom: 3rem;
+  }
+}
+
+.main-dashboard-admin .grid-dashboard-admin {
+  max-width: 95%;
+  margin: 0 auto 30px;
+  grid-template-columns: 1fr;
+  display: grid;
+  gap: 1rem 0;
+  @media screen and (min-width: 767px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 100%;
+    margin: 0 2rem;
+  }
+  @media screen and (min-width: 992px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media screen and (min-width: 1400px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.main-dashboard-admin .grid-dashboard-admin section {
+  border: 1px solid #707070;
+  padding: 0.5rem;
+  height: 80px;
+  @media screen and (min-width: 767px) {
+    height: auto;
+  }
+  @media screen and (min-width: 1400px) {
+    height: 105px;
+  }
+}
+
+.main-dashboard-admin .grid-dashboard-admin section a {
+  display: flex;
+  align-items: center;
+
+  text-decoration: none;
+  height: 100%;
+}
+
+.main-dashboard-admin .grid-dashboard-admin section a div h3 {
+  font-family: "Roboto bold", sans-serif;
+  color: #000000;
+  margin-bottom: 5px;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.main-dashboard-admin .grid-dashboard-admin section a div p {
+  font-family: "Roboto ", sans-serif;
+  color: #000000;
+  font-size: 14px;
+}
+
+.main-dashboard-admin .grid-dashboard-admin section a .div-svg {
+  width: 30px;
+  height: 30px;
+  margin-right: 1rem;
+}
+
+.main-dashboard-admin .grid-dashboard-admin section a .div-svg img {
+  width: 100%;
+  height: 100%;
+}

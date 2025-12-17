@@ -5,7 +5,7 @@ import "../../style/header.css";
 import SearchBar from "../search/SearchBar.js";
 
 
-const Header = ({ isConnected, setIsConnected, user }) => {
+const Header = ({ isConnected, setIsConnected, user, isAdmin, setIsAdmin }) => {
     const location = useLocation();
 
     return (
@@ -26,7 +26,7 @@ const Header = ({ isConnected, setIsConnected, user }) => {
                     <SearchBar />
                 )}
 
-                <Menu isConnected={isConnected} user={user} setIsConnected={setIsConnected} />
+                <Menu isConnected={isConnected} user={user} setIsConnected={setIsConnected} isAdmin={isAdmin} setIsAdmin={setIsAdmin} />
             </div>
 
         </header>
