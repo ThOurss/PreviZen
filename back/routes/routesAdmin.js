@@ -1,7 +1,7 @@
-import express, { Router } from 'express';
-import { dashBoard } from '../controller/controllerAdmin.js';
+import { Router } from 'express';
+import { getAllUserByRole } from '../controller/controllerAdmin.js';
 
 
 const router = Router();
-router.get('/dashboard', dashBoard)
+router.get('/dashboard/users', getAllUserByRole)
 export default router;

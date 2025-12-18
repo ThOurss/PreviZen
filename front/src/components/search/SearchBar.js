@@ -41,11 +41,11 @@ const SearchBar = ({ menuBurger }) => {
             {previsu && (
                 <ul ref={containerFermer} className="liste-search">
                     {villeSearch.map((uneVille, index) => (
-                        <li key={index} ><Link onClick={(e) => { setPrevisu(false); if (menuBurger) menuBurger(); }} to={`/prevision/${uneVille.name.toLowerCase()}`} state={{ lat: uneVille.lat, lon: uneVille.lon }}>{uneVille.name}, {uneVille.country} <img src={`../assets/drapeaux/${uneVille.country.toLowerCase()}.svg`} alt="" /><br /><span>{uneVille.state}</span></Link></li>//
+                        <li key={index} ><Link onClick={(e) => { setPrevisu(false); if (menuBurger) menuBurger(); }} to={`/prevision/${uneVille.name.toLowerCase()}`} state={{ lat: uneVille.lat, lon: uneVille.lon }}>{uneVille.name}, {uneVille.country} <img src={`/assets/drapeaux/${uneVille.country.toLowerCase()}.svg`} alt="" /><br /><span>{uneVille.state}</span></Link></li>//
                     ))}
                 </ul>
             )}
-            <div><img src="../assets/picto/icon_search.png" onClick={searchVille} alt="picto loupe" /></div>
+            <div><img src="/assets/picto/icon_search.png" onClick={searchVille} alt="picto loupe" /></div>
         </form>
     )
 }

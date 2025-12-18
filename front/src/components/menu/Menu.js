@@ -57,9 +57,9 @@ const Menu = ({ isConnected, setIsConnected, user, isAdmin, setIsAdmin }) => {
                 {/* <li><Link to="/alert" className="roboto-regular">Alerte</Link></li> */}
                 {isConnected ? (
                     <li title="Se deconnecter">
-                        <Link onClick={handleLogoutClick} className="roboto-regular link-connexion" ><img src="../assets/picto/sortie.png" alt="picto se deconnecter" /></Link>
+                        <Link onClick={handleLogoutClick} className="roboto-regular link-connexion" ><img src="/assets/picto/sortie.png" alt="picto se deconnecter" /></Link>
                     </li>
-                ) : (<li><Link to="/connexion" className="roboto-regular link-connexion" ><img src="../assets/picto/utilisateur.png" alt="picto utilisateur" /></Link></li>)}
+                ) : (<li><Link to="/connexion" className="roboto-regular link-connexion" ><img src="/assets/picto/utilisateur.png" alt="picto utilisateur" /></Link></li>)}
 
 
             </ul>
@@ -82,7 +82,7 @@ const Menu = ({ isConnected, setIsConnected, user, isAdmin, setIsAdmin }) => {
                 <div className="menu-fixed">
                     <div className="head-menu">
                         <h2>Menu</h2>
-                        <button onClick={menuBurger}><img src="../assets/picto/croix.png" alt="Croix pour la fermeture du menu" /></button>
+                        <button onClick={menuBurger}><img src="/assets/picto/croix.png" alt="Croix pour la fermeture du menu" /></button>
                     </div>
                     {location.pathname !== "/" && (
                         <div className="search-mobile">
@@ -95,7 +95,7 @@ const Menu = ({ isConnected, setIsConnected, user, isAdmin, setIsAdmin }) => {
                         <li ><Link to="/prevision" onClick={menuBurger} className="roboto-regular"><img src="../assets/picto/previsions.png" alt="" />Prévision</Link></li>
                         <li><Link to="/alert" onClick={menuBurger} className="roboto-regular"><img src="../assets/picto/cloche.png" alt="" />Alerte</Link></li>
                         {isConnected ? (
-                            <li><Link onClick={handleLogoutClick} className="roboto-regular"><img src="../assets/picto/sortie.png" alt="picto utilisateur" />Se déconnecter</Link></li>) : (<li><Link to="/connexion" onClick={menuBurger} className="roboto-regular"><img src="../assets/picto/utilisateur.png" alt="picto utilisateur" />connexion / inscription</Link></li>)}
+                            <li><Link onClick={handleLogoutClick} className="roboto-regular"><img src="/assets/picto/sortie.png" alt="picto utilisateur" />Se déconnecter</Link></li>) : (<li><Link to="/connexion" onClick={menuBurger} className="roboto-regular"><img src="/assets/picto/utilisateur.png" alt="picto utilisateur" />connexion / inscription</Link></li>)}
 
                     </ul>
                 </div>

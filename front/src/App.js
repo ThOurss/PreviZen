@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import Prevision from './components/prevision/Prevision.js';
 import DashBoard from './components/admin/dashBoard.js';
-
+import GestionUserModo from './components/admin/gestionUserModo.js';
 function App() {
   const [isConnected, setIsConnected] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
@@ -42,6 +42,8 @@ function App() {
           <Route path='/prevision' element={<Prevision />}></Route>
           <Route path='/prevision/:ville' element={<Prevision />}></Route>
           <Route path='/admin/dashboard' element={<DashBoard />} ></Route>
+          <Route path='/admin/dashboard/:role' element={<GestionUserModo />} ></Route>
+
         </Routes>
         <Footer />
       </BrowserRouter>

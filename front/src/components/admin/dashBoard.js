@@ -7,7 +7,7 @@ const DashBoard = () => {
 
             <section className="grid-dashboard-admin">
                 <section>
-                    <Link>
+                    <Link to="user">
                         <div className="div-svg">
                             <img src="../assets/picto/parametres.png" alt="picto parametre" />
                         </div>
@@ -21,10 +21,9 @@ const DashBoard = () => {
 
                 </section>
                 <section>
-                    <Link>
+                    <Link to='moderateur'>
                         <div className="div-svg">
                             <img src="../assets/picto/parametres.png" alt="picto parametre" />
-
                         </div>
                         <div>
                             <h3>

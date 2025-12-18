@@ -15,7 +15,7 @@ export default (req, res, next) => {
 
         // 3. Vérification de la signature
         const decodedToken = jwt.verify(token, SECRET_JWT);
-        console.log(decodedToken)
+
         // 4. On transmet les infos décodées aux routes suivantes
         // req.auth sera accessible dans tes controllers
         req.auth = {
