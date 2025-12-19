@@ -20,7 +20,7 @@ const ConnectionInscription = ({ setIsConnected }) => {
     };
 
     const [civilites, setCivilites] = useState([]);
-    // 2. État pour la langue (exemple)
+
 
     // 3. État pour le choix de l'utilisateur
     const [choixCivilite, setChoixCivilite] = useState('');

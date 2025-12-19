@@ -1,0 +1,102 @@
+#gestion-user-modo {
+  margin: 50px auto;
+  @media screen and (max-width: 767px) {
+    margin: 30px auto;
+  }
+}
+#gestion-user-modo h2 {
+  margin-bottom: 30px;
+}
+#gestion-user-modo .grid-admin-users {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 95%;
+  margin: 0 auto;
+  @media screen and (min-width: 767px) {
+    grid-template-columns: repeat(2, 48%);
+    margin: 0 2rem;
+    max-width: 100%;
+    justify-content: space-between;
+  }
+  @media screen and (min-width: 992px) {
+    grid-template-columns: repeat(2, 48%);
+    margin: 0 3rem;
+  }
+  @media screen and (min-width: 1400px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+#gestion-user-modo .grid-admin-users section {
+  border: 1px solid #707070;
+  padding: 1rem;
+}
+
+#gestion-user-modo .grid-admin-users section div {
+  display: flex;
+  justify-content: space-between;
+}
+
+#gestion-user-modo .grid-admin-users section div:not(:last-of-type) {
+  margin-bottom: 10px;
+}
+
+#gestion-user-modo .grid-admin-users section .pays-email-gestion-user span {
+  max-width: 70%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#gestion-user-modo .grid-admin-users section .btn-gestion-user {
+  height: 50px;
+}
+
+#gestion-user-modo .grid-admin-users section .btn-gestion-user div {
+  background-color: #01204e;
+  align-self: center;
+  height: 100%;
+  text-align: center;
+  width: 45%;
+  justify-content: center;
+}
+
+#gestion-user-modo .grid-admin-users section .btn-gestion-user div .btn-update {
+  background-color: #01204e;
+  border: none;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  @media screen and (min-width: 992px) {
+    font-size: 14px;
+  }
+}
+
+#gestion-user-modo .grid-admin-users section .btn-gestion-user form {
+  margin: 0;
+  width: 45%;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+  height: 100%;
+}
+
+#gestion-user-modo .grid-admin-users section .btn-gestion-user form button {
+  background-color: #01204e;
+  border: none;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  @media screen and (min-width: 992px) {
+    font-size: 14px;
+  }
+}

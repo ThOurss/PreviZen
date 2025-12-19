@@ -3,7 +3,9 @@ import express from "express";
 import weatherRoutes from "./routes/routesAPI.js";
 import userRoutes from "./routes/routesUser.js";
 import civiliteRoutes from "./routes/routesCivilite.js";
-import paysRoutes from './routes/routesPays.js'
+import paysRoutes from './routes/routesPays.js';
+import roleRoutes from './routes/routesRole.js'
+
 import favorisRoutes from './routes/routesFavoris.js'
 import adminRoutes from './routes/routesAdmin.js';
 import { User, Role, initRoles, initCivilite, importCountriesSQL } from './models/index.js';
@@ -25,6 +27,7 @@ app.use("/api", weatherRoutes);
 app.use("/user", userRoutes);
 app.use("/civilite", civiliteRoutes);
 app.use('/pays', paysRoutes);
+app.use('/role', roleRoutes);
 app.use('/favoris', favorisRoutes);
 app.use('/admin', auth, isAdmin, adminRoutes);
 app.listen(5000, () => console.log("Serveur sur 5000"));
