@@ -9,6 +9,7 @@ const GestionUserModo = () => {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [userToUpdate, setUserToUpdate] = useState(null)
+    const [confirmUpdate, setConfirmUpdate] = useState(false);
     const navigate = useNavigate();
     const [rolesList, setRolesList] = useState([]);
     const [paysList, setPaysList] = useState([]);
@@ -21,6 +22,7 @@ const GestionUserModo = () => {
         pays_id: '',
         civilite_id: ''
     });
+    const [errors, setErrors] = useState({});
     const fetchUsersByRole = useCallback(async () => {
         setLoading(true); // On affiche le chargement au début
 
@@ -34,8 +36,6 @@ const GestionUserModo = () => {
                 return;
             }
 
-            const userInfos = JSON.parse(userCookie);
-            const token = userInfos.token; // ou userInfos.accessToken selon ton backend
 
             // B. On construit l'URL avec le Query Param (?role=...)
             // C'est ici que la magie opère : Front (:role) -> Back (?role)
@@ -56,6 +56,7 @@ const GestionUserModo = () => {
             }
 
             const data = await response.json();
+            console.log(data)
             setUsers(data); // On met à jour la liste
 
         } catch (error) {
@@ -110,8 +111,76 @@ const GestionUserModo = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
+    // Fonction pour sauvegarder les modifications
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // On bloque le rechargement de la page
+        console.log(formData);
+
+        let newErrors = {};
+        if (formData.username.trim() === '') {
+            newErrors.username = "Le nom est requis";
+        }
+        if (formData.firstname.trim() === '') {
+            newErrors.firstname = "Le prénom est requis";
+        }
+        if (formData.email.trim() === '') {
+            newErrors.email = "L'adresse mail est requis";
+        }
+        if (formData.pays_id === "") {
+            newErrors.pays_id = "Le pays de résidence est requis";
+        }
+        if (!formData.civilite_id) {
+            newErrors.civilite_id = "Une civilité est requis";
+        }
+        if (!formData.role_id) {
+            newErrors.role_id = "Un role est requis";
+        }
+        setErrors(newErrors);
+        console.log(newErrors)
+        if (Object.keys(newErrors).length > 0) return;
+        try {
+            // 1. Récupération du Token
+            const userCookie = Cookies.get('user_infos');
+            if (!userCookie) {
+                navigate('/connexion');
+                return;
+            }
+
+            console.log(formData);
+
+            // 2. Envoi de la requête au Backend
+            // On utilise l'ID de l'user qu'on est en train de modifier
+            const response = await fetch(`http://localhost:5000/admin/dashboard/users/${userToUpdate.id_User}`, {
+                method: 'PATCH', // On utilise PATCH pour modifier
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify(formData) // On envoie nos states (inputs + selects)
+            });
+
+            // 3. Gestion de la réponse
+            if (response.ok) {
+                // Succès !
+                setConfirmUpdate(true)
+
+
+
+            } else {
+                // Erreur serveur
+                const errorData = await response.json();
+                alert(`Erreur : ${errorData.message || "Impossible de modifier"}`);
+            }
+
+        } catch (error) {
+            console.error("Erreur technique :", error);
+            alert("Une erreur est survenue lors de la connexion au serveur.");
+        }
+    };
+
     // --- Rendu ---
     if (loading) return <p>Chargement en cours...</p>;
+
     return (
         <main id="gestion-user-modo">
             {role === 'user' ? (
@@ -119,141 +188,173 @@ const GestionUserModo = () => {
             ) : (
                 <h2>Gestions des modérateurs</h2>
             )}
-            <section className="grid-admin-users">
-                {users.map((user, index) => (
-                    <section key={index}>
-                        <div>Prénom:<span>{user.firstname}</span></div>
-                        <div>Nom:<span>{user.username}</span></div>
-                        <div>Email:<span>{user.email}</span></div>
-                        <div>Civilite:<span>{user.civilite.nom}</span></div>
-                        <div>pays:<span>{user.pays.nom_fr}</span></div>
-                        <div>role:<span>{user.role.nom}</span></div>
-                        <div className="btn-gestion-user">
-                            <div><button className="btn-update" type="button" onClick={() => setUserToUpdate(user)}>Modifier</button>
+            {users.length !== 0 ? (
+                <section className="grid-admin-users">
+                    {users.map((user, index) => (
+                        <section key={index}>
+                            <div>Prénom:<span>{user.firstname}</span></div>
+                            <div>Nom:<span>{user.username}</span></div>
+                            <div>Email:<span>{user.email}</span></div>
+                            <div>Civilite:<span>{user.civilite.nom}</span></div>
+                            <div>pays:<span>{user.pays.nom_fr}</span></div>
+                            <div>role:<span>{user.role.nom}</span></div>
+                            <div className="btn-gestion-user">
+                                <div><button className="btn-update" type="button" onClick={() => setUserToUpdate(user)}>Modifier</button>
+                                </div>
+
+                                <form action=""
+                                    method="post">
+                                    <input type="hidden" name="_token" value="" />
+
+                                    {role === 'user' ? (
+                                        <button type="submit" className="btn btn-danger" onClick={() => { return window.confirm('Êtes vous sûrs ?') }}
+                                        >Supprimer l'utilisateur
+                                        </button>) :
+
+                                        (<button type="submit" className="btn btn-danger"
+                                            onClick={() => { return window.confirm('Êtes vous sûrs ?') }}>Supprimer le modérateur
+                                        </button>)
+                                    }
+
+                                </form>
                             </div>
 
-                            <form action=""
-                                method="post">
-                                <input type="hidden" name="_token" value="" />
+                        </section>
 
-                                {role === 'user' ? (
-                                    <button type="submit" className="btn btn-danger" onClick={() => { return window.confirm('Êtes vous sûrs ?') }}
-                                    >Supprimer l'utilisateur
-                                    </button>) :
+                    ))}
+                    {userToUpdate && (
 
-                                    (<button type="submit" className="btn btn-danger"
-                                        onClick={() => { return window.confirm('Êtes vous sûrs ?') }}>Supprimer le modérateur
-                                    </button>)
-                                }
+                        < div className="modal-overlay modal-gestion-user">
+                            <div className="modal-content">
+                                <h3>Modification de {userToUpdate.firstname} {userToUpdate.firstname}</h3>
 
-                            </form>
+                                <section>
+                                    <form action="" onSubmit={handleSubmit}>
+                                        <div>
+                                            <label htmlFor="updateFirstname">Prénom:</label>
+                                            <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} id="updateFirstname" />
+
+                                        </div>
+                                        {errors.firstname && <p className="error">{errors.firstname}</p>}
+                                        <div>
+                                            <label htmlFor="updateUsername">
+                                                Nom:
+                                            </label>
+                                            <input type="text" name="username" value={formData.username} onChange={handleChange} id="updateUsername" />
+
+                                        </div>
+                                        {errors.username && <p className="error">{errors.username}</p>}
+                                        <div>
+
+
+                                            <label htmlFor="updateEmail">
+                                                Email:
+
+                                            </label>
+                                            <input type="email" name="email" value={formData.email} onChange={handleChange} id="updateEmail" />
+                                        </div>
+                                        {errors.email && <p className="error">{errors.email}</p>}
+                                        <div>
+                                            <label htmlFor="updatePays">Pays:</label>
+                                            <select
+                                                name="pays_id"       // ⚠️ Très important
+                                                value={formData.pays_id}
+                                                onChange={handleChange}
+                                                id="updatePays"
+                                            >
+                                                <option value="">-- Choisir --</option>
+                                                {paysList.map(unPays => (
+                                                    <option key={unPays.id_pays} value={unPays.id_pays}>
+                                                        {unPays.nom_fr} {/* ex: Monsieur, Madame */}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                        {errors.pays_id && <p className="error">{errors.pays_id}</p>}
+                                        <div>
+                                            <label htmlFor="updateCivilite"> Civilite:</label>
+                                            <select
+                                                name="civilite_id"       // ⚠️ Très important
+                                                value={formData.civilite_id}
+                                                onChange={handleChange}
+                                                id="updateCivilite"
+                                            >
+                                                <option value="">-- Choisir --</option>
+                                                {civilitesList.map(civ => (
+                                                    <option key={civ.id_civilite} value={civ.id_civilite}>
+                                                        {civ.nom} {/* ex: Monsieur, Madame */}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                        {errors.civilite_id && <p className="error">{errors.civilite_id}</p>}
+                                        <div>
+                                            <label htmlFor="updateRole">Role:</label>
+                                            <select
+                                                name="role_id"       // ⚠️ Très important
+                                                value={formData.role_id}
+                                                onChange={handleChange}
+                                                id="updateRole"
+                                            >
+                                                <option value="">-- Choisir --</option>
+                                                {rolesList.map(unRole => (
+                                                    <option key={unRole.id_role} value={unRole.id_role}>
+                                                        {unRole.nom} {/* ex: Monsieur, Madame */}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                        {errors.role_id && <p className="error">{errors.role_id}</p>}
+                                        <div className="modal-buttons">
+
+                                            <button
+                                                className="btn-valid"
+                                                type="submit"
+                                            >
+                                                Sauvegarder
+                                            </button>
+
+
+                                            <button
+                                                className="btn-cancel"
+                                                onClick={() => { setUserToUpdate(null); setErrors({}) }}
+                                            >
+                                                Annuler
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                </section>
+
+                            </div>
                         </div>
-
-                    </section>
-
-                ))}
-                {userToUpdate && (
-                    <div className="modal-overlay">
-                        <div className="modal-content">
-                            <h3>Modification de {userToUpdate.firstname} {userToUpdate.firstname}</h3>
-                            <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
-                            <section>
-                                <form action="">
-                                    <div>
-                                        <label htmlFor="updateFirstname">Prénom:</label>
-                                        <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} id="updateFirstname" />
-
-                                    </div>
-                                    <div>
-                                        <label htmlFor="updateUsername">
-                                            Nom:
-                                        </label>
-                                        <input type="text" name="username" value={formData.username} onChange={handleChange} id="updateUsername" />
-
-                                    </div>
-                                    <div>
+                    )}
+                    {confirmUpdate && (
+                        <div className="modal-overlay">
+                            <div className="modal-content">
+                                <h3>Succès</h3>
+                                {role === 'user' ? (<p>L’utilisateur a bien été modifié. </p>) : (<p>Le modérateur a bien été modifié. </p>)}
 
 
-                                        <label htmlFor="updateEmail">
-                                            Email:
+                                <div className="modal-buttons">
 
-                                        </label>
-                                        <input type="email" name="email" value={formData.email} onChange={handleChange} id="updateEmail" /></div>
-                                    <div>
-                                        <label htmlFor="updateCivilite"> Civilite:</label>
-                                        <select
-                                            name="civilite_id"       // ⚠️ Très important
-                                            value={formData.civilite_id}
-                                            onChange={handleChange}
-                                            id="updateCivilite"
-                                        >
-                                            <option value="">-- Choisir --</option>
-                                            {civilitesList.map(civ => (
-                                                <option key={civ.id_civilite} value={civ.id_civilite}>
-                                                    {civ.nom} {/* ex: Monsieur, Madame */}
-                                                </option>
-                                            ))}
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label htmlFor="updatePays">Pays:</label>
-                                        <select
-                                            name="pays_id"       // ⚠️ Très important
-                                            value={formData.pays_id}
-                                            onChange={handleChange}
-                                            id="updatePays"
-                                        >
-                                            <option value="">-- Choisir --</option>
-                                            {paysList.map(unPays => (
-                                                <option key={unPays.id_pays} value={unPays.id_pays}>
-                                                    {unPays.nom_fr} {/* ex: Monsieur, Madame */}
-                                                </option>
-                                            ))}
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label htmlFor="updateRole">Role:</label>
-                                        <select
-                                            name="role_id"       // ⚠️ Très important
-                                            value={formData.role_id}
-                                            onChange={handleChange}
-                                            id="updateRole"
-                                        >
-                                            <option value="">-- Choisir --</option>
-                                            {rolesList.map(unRole => (
-                                                <option key={unRole.id_role} value={unRole.id_role}>
-                                                    {unRole.nom} {/* ex: Monsieur, Madame */}
-                                                </option>
-                                            ))}
-                                        </select>
-                                    </div>
-                                    <div className="modal-buttons">
-
-                                        <button
-                                            className="btn-confirm"
-
-                                        >
-                                            Sauvegarder
-                                        </button>
-
-
-                                        <button
-                                            className="btn-cancel"
-                                            onClick={() => setUserToUpdate(null)}
-                                        >
-                                            Annuler
-                                        </button>
-                                    </div>
-                                </form>
-
-                            </section>
-
+                                    <button
+                                        className="btn-valid"
+                                        onClick={() => { setUserToUpdate(null); fetchUsersByRole(); setConfirmUpdate(false) }}
+                                    >
+                                        Valider
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                )}
-            </section>
+                    )}
+                </section>
+            ) : (<div>
+                {role === 'user' ? (<p style={{ color: 'red', fontWeight: 'bold', fontSize: '20px' }}>Il n'y a aucun utilisateur sur le site </p>) : (<p style={{ color: 'red', fontWeight: 'bold', fontSize: '20px' }}>Il n'y a aucun modérateur sur le site </p>)}
+            </div>)}
 
-        </main>
+
+        </main >
     )
 }
 export default GestionUserModo

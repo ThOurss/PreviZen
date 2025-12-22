@@ -39,3 +39,52 @@ export const getAllUserByRole = async (req, res) => {
         res.status(500).json({ error: "Erreur lors de la récupération des utilisateurs" });
     }
 }
+export const updateUser = async (req, res) => {
+    const { id } = req.params;
+    const {
+        firstname,
+        username,
+        email,
+        role_id,
+        pays_id,
+        civilite_id
+    } = req.body;
+    console.log(username)
+    try {
+        // 2. Vérif si l'user existe
+        const user = await User.findByPk(id);
+        if (!user) {
+            return res.status(404).json({ message: "Utilisateur introuvable" });
+        }
+
+        // 3. On construit l'objet de mise à jour dynamiquement
+        // On n'ajoute la propriété QUE si elle est présente dans la requête
+        const updateData = {};
+
+        // Champs Textes
+        if (firstname) updateData.firstname = firstname;
+        if (username) updateData.username = username;
+        if (email) updateData.email = email;
+
+        // Champs Selects (Clés étrangères)
+        // On vérifie que ce n'est pas vide ou undefined
+        if (role_id) updateData.id_role = role_id;
+        if (pays_id) updateData.id_pays = pays_id;
+        if (civilite_id) updateData.id_civilite = civilite_id;
+
+        // Sécurité : Si rien n'est envoyé
+        if (Object.keys(updateData).length === 0) {
+            return res.status(400).json({ message: "Aucune donnée valide à modifier." });
+        }
+        console.log(updateData)
+        // 4. L'UPDATE SQL
+        // Sequelize va faire : UPDATE users SET ... WHERE id = ...
+        await User.update(updateData, { where: { id_User: id } });
+
+        res.status(200).json({ message: "Mise à jour réussie !" });
+
+    } catch (error) {
+        console.error("Erreur Update User :", error);
+        res.status(500).json({ error: "Erreur serveur lors de la modification." });
+    }
+}

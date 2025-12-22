@@ -36,8 +36,14 @@
 #gestion-user-modo .grid-admin-users section div {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-
+#gestion-user-modo .grid-admin-users section div label {
+  text-align: left;
+  @media screen and (max-width: 767px) {
+    margin-bottom: 5px;
+  }
+}
 #gestion-user-modo .grid-admin-users section div:not(:last-of-type) {
   margin-bottom: 10px;
 }
@@ -98,5 +104,72 @@
   cursor: pointer;
   @media screen and (min-width: 992px) {
     font-size: 14px;
+  }
+}
+
+#gestion-user-modo .grid-admin-users .modal-gestion-user .modal-content {
+  min-width: 35%;
+  @media screen and (max-width: 1300px) {
+    min-width: 50%;
+  }
+  @media screen and (max-width: 992px) {
+    min-width: 90%;
+  }
+  @media screen and (max-width: 767px) {
+    min-width: 100%;
+  }
+}
+#gestion-user-modo .grid-admin-users .modal-gestion-user .modal-content p {
+  margin-bottom: 10px;
+}
+#gestion-user-modo
+  .grid-admin-users
+  .modal-gestion-user
+  .modal-content
+  section
+  div
+  select {
+  height: 30px;
+  outline: none;
+  width: 60%;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+}
+#gestion-user-modo
+  .grid-admin-users
+  .modal-gestion-user
+  .modal-content
+  section
+  div
+  input {
+  height: 30px;
+  outline: none;
+  width: 60%;
+  padding: 0.5rem;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+}
+#gestion-user-modo
+  .grid-admin-users
+  .modal-gestion-user
+  .modal-content
+  section
+  div.modal-buttons
+  button {
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+}
+#gestion-user-modo
+  .grid-admin-users
+  .modal-gestion-user
+  .modal-content
+  section
+  div {
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

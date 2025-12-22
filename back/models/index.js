@@ -106,7 +106,7 @@ User.hasMany(Favori, {
 const initRoles = async () => {
     try {
         // Liste des rôles à avoir
-        const roles = ['admin', 'moderateur', 'user'];
+        const roles = ['Admin', 'Moderateur', 'User'];
 
         for (const roleName of roles) {
             await Role.findOrCreate({
