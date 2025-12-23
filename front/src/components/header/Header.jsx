@@ -1,8 +1,8 @@
 import { useLocation, Link } from "react-router-dom";
-import Menu from "../menu/Menu.js"
+import Menu from "../menu/Menu.jsx"
 import "../../style/header.css";
 
-import SearchBar from "../search/SearchBar.js";
+import SearchBar from "../search/SearchBar.jsx";
 
 
 const Header = ({ isConnected, setIsConnected, user, isAdmin, setIsAdmin }) => {

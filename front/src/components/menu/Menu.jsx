@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
-import SearchBar from "../search/SearchBar.js";
+import SearchBar from "../search/SearchBar.jsx";
 
 const Menu = ({ isConnected, setIsConnected, user, isAdmin, setIsAdmin }) => {
     const [open, setOpen] = useState();

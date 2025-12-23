@@ -1,6 +1,6 @@
 import "../../style/home.css";
 import { useEffect, useState, useRef } from "react";
-import MapPrevi from "../map/Map.js";
+import MapPrevi from "../map/Map.jsx";
 import { Link } from "react-router-dom";
 
 const Home = () => {

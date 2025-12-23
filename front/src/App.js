@@ -1,14 +1,14 @@
 import './App.css';
-import ConnectionInscription from './components/connection_inscription/connection_inscription.js';
-import Footer from './components/footer/Footer.js';
-import Header from './components/header/header.js';
-import Home from './components/home/Home.js';
+import ConnectionInscription from './components/connection_inscription/Connection_inscription.jsx';
+import Footer from './components/footer/Footer.jsx';
+import Header from './components/header/Header.jsx';
+import Home from './components/home/Home.jsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import Prevision from './components/prevision/Prevision.js';
-import DashBoard from './components/admin/dashBoard.js';
-import GestionUserModo from './components/admin/gestionUserModo.js';
+import Prevision from './components/prevision/Prevision.jsx';
+import DashBoard from './components/admin/DashBoard.jsx';
+import GestionUserModo from './components/admin/GestionUserModo.jsx';
 function App() {
   const [isConnected, setIsConnected] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);

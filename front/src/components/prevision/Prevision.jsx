@@ -2,10 +2,10 @@ import '../../style/prevision.css';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { formatDay, formatDateComplete } from '../../utils/formatDate.js';
-import PrevisionForecast from './PrevisionForecast.js';
-import MapPrevi from '../map/Map.js';
+import PrevisionForecast from './PrevisionForecast.jsx';
+import MapPrevi from '../map/Map.jsx';
 import Cookies from 'js-cookie';
-import FavoriteButton from '../button/ButtonFavoris.js';
+import FavoriteButton from '../button/ButtonFavoris.jsx';
 
 const Prevision = () => {
     const [listeVillesAffichees, setListeVillesAffichees] = useState([]);
@@ -109,7 +109,7 @@ const Prevision = () => {
         }
     };
 
-
+console.log(listeVillesAffichees)
     // ===========================================
     // RENDU
     // ===========================================

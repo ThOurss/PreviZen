@@ -8,11 +8,8 @@ import { fileURLToPath } from 'url';
 import { sequelize } from "../config/db.config.js";
 import Alerte from "./modelAlerte.js";
 import Signalement from "./modelSignalement.js";
-import Conversation from "./modelConversation.js";
-import Message from "./modelMessage.js";
-import UserConversation from "./modelUserConversation.js";
-import ConversationMessage from "./modelConversationMessage.js";
 import Favori from "./modelFavoris.js";
+import LiveUpdate from "./modelLiveUpdate.js";
 // server.js ou models/index.js
 
 
@@ -39,30 +36,9 @@ Favori.belongsTo(User, {
     as: 'favori'
 });
 
-User.belongsToMany(Conversation, {
-    through: UserConversation,
+LiveUpdate.belongsTo(User, {
     foreignKey: 'id_user',
-    as: 'convUser'
-})
-
-
-
-Conversation.belongsToMany(User, {
-    through: UserConversation,
-    foreignKey: 'id_conversation',
-    as: 'userConv'
-})
-
-Conversation.belongsToMany(Message, {
-    through: ConversationMessage,
-    foreignKey: 'id_conversation',
-    as: 'messageConv'
-})
-
-Message.belongsToMany(Conversation, {
-    through: ConversationMessage,
-    foreignKey: 'id_message',
-    as: 'convMessage'
+    as: 'liveUser'
 })
 
 Alerte.belongsTo(User, {
@@ -97,6 +73,10 @@ Civilite.hasMany(User, {
 Pays.hasMany(User, {
     foreignKey: 'id_pays',
     as: 'userPays'
+})
+User.hasMany(LiveUpdate, {
+    foreignKey: 'id_user',
+    as: 'userLive'
 })
 User.hasMany(Favori, {
     foreignKey: 'id_user',
@@ -162,4 +142,4 @@ const importCountriesSQL = async () => {
         console.error('❌ Erreur import SQL :', e);
     }
 };
-export { User, Role, Civilite, Message, Conversation, Pays, Alerte, Favori, UserConversation, ConversationMessage, initRoles, initCivilite, importCountriesSQL, };
+export { User, Role, Civilite, LiveUpdate, Pays, Alerte, Favori, initRoles, initCivilite, importCountriesSQL, };
