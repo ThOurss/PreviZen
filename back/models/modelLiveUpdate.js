@@ -24,7 +24,8 @@ const LiveUpdate = sequelize.define("LiveUpdate", {
     }
 }, {
     tableName: 'liveUpdate',
-    timestamps: true
+    timestamps: true,
+    updatedAt: false
 });
 
 export default LiveUpdate
