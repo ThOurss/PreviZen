@@ -49,7 +49,7 @@ export const updateUser = async (req, res) => {
         pays_id,
         civilite_id
     } = req.body;
-    console.log(username)
+
     try {
         // 2. Vérif si l'user existe
         const user = await User.findByPk(id);

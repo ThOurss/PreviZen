@@ -1,13 +1,15 @@
 import express from 'express';
-import { createUser, login, logout } from '../controller/controllerUser.js';
-
+import { createUser, getUser, login, logout } from '../controller/controllerUser.js';
+import auth from '../middleware/auth.js';
 const router = express.Router();
 
 router.post('/register', createUser); // La route qui déclenche le controller
 router.post('/login', login);
 router.post('/logout', logout)
+router.get('/profil/:id', auth, getUser)
 
-// router.get('/profile', auth, (req, res) => {
+
+// router.get('/profile', , (req, res) => {
 //     // Ton controller de profil
 // });
 

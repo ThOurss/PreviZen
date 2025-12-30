@@ -141,7 +141,7 @@ const Prevision = () => {
   if (listeVillesAffichees.length === 0) {
     return <div className="no-data">Aucune ville à afficher.</div>;
   }
-
+  console.log(listeVillesAffichees);
   return (
     <main id="sect-prevision">
       {listeVillesAffichees.map((item, index) => {
@@ -182,6 +182,7 @@ const Prevision = () => {
                       formatDay={formatDay}
                       formatDayComplete={formatDateComplete}
                       unePrevi={unePrevi}
+                      timezone={forecast.city.timezone}
                     />
                   ))}
                 </section>

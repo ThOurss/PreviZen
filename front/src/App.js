@@ -1,5 +1,5 @@
 import './App.css';
-import ConnectionInscription from './components/connection_inscription/Connection_inscription.jsx';
+import ConnectionInscription from './components/user/Connection_inscription.jsx';
 import Footer from './components/footer/Footer.jsx';
 import Header from './components/header/Header.jsx';
 import Home from './components/home/Home.jsx';
@@ -9,6 +9,7 @@ import Cookies from 'js-cookie';
 import Prevision from './components/prevision/Prevision.jsx';
 import DashBoard from './components/admin/DashBoard.jsx';
 import GestionUserModo from './components/admin/GestionUserModo.jsx';
+import Profil from './components/user/Profil.jsx';
 function App() {
   const [isConnected, setIsConnected] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
@@ -39,6 +40,7 @@ function App() {
 
           <Route path="/" element={<Home />} />
           <Route path="/connexion" element={<ConnectionInscription setIsConnected={setIsConnected} />}></Route>
+          <Route path='/profil' element={<Profil user={currentUser} />}></Route>
           <Route path='/prevision' element={<Prevision />}></Route>
           <Route path='/prevision/:ville' element={<Prevision />}></Route>
           <Route path='/admin/dashboard' element={<DashBoard />} ></Route>

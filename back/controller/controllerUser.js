@@ -1,7 +1,7 @@
 import { SECRET_JWT } from '../config/db.config.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { User } from '../models/index.js';
+import { Civilite, Pays, User } from '../models/index.js';
 
 export const createUser = async (req, res) => {
     try {
@@ -90,3 +90,37 @@ export const logout = (req, res) => {
     res.clearCookie('auth_token');
     res.status(200).json({ message: "Déconnecté" });
 };
+
+export const getUser = async (req, res) => {
+    console.log('here')
+    try {
+
+        const { id } = req.params;
+        if (!id) {
+            return res.status(404).json({ message: "Veuillez vous connecter" });
+        }
+
+        const users = await User.findByPk(id, {
+            attributes: ['id_User', 'username', 'firstname', 'email'], // On choisit ce qu'on veut afficher
+            include: [
+                {
+                    model: Pays,
+                    as: 'pays',
+                    attributes: ['id_pays', 'nom_fr']
+                }, {
+                    model: Civilite,
+                    as: 'civilite',
+                    attributes: ['id_civilite', 'nom']
+                }
+            ]
+        });
+        if (!users) {
+            return res.status(404).json({ message: "Utilisateur introuvable" });
+        }
+        res.status(200).json(users);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Erreur lors de la récupération des utilisateurs" });
+    }
+
+}
