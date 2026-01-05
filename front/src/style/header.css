@@ -384,7 +384,9 @@
   border-radius: 4px;
   cursor: pointer;
 }
-
+.btn-confirm:disabled {
+  cursor: not-allowed;
+}
 .btn-confirm:hover {
   background: #c0392b;
 }

@@ -5,7 +5,7 @@ export const getAllUserByRole = async (req, res) => {
 
         // On prépare les options de la requête
         const options = {
-            attributes: ['id_User', 'username', 'firstname', 'email'], // On choisit ce qu'on veut afficher
+            attributes: ['id_User', 'username', 'firstname', 'email', 'pending_delete'], // On choisit ce qu'on veut afficher
             include: [
                 {
                     model: Role,// L'équivalent du JOIN

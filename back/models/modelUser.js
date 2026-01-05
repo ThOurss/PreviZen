@@ -48,7 +48,9 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            isEmail: true, // Validation automatique de l'email
+            isEmail: {
+                msg: 'Veuillez renseigner une adresse mail valide'
+            }, // Validation automatique de l'email
             notNull: {
                 msg: 'Veuillez renseigner votre adresse mail',
             },
@@ -90,6 +92,11 @@ const User = sequelize.define('User', {
         }
 
     },
+    pending_delete: {
+        type: DataTypes.TINYINT,
+        allowNull: false,
+        defaultValue: 0
+    },
     id_civilite: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -107,7 +114,7 @@ const User = sequelize.define('User', {
         }
     },
 
-    // 👇 VALIDATION PAYS
+    //  VALIDATION PAYS
     id_pays: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -123,7 +130,7 @@ const User = sequelize.define('User', {
             }
         }
     },
-    // 👇 AJOUT DE LA COLONNE ID_ROLE
+    //  AJOUT DE LA COLONNE ID_ROLE
     id_role: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -137,6 +144,9 @@ const User = sequelize.define('User', {
         beforeCreate: async (user) => {
             if (!user.id_role) {
                 user.id_role = 3;
+            }
+            if (!user.pending_delete) {
+                user.pending_delete = 0
             }
             if (user.password) {
                 const salt = await bcrypt.genSalt(10);
