@@ -20,7 +20,7 @@ const User = sequelize.define('User', {
             notEmpty: { msg: 'Veuillez renseigner votre nom' }
         },
         set(value) {
-            this.setDataValue('username', value)
+            this.setDataValue('username', value.charAt(0).toUpperCase() + value.slice(1).toLowerCase())
         },
         get() {
             const rawValue = this.getDataValue('username');
@@ -36,7 +36,7 @@ const User = sequelize.define('User', {
                 msg: 'Veuillez renseigner votre prénom',
             }, notEmpty: { msg: 'Veuillez renseigner votre prénom' }
         }, set(value) {
-            this.setDataValue('firstname', value)
+            this.setDataValue('firstname', value.charAt(0).toUpperCase() + value.slice(1).toLowerCase())
         },
         get() {
             const rawValue = this.getDataValue('firstname');

@@ -107,7 +107,6 @@ const Profil = ({ user }) => {
       });
     }
   }, [fullProfile]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -172,7 +171,6 @@ const Profil = ({ user }) => {
             pays_id: "pays_id",
           };
           // boucle sur les erreurs reçues pour remplir newErrors
-          console.log(errorData.errors);
           Object.keys(errorData.errors).forEach((backendField) => {
             const frontendField = errorMapping[backendField];
 
@@ -247,7 +245,6 @@ const Profil = ({ user }) => {
         const errorData = await response.json();
         // Erreur serveur
         newErrors = {};
-        console.log(errorData);
 
         if (errorData.errors) {
           //  correspondance : Backend Name -> Frontend Name
@@ -255,7 +252,6 @@ const Profil = ({ user }) => {
             password: "newPassword",
           };
           // boucle sur les erreurs reçues pour remplir newErrors
-          console.log(errorData.errors);
           Object.keys(errorData.errors).forEach((backendField) => {
             const frontendField = errorMapping[backendField];
 
@@ -326,7 +322,7 @@ const Profil = ({ user }) => {
       alert("Une erreur est survenue lors de la connexion au serveur.");
     }
   };
-
+  console.log(fullProfile);
   // --- Rendu ---
   if (loading) return <div>Chargement du profil...</div>;
   if (!fullProfile) return <div>Impossible de charger les informations.</div>;

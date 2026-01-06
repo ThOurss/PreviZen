@@ -92,7 +92,7 @@ export const logout = (req, res) => {
 };
 
 export const getUser = async (req, res) => {
-    console.log('here')
+
     try {
 
         const { id } = req.params;
@@ -117,6 +117,7 @@ export const getUser = async (req, res) => {
         if (!users) {
             return res.status(404).json({ message: "Utilisateur introuvable" });
         }
+
         res.status(200).json(users);
     } catch (error) {
         console.error(error);

@@ -1,4 +1,5 @@
 import { User, Role, Pays, Civilite } from "../models/index.js"
+import crypto from 'crypto'
 export const getAllUserByRole = async (req, res) => {
     try {
         const { role } = req.query; // ex: "admin" ou "user"
@@ -86,5 +87,47 @@ export const updateUser = async (req, res) => {
     } catch (error) {
         console.error("Erreur Update User :", error);
         res.status(500).json({ error: "Erreur serveur lors de la modification." });
+    }
+}
+
+export const deleteUser = async (req, res) => {
+    const userId = req.params.id;
+
+    try {
+        // 1. Vérifier si l'utilisateur existe
+        const user = await User.findByPk(userId);
+
+        if (!user) {
+            return res.status(404).json({ message: "Utilisateur non trouvé" });
+        }
+
+        // 2. Générer des données aléatoires pour éviter les doublons (conflits d'email)
+        const randomString = crypto.randomBytes(64).toString('hex') + 'A1!@#';
+        const timestamp = Date.now();
+
+        // 3. Exécuter l'UPDATE (L'anonymisation)
+        await user.update({
+            // Remplacement des données identifiables
+            firstname: 'Anonyme',
+            username: 'Utilisateur',
+
+            // GESTION DE L'EMAIL UNIQUE :
+            // On crée un email bidon mais UNIQUE 
+            email: `deleted_${user.id}_${timestamp}@previzen.anonyme`,
+
+            // On écrase les données sensibles
+            password: randomString,
+            id_civilite: 3,
+            id_pays: 999,
+            id_role: 4,
+            pending_delete: 0
+
+        });
+
+        res.status(200).json({ message: "Compte anonymisé avec succès" });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Erreur lors de l'anonymisation" });
     }
 }

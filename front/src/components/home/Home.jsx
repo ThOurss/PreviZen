@@ -8,7 +8,7 @@ const Home = () => {
   const [villeSearch, setVilleSearch] = useState([]); // résultats
   const [inputVille, setInputVille] = useState("");
   const [previsu, setPrevisu] = useState(false);
-
+  const [erreur, setErreur] = useState({});
   const containerFermer = useRef(null);
   useEffect(() => {
     fetch("http://localhost:5000/api/weather")
@@ -20,15 +20,28 @@ const Home = () => {
   const searchVille = async (e) => {
     e.preventDefault();
     if (!inputVille) return; // rien à chercher
+    try {
+      console.log(inputVille);
+      const response = await fetch(
+        `http://localhost:5000/api/weather/${encodeURIComponent(inputVille)}`,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setVilleSearch(data);
+        setPrevisu(true);
+        setErreur(null);
+      } else {
+        const errorData = await response.json();
+        setPrevisu(true);
 
-    await fetch(
-      `http://localhost:5000/api/weather/${encodeURIComponent(inputVille)}`
-    )
-      .then((res) => res.json())
-      .then((data) => setVilleSearch(data))
-      .catch((err) => console.error(err));
-
-    setPrevisu(true);
+        setErreur(errorData.error);
+      }
+    } catch (error) {
+      console.error("Erreur technique :", error);
+    }
   };
 
   useEffect(() => {
@@ -47,7 +60,6 @@ const Home = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
   // if (!weather) return <p>Chargement...</p>;
-  console.log(villeSearch);
 
   return (
     <main className="section-home">
@@ -83,6 +95,7 @@ const Home = () => {
                     </Link>
                   </li> //
                 ))}
+                {erreur && <li>{erreur}</li>}
               </ul>
             )}
           </div>

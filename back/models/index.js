@@ -86,7 +86,7 @@ User.hasMany(Favori, {
 const initRoles = async () => {
     try {
         // Liste des rôles à avoir
-        const roles = ['Admin', 'Moderateur', 'User'];
+        const roles = ['Admin', 'Moderateur', 'User', 'Delete'];
 
         for (const roleName of roles) {
             await Role.findOrCreate({
@@ -120,26 +120,42 @@ const initCivilite = async () => {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// --- FONCTION D'IMPORT SQL ---
-const importCountriesSQL = async () => {
+// --- FONCTION D'IMPORT json ---
+const importCountriesJSON = async () => {
     try {
-        const count = await Pays.count();
-        if (count === 0) {
-            console.log('📜 Lecture du script SQL en cours...');
 
-            // 1. On cherche le fichier (ajuste le chemin '../data/pays.sql' selon ton dossier)
-            const sqlFilePath = path.join(__dirname, '../data/script_pays.sql');
+        console.log('📜 Lecture du fichier JSON en cours...');
 
-            // 2. On lit le contenu du fichier
-            const sqlQuery = fs.readFileSync(sqlFilePath, 'utf8');
+        // 1. On cherche le fichier 
+        const jsonFilePath = path.join(__dirname, '../data/script_pays.json');
 
-            // 3. On exécute le SQL brut
-            await sequelize.query(sqlQuery);
+        // 2. On lit le contenu du fichier
+        const sqlQuery = fs.readFileSync(jsonFilePath, 'utf8');
+        const paysData = JSON.parse(sqlQuery);
 
-            console.log('✅ Pays importés depuis le script SQL !');
-        }
+        const formattedData = paysData.map((pays) => ({
+            // Mappage des IDs (String "7" -> Int 7)
+            id_pays: parseInt(pays.id_pays, 10),
+
+            // Mappage des textes
+            nom_fr: pays.nom_fr,
+            nom_en: pays.nom_en,
+            code_iso2: pays.code_iso2,
+            code_iso3: pays.code_iso3,
+
+            // Mappage du Booléen (String "0"/"1" -> Boolean false/true)
+            isUE: pays.isUE === "1"
+        }));
+
+        await Pays.bulkCreate(formattedData, {
+            // Si l'ID existe déjà, on met à jour ces champs :
+            updateOnDuplicate: ["nom_fr", "nom_en", "code_iso2", "code_iso3", "isUE"]
+        });
+
+        console.log('✅ Pays importés depuis le fichier json !');
+
     } catch (e) {
-        console.error('❌ Erreur import SQL :', e);
+        console.error('❌ Erreur import JSON :', e);
     }
 };
-export { User, Role, Civilite, LiveUpdate, Pays, Alerte, Favori, initRoles, initCivilite, importCountriesSQL, };
+export { User, Role, Civilite, LiveUpdate, Pays, Alerte, Favori, initRoles, initCivilite, importCountriesJSON, };

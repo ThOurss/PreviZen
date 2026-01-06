@@ -38,9 +38,9 @@ export const getPreviByVille = async (req, res) => {
         //     );
         const data = response.data;
 
-        // if (!data.length) {
-        //     return res.status(404).json({ error: "Aucune ville trouvée" });
-        // }
+        if (!data.length) {
+            return res.status(404).json({ error: "Aucune ville trouvée" });
+        }
         // const previVille = data.map(c =>
         //     axios.get("https://api.openweathermap.org/data/2.5/weather", {
         //         params: {

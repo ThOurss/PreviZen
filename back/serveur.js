@@ -8,7 +8,7 @@ import roleRoutes from './routes/routesRole.js'
 import liveUpdateRoutes from './routes/routesLiveUpdate.js';
 import favorisRoutes from './routes/routesFavoris.js'
 import adminRoutes from './routes/routesAdmin.js';
-import { User, Role, initRoles, initCivilite, importCountriesSQL } from './models/index.js';
+import { User, Role, initRoles, initCivilite, importCountriesJSON } from './models/index.js';
 import cors from "cors";
 import { sequelize } from './config/db.config.js';
 import cookieParser from 'cookie-parser';
@@ -51,7 +51,7 @@ async function startApp() {
     await sequelize.sync();//{ alter: true }{ force: true }
     await initRoles();
     await initCivilite();
-    await importCountriesSQL();
+    await importCountriesJSON();
     console.log('✅ Tables synchronisées');
 }
 

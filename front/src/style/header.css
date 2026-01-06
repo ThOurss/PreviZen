@@ -63,7 +63,7 @@
   left: 0;
   top: 35px;
   background-color: #f8f8f8;
-  z-index: 1;
+  z-index: 1000;
   width: 100%;
 }
 .style-header .div-style-header .form-search ul li {

@@ -1,0 +1,79 @@
+/* rgpdPolicy.css */
+.rgpd-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.rgpd-header {
+  text-align: center;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.rgpd-header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.rgpd-date {
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+.rgpd-section {
+  margin-bottom: 30px;
+}
+
+.rgpd-section h2 {
+  font-size: 1.5rem;
+  color: #2980b9; /* Une couleur bleue rassurante */
+  margin-bottom: 15px;
+  border-left: 4px solid #2980b9;
+  padding-left: 10px;
+}
+
+.rgpd-section ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.rgpd-section li {
+  margin-bottom: 8px;
+}
+
+.rgpd-alert {
+  background-color: #f8f9fa;
+  border-left: 4px solid #f1c40f; /* Jaune pour attirer l'attention */
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.rgpd-strong {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.contact-box {
+  background-color: #e8f4fc;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.contact-email {
+  font-weight: bold;
+  color: #2980b9;
+  text-decoration: none;
+}
+strong {
+  font-weight: bold;
+}

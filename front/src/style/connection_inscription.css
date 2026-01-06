@@ -239,7 +239,47 @@
   .contenu-inscription
   form
   div.div-confirmer-mdp {
+  margin-bottom: 1rem;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-inscription
+  form
+  div.check-cgu {
+  margin-bottom: 1rem;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-inscription
+  form
+  div.check-rgpd {
   margin-bottom: 2rem;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-inscription
+  form
+  div.check-cgu,
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-inscription
+  form
+  div.check-rgpd {
+  display: flex;
+}
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-inscription
+  form
+  div.check-cgu
+  input,
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-inscription
+  form
+  div.check-rgpd
+  input {
+  margin-right: 10px;
 }
 .btn-inscription {
   margin-bottom: 1rem;

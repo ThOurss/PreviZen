@@ -258,3 +258,8 @@
   transition: background-color 0.2s;
   margin-bottom: 10px;
 }
+.no-data {
+  margin: 50px;
+  color: red;
+  font-weight: bold;
+}

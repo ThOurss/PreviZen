@@ -1,0 +1,1736 @@
+[
+ {
+  "id_pays": "7",
+  "nom_fr": "ARUBA",
+  "nom_en": "ARUBA",
+  "code_iso2": "AW",
+  "code_iso3": "ABW",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "8",
+  "nom_fr": "AFGHANISTAN",
+  "nom_en": "AFGHANISTAN",
+  "code_iso2": "AF",
+  "code_iso3": "AFG",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "9",
+  "nom_fr": "ANGOLA",
+  "nom_en": "ANGOLA",
+  "code_iso2": "AO",
+  "code_iso3": "AGO",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "10",
+  "nom_fr": "ALBANIE",
+  "nom_en": "ALBANIA",
+  "code_iso2": "AL",
+  "code_iso3": "ALB",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "11",
+  "nom_fr": "ANDORRE",
+  "nom_en": "ANDORRA",
+  "code_iso2": "AD",
+  "code_iso3": "AND",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "12",
+  "nom_fr": "EMIRATS ARABES UNIS",
+  "nom_en": "UNITED ARAB EMIRATES",
+  "code_iso2": "AE",
+  "code_iso3": "ARE",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "13",
+  "nom_fr": "ARGENTINE",
+  "nom_en": "ARGENTINA",
+  "code_iso2": "AR",
+  "code_iso3": "ARG",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "14",
+  "nom_fr": "ARMÉNIE",
+  "nom_en": "ARMENIA",
+  "code_iso2": "AM",
+  "code_iso3": "ARM",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "15",
+  "nom_fr": "SAMOA AMÉRICAINES",
+  "nom_en": "AMERICAN SAMOA",
+  "code_iso2": "AS",
+  "code_iso3": "ASM",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "16",
+  "nom_fr": "ANTIGUA-ET-BARBUDA",
+  "nom_en": "ANTIGUA AND BARBUDA",
+  "code_iso2": "AG",
+  "code_iso3": "ATG",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "17",
+  "nom_fr": "AUSTRALIE",
+  "nom_en": "AUSTRALIA",
+  "code_iso2": "AU",
+  "code_iso3": "AUS",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "18",
+  "nom_fr": "AUTRICHE",
+  "nom_en": "AUSTRIA",
+  "code_iso2": "AT",
+  "code_iso3": "AUT",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "19",
+  "nom_fr": "AZERBAÏDJAN",
+  "nom_en": "AZERBAIJAN",
+  "code_iso2": "AZ",
+  "code_iso3": "AZE",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "20",
+  "nom_fr": "BURUNDI",
+  "nom_en": "BURUNDI",
+  "code_iso2": "BI",
+  "code_iso3": "BDI",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "21",
+  "nom_fr": "BELGIQUE",
+  "nom_en": "BELGIUM",
+  "code_iso2": "BE",
+  "code_iso3": "BEL",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "22",
+  "nom_fr": "BÉNIN",
+  "nom_en": "BENIN",
+  "code_iso2": "BJ",
+  "code_iso3": "BEN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "23",
+  "nom_fr": "BURKINA FASO",
+  "nom_en": "BURKINA FASO",
+  "code_iso2": "BF",
+  "code_iso3": "BFA",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "24",
+  "nom_fr": "BANGLADESH",
+  "nom_en": "BANGLADESH",
+  "code_iso2": "BD",
+  "code_iso3": "BGD",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "25",
+  "nom_fr": "BULGARIE",
+  "nom_en": "BULGARIA",
+  "code_iso2": "BG",
+  "code_iso3": "BGR",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "26",
+  "nom_fr": "BAHREÏN",
+  "nom_en": "BAHRAIN",
+  "code_iso2": "BH",
+  "code_iso3": "BHR",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "27",
+  "nom_fr": "BAHAMAS",
+  "nom_en": "BAHAMAS",
+  "code_iso2": "BS",
+  "code_iso3": "BHS",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "28",
+  "nom_fr": "BOSNIE-HERZÉGOVINE",
+  "nom_en": "BOSNIA AND HERZEGOVINA",
+  "code_iso2": "BA",
+  "code_iso3": "BIH",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "29",
+  "nom_fr": "BIÉLORUSSIE",
+  "nom_en": "BELARUS",
+  "code_iso2": "BY",
+  "code_iso3": "BLR",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "30",
+  "nom_fr": "BELIZE",
+  "nom_en": "BELIZE",
+  "code_iso2": "BZ",
+  "code_iso3": "BLZ",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "31",
+  "nom_fr": "BERMUDES",
+  "nom_en": "BERMUDA",
+  "code_iso2": "BM",
+  "code_iso3": "BMU",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "32",
+  "nom_fr": "BOLIVIE",
+  "nom_en": "BOLIVIA (PLURINATIONAL STATE OF)",
+  "code_iso2": "BO",
+  "code_iso3": "BOL",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "33",
+  "nom_fr": "BRÉSIL",
+  "nom_en": "BRAZIL",
+  "code_iso2": "BR",
+  "code_iso3": "BRA",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "34",
+  "nom_fr": "BARBADE",
+  "nom_en": "BARBADOS",
+  "code_iso2": "BB",
+  "code_iso3": "BRB",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "35",
+  "nom_fr": "BRUNEI",
+  "nom_en": "BRUNEI DARUSSALAM",
+  "code_iso2": "BN",
+  "code_iso3": "BRN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "36",
+  "nom_fr": "BHOUTAN",
+  "nom_en": "BHUTAN",
+  "code_iso2": "BT",
+  "code_iso3": "BTN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "37",
+  "nom_fr": "BOTSWANA",
+  "nom_en": "BOTSWANA",
+  "code_iso2": "BW",
+  "code_iso3": "BWA",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "38",
+  "nom_fr": "QUÉBEC",
+  "nom_en": "QUEBEC",
+  "code_iso3": "CA-QC",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "39",
+  "nom_fr": "RÉPUBLIQUE CENTRAFRICAINE",
+  "nom_en": "CENTRAL AFRICAN REPUBLIC",
+  "code_iso2": "CF",
+  "code_iso3": "CAF",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "40",
+  "nom_fr": "CANADA",
+  "nom_en": "CANADA",
+  "code_iso2": "CA",
+  "code_iso3": "CAN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "41",
+  "nom_fr": "SUISSE",
+  "nom_en": "SWITZERLAND",
+  "code_iso2": "CH",
+  "code_iso3": "CHE",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "42",
+  "nom_fr": "CHILI",
+  "nom_en": "CHILE",
+  "code_iso2": "CL",
+  "code_iso3": "CHL",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "43",
+  "nom_fr": "CHINE",
+  "nom_en": "CHINA",
+  "code_iso2": "CN",
+  "code_iso3": "CHN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "44",
+  "nom_fr": "CÔTE DIVOIRE",
+  "nom_en": "CÔTE DIVOIRE",
+  "code_iso2": "CI",
+  "code_iso3": "CIV",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "45",
+  "nom_fr": "CAMEROUN",
+  "nom_en": "CAMEROON",
+  "code_iso2": "CM",
+  "code_iso3": "CMR",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "46",
+  "nom_fr": "CONGO (RÉP. DÉM.)",
+  "nom_en": "CONGO (DEMOCRATIC REPUBLIC OF THE)",
+  "code_iso2": "CD",
+  "code_iso3": "COD",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "47",
+  "nom_fr": "CONGO",
+  "nom_en": "CONGO",
+  "code_iso2": "CG",
+  "code_iso3": "COG",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "48",
+  "nom_fr": "COLOMBIE",
+  "nom_en": "COLOMBIA",
+  "code_iso2": "CO",
+  "code_iso3": "COL",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "49",
+  "nom_fr": "COMORES",
+  "nom_en": "COMOROS",
+  "code_iso2": "KM",
+  "code_iso3": "COM",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "50",
+  "nom_fr": "CAP VERT",
+  "nom_en": "CABO VERDE",
+  "code_iso2": "CV",
+  "code_iso3": "CPV",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "51",
+  "nom_fr": "COSTA RICA",
+  "nom_en": "COSTA RICA",
+  "code_iso2": "CR",
+  "code_iso3": "CRI",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "52",
+  "nom_fr": "CUBA",
+  "nom_en": "CUBA",
+  "code_iso2": "CU",
+  "code_iso3": "CUB",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "53",
+  "nom_fr": "CURAÇAO",
+  "nom_en": "CURAÇAO",
+  "code_iso2": "CW",
+  "code_iso3": "CUW",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "54",
+  "nom_fr": "ÎLES CAÏMANS",
+  "nom_en": "CAYMAN ISLANDS",
+  "code_iso2": "KY",
+  "code_iso3": "CYM",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "55",
+  "nom_fr": "CHYPRE",
+  "nom_en": "CYPRUS",
+  "code_iso2": "CY",
+  "code_iso3": "CYP",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "56",
+  "nom_fr": "RÉPUBLIQUE TCHÈQUE",
+  "nom_en": "CZECH REPUBLIC",
+  "code_iso2": "CZ",
+  "code_iso3": "CZE",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "57",
+  "nom_fr": "ALLEMAGNE",
+  "nom_en": "GERMANY",
+  "code_iso2": "DE",
+  "code_iso3": "DEU",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "58",
+  "nom_fr": "DJIBOUTI",
+  "nom_en": "DJIBOUTI",
+  "code_iso2": "DJ",
+  "code_iso3": "DJI",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "59",
+  "nom_fr": "DOMINIQUE",
+  "nom_en": "DOMINICA",
+  "code_iso2": "DM",
+  "code_iso3": "DMA",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "60",
+  "nom_fr": "DANEMARK",
+  "nom_en": "DENMARK",
+  "code_iso2": "DK",
+  "code_iso3": "DNK",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "61",
+  "nom_fr": "RÉPUBLIQUE DOMINICAINE",
+  "nom_en": "DOMINICAN REPUBLIC",
+  "code_iso2": "DO",
+  "code_iso3": "DOM",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "62",
+  "nom_fr": "ALGÉRIE",
+  "nom_en": "ALGERIA",
+  "code_iso2": "DZ",
+  "code_iso3": "DZA",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "63",
+  "nom_fr": "EQUATEUR",
+  "nom_en": "ECUADOR",
+  "code_iso2": "EC",
+  "code_iso3": "ECU",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "64",
+  "nom_fr": "EGYPTE",
+  "nom_en": "EGYPT",
+  "code_iso2": "EG",
+  "code_iso3": "EGY",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "65",
+  "nom_fr": "ERYTHRÉE",
+  "nom_en": "ERITREA",
+  "code_iso2": "ER",
+  "code_iso3": "ERI",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "66",
+  "nom_fr": "ESPAGNE",
+  "nom_en": "SPAIN",
+  "code_iso2": "ES",
+  "code_iso3": "ESP",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "67",
+  "nom_fr": "ESTONIE",
+  "nom_en": "ESTONIA",
+  "code_iso2": "EE",
+  "code_iso3": "EST",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "68",
+  "nom_fr": "ETHIOPIE",
+  "nom_en": "ETHIOPIA",
+  "code_iso2": "ET",
+  "code_iso3": "ETH",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "69",
+  "nom_fr": "FINLANDE",
+  "nom_en": "FINLAND",
+  "code_iso2": "FI",
+  "code_iso3": "FIN",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "70",
+  "nom_fr": "FIDJI",
+  "nom_en": "FIJI",
+  "code_iso2": "FJ",
+  "code_iso3": "FJI",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "71",
+  "nom_fr": "FRANCE",
+  "nom_en": "FRANCE",
+  "code_iso2": "FR",
+  "code_iso3": "FRA",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "72",
+  "nom_fr": "ÎLES FÉROÉ",
+  "nom_en": "FAROE ISLANDS",
+  "code_iso2": "FO",
+  "code_iso3": "FRO",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "73",
+  "nom_fr": "MICRONÉSIE",
+  "nom_en": "MICRONESIA (FEDERATED STATES OF)",
+  "code_iso2": "FM",
+  "code_iso3": "FSM",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "74",
+  "nom_fr": "GABON",
+  "nom_en": "GABON",
+  "code_iso2": "GA",
+  "code_iso3": "GAB",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "75",
+  "nom_fr": "ROYAUME-UNI",
+  "nom_en": "UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND",
+  "code_iso2": "GB",
+  "code_iso3": "GBR",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "76",
+  "nom_fr": "GÉORGIE",
+  "nom_en": "GEORGIA",
+  "code_iso2": "GE",
+  "code_iso3": "GEO",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "77",
+  "nom_fr": "GHANA",
+  "nom_en": "GHANA",
+  "code_iso2": "GH",
+  "code_iso3": "GHA",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "78",
+  "nom_fr": "GIBRALTAR",
+  "nom_en": "GIBRALTAR",
+  "code_iso2": "GI",
+  "code_iso3": "GIB",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "79",
+  "nom_fr": "GUINÉE",
+  "nom_en": "GUINEA",
+  "code_iso2": "GN",
+  "code_iso3": "GIN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "80",
+  "nom_fr": "GAMBIE",
+  "nom_en": "GAMBIA",
+  "code_iso2": "GM",
+  "code_iso3": "GMB",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "81",
+  "nom_fr": "GUINÉE-BISSAU",
+  "nom_en": "GUINEA-BISSAU",
+  "code_iso2": "GW",
+  "code_iso3": "GNB",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "82",
+  "nom_fr": "GUINÉE-ÉQUATORIALE",
+  "nom_en": "EQUATORIAL GUINEA",
+  "code_iso2": "GQ",
+  "code_iso3": "GNQ",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "83",
+  "nom_fr": "GRÈCE",
+  "nom_en": "GREECE",
+  "code_iso2": "GR",
+  "code_iso3": "GRC",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "84",
+  "nom_fr": "GRENADE",
+  "nom_en": "GRENADA",
+  "code_iso2": "GD",
+  "code_iso3": "GRD",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "85",
+  "nom_fr": "GROENLAND",
+  "nom_en": "GREENLAND",
+  "code_iso2": "GL",
+  "code_iso3": "GRL",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "86",
+  "nom_fr": "GUATEMALA",
+  "nom_en": "GUATEMALA",
+  "code_iso2": "GT",
+  "code_iso3": "GTM",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "87",
+  "nom_fr": "GUAM",
+  "nom_en": "GUAM",
+  "code_iso2": "GU",
+  "code_iso3": "GUM",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "88",
+  "nom_fr": "GUYANA",
+  "nom_en": "GUYANA",
+  "code_iso2": "GY",
+  "code_iso3": "GUY",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "89",
+  "nom_fr": "HONG KONG (CHINE)",
+  "nom_en": "HONG KONG",
+  "code_iso2": "HK",
+  "code_iso3": "HKG",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "90",
+  "nom_fr": "HONDURAS",
+  "nom_en": "HONDURAS",
+  "code_iso2": "HN",
+  "code_iso3": "HND",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "91",
+  "nom_fr": "CROATIE",
+  "nom_en": "CROATIA",
+  "code_iso2": "HR",
+  "code_iso3": "HRV",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "92",
+  "nom_fr": "HAÏTI",
+  "nom_en": "HAITI",
+  "code_iso2": "HT",
+  "code_iso3": "HTI",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "93",
+  "nom_fr": "HONGRIE",
+  "nom_en": "HUNGARY",
+  "code_iso2": "HU",
+  "code_iso3": "HUN",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "94",
+  "nom_fr": "INDONÉSIE",
+  "nom_en": "INDONESIA",
+  "code_iso2": "ID",
+  "code_iso3": "IDN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "95",
+  "nom_fr": "ÎLE DE MAN",
+  "nom_en": "ISLE OF MAN",
+  "code_iso2": "IM",
+  "code_iso3": "IMN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "96",
+  "nom_fr": "INDE",
+  "nom_en": "INDIA",
+  "code_iso2": "IN",
+  "code_iso3": "IND",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "97",
+  "nom_fr": "IRLANDE",
+  "nom_en": "IRELAND",
+  "code_iso2": "IE",
+  "code_iso3": "IRL",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "98",
+  "nom_fr": "IRAN",
+  "nom_en": "IRAN (ISLAMIC REPUBLIC OF)",
+  "code_iso2": "IR",
+  "code_iso3": "IRN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "99",
+  "nom_fr": "IRAK",
+  "nom_en": "IRAQ",
+  "code_iso2": "IQ",
+  "code_iso3": "IRQ",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "100",
+  "nom_fr": "ISLANDE",
+  "nom_en": "ICELAND",
+  "code_iso2": "IS",
+  "code_iso3": "ISL",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "101",
+  "nom_fr": "ISRAËL",
+  "nom_en": "ISRAEL",
+  "code_iso2": "IL",
+  "code_iso3": "ISR",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "102",
+  "nom_fr": "ITALIE",
+  "nom_en": "ITALY",
+  "code_iso2": "IT",
+  "code_iso3": "ITA",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "103",
+  "nom_fr": "JAMAÏQUE",
+  "nom_en": "JAMAICA",
+  "code_iso2": "JM",
+  "code_iso3": "JAM",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "104",
+  "nom_fr": "JORDANIE",
+  "nom_en": "JORDAN",
+  "code_iso2": "JO",
+  "code_iso3": "JOR",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "105",
+  "nom_fr": "JAPON",
+  "nom_en": "JAPAN",
+  "code_iso2": "JP",
+  "code_iso3": "JPN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "106",
+  "nom_fr": "KAZAKHSTAN",
+  "nom_en": "KAZAKHSTAN",
+  "code_iso2": "KZ",
+  "code_iso3": "KAZ",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "107",
+  "nom_fr": "KENYA",
+  "nom_en": "KENYA",
+  "code_iso2": "KE",
+  "code_iso3": "KEN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "108",
+  "nom_fr": "KIRGHIZISTAN",
+  "nom_en": "KYRGYZSTAN",
+  "code_iso2": "KG",
+  "code_iso3": "KGZ",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "109",
+  "nom_fr": "CAMBODGE",
+  "nom_en": "CAMBODIA",
+  "code_iso2": "KH",
+  "code_iso3": "KHM",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "110",
+  "nom_fr": "KIRIBATI",
+  "nom_en": "KIRIBATI",
+  "code_iso2": "KI",
+  "code_iso3": "KIR",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "111",
+  "nom_fr": "SAINT-CHRISTOPHE-ET-NIÉVÈS",
+  "nom_en": "SAINT KITTS AND NEVIS",
+  "code_iso2": "KN",
+  "code_iso3": "KNA",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "112",
+  "nom_fr": "CORÉE DU SUD",
+  "nom_en": "KOREA (REPUBLIC OF)",
+  "code_iso2": "KR",
+  "code_iso3": "KOR",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "113",
+  "nom_fr": "KOSOVO",
+  "nom_en": "REPUBLIC OF KOSOVO",
+  "code_iso2": "XK",
+  "code_iso3": "KOS",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "114",
+  "nom_fr": "KOWEÏT",
+  "nom_en": "KUWAIT",
+  "code_iso2": "KW",
+  "code_iso3": "KWT",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "115",
+  "nom_fr": "LAOS",
+  "nom_en": "LAO PEOPLES DEMOCRATIC REPUBLIC",
+  "code_iso2": "LA",
+  "code_iso3": "LAO",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "116",
+  "nom_fr": "LIBAN",
+  "nom_en": "LEBANON",
+  "code_iso2": "LB",
+  "code_iso3": "LBN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "117",
+  "nom_fr": "LIBERIA",
+  "nom_en": "LIBERIA",
+  "code_iso2": "LR",
+  "code_iso3": "LBR",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "118",
+  "nom_fr": "LIBYE",
+  "nom_en": "LIBYA",
+  "code_iso2": "LY",
+  "code_iso3": "LBY",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "119",
+  "nom_fr": "SAINTE-LUCIE",
+  "nom_en": "SAINT LUCIA",
+  "code_iso2": "LC",
+  "code_iso3": "LCA",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "120",
+  "nom_fr": "LIECHTENSTEIN",
+  "nom_en": "LIECHTENSTEIN",
+  "code_iso2": "LI",
+  "code_iso3": "LIE",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "121",
+  "nom_fr": "SRI LANKA",
+  "nom_en": "SRI LANKA",
+  "code_iso2": "LK",
+  "code_iso3": "LKA",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "122",
+  "nom_fr": "LESOTHO",
+  "nom_en": "LESOTHO",
+  "code_iso2": "LS",
+  "code_iso3": "LSO",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "123",
+  "nom_fr": "LITUANIE",
+  "nom_en": "LITHUANIA",
+  "code_iso2": "LT",
+  "code_iso3": "LTU",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "124",
+  "nom_fr": "LUXEMBOURG",
+  "nom_en": "LUXEMBOURG",
+  "code_iso2": "LU",
+  "code_iso3": "LUX",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "125",
+  "nom_fr": "LETTONIE",
+  "nom_en": "LATVIA",
+  "code_iso2": "LV",
+  "code_iso3": "LVA",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "126",
+  "nom_fr": "MACAO (CHINE)",
+  "nom_en": "MACAO",
+  "code_iso2": "MO",
+  "code_iso3": "MAC",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "127",
+  "nom_fr": "SAINT-MARTIN (PARTIE FRANÇAISE)",
+  "nom_en": "SAINT MARTIN (FRENCH PART)",
+  "code_iso2": "MF",
+  "code_iso3": "MAF",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "128",
+  "nom_fr": "MAROC",
+  "nom_en": "MOROCCO",
+  "code_iso2": "MA",
+  "code_iso3": "MAR",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "129",
+  "nom_fr": "MONACO",
+  "nom_en": "MONACO",
+  "code_iso2": "MC",
+  "code_iso3": "MCO",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "130",
+  "nom_fr": "MOLDAVIE",
+  "nom_en": "MOLDOVA (REPUBLIC OF)",
+  "code_iso2": "MD",
+  "code_iso3": "MDA",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "131",
+  "nom_fr": "MADAGASCAR",
+  "nom_en": "MADAGASCAR",
+  "code_iso2": "MG",
+  "code_iso3": "MDG",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "132",
+  "nom_fr": "MALDIVES",
+  "nom_en": "MALDIVES",
+  "code_iso2": "MV",
+  "code_iso3": "MDV",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "133",
+  "nom_fr": "MEXIQUE",
+  "nom_en": "MEXICO",
+  "code_iso2": "MX",
+  "code_iso3": "MEX",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "134",
+  "nom_fr": "ÎLES MARSHALL",
+  "nom_en": "MARSHALL ISLANDS",
+  "code_iso2": "MH",
+  "code_iso3": "MHL",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "135",
+  "nom_fr": "MACÉDOINE DU NORD",
+  "nom_en": "MACEDONIA (THE FORMER YUGOSLAV REPUBLIC OF)",
+  "code_iso2": "MK",
+  "code_iso3": "MKD",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "136",
+  "nom_fr": "MALI",
+  "nom_en": "MALI",
+  "code_iso2": "ML",
+  "code_iso3": "MLI",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "137",
+  "nom_fr": "MALTE",
+  "nom_en": "MALTA",
+  "code_iso2": "MT",
+  "code_iso3": "MLT",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "138",
+  "nom_fr": "BIRMANIE",
+  "nom_en": "MYANMAR",
+  "code_iso2": "MM",
+  "code_iso3": "MMR",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "139",
+  "nom_fr": "MONTÉNÉGRO",
+  "nom_en": "MONTENEGRO",
+  "code_iso2": "ME",
+  "code_iso3": "MNE",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "140",
+  "nom_fr": "MONGOLIE",
+  "nom_en": "MONGOLIA",
+  "code_iso2": "MN",
+  "code_iso3": "MNG",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "141",
+  "nom_fr": "ÎLES MARIANNES DU NORD",
+  "nom_en": "NORTHERN MARIANA ISLANDS",
+  "code_iso2": "MP",
+  "code_iso3": "MNP",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "142",
+  "nom_fr": "MOZAMBIQUE",
+  "nom_en": "MOZAMBIQUE",
+  "code_iso2": "MZ",
+  "code_iso3": "MOZ",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "143",
+  "nom_fr": "MAURITANIE",
+  "nom_en": "MAURITANIA",
+  "code_iso2": "MR",
+  "code_iso3": "MRT",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "144",
+  "nom_fr": "ILE MAURICE",
+  "nom_en": "MAURITIUS",
+  "code_iso2": "MU",
+  "code_iso3": "MUS",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "145",
+  "nom_fr": "MALAWI",
+  "nom_en": "MALAWI",
+  "code_iso2": "MW",
+  "code_iso3": "MWI",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "146",
+  "nom_fr": "MALAISIE",
+  "nom_en": "MALAYSIA",
+  "code_iso2": "MY",
+  "code_iso3": "MYS",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "147",
+  "nom_fr": "NAMIBIE",
+  "nom_en": "NAMIBIA",
+  "code_iso3": "NAM",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "148",
+  "nom_fr": "NIGER",
+  "nom_en": "NIGER",
+  "code_iso2": "NE",
+  "code_iso3": "NER",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "149",
+  "nom_fr": "NIGÉRIA",
+  "nom_en": "NIGERIA",
+  "code_iso2": "NG",
+  "code_iso3": "NGA",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "150",
+  "nom_fr": "NICARAGUA",
+  "nom_en": "NICARAGUA",
+  "code_iso2": "NI",
+  "code_iso3": "NIC",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "151",
+  "nom_fr": "PAYS-BAS",
+  "nom_en": "NETHERLANDS",
+  "code_iso2": "NL",
+  "code_iso3": "NLD",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "152",
+  "nom_fr": "NORVÈGE",
+  "nom_en": "NORWAY",
+  "code_iso2": "NO",
+  "code_iso3": "NOR",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "153",
+  "nom_fr": "NÉPAL",
+  "nom_en": "NEPAL",
+  "code_iso2": "NP",
+  "code_iso3": "NPL",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "154",
+  "nom_fr": "NAURU",
+  "nom_en": "NAURU",
+  "code_iso2": "NR",
+  "code_iso3": "NRU",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "155",
+  "nom_fr": "NOUVELLE-ZÉLANDE",
+  "nom_en": "NEW ZEALAND",
+  "code_iso2": "NZ",
+  "code_iso3": "NZL",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "156",
+  "nom_fr": "OMAN",
+  "nom_en": "OMAN",
+  "code_iso2": "OM",
+  "code_iso3": "OMN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "157",
+  "nom_fr": "PAKISTAN",
+  "nom_en": "PAKISTAN",
+  "code_iso2": "PK",
+  "code_iso3": "PAK",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "158",
+  "nom_fr": "PANAMA",
+  "nom_en": "PANAMA",
+  "code_iso2": "PA",
+  "code_iso3": "PAN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "159",
+  "nom_fr": "PÉROU",
+  "nom_en": "PERU",
+  "code_iso2": "PE",
+  "code_iso3": "PER",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "160",
+  "nom_fr": "PHILIPPINES",
+  "nom_en": "PHILIPPINES",
+  "code_iso2": "PH",
+  "code_iso3": "PHL",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "161",
+  "nom_fr": "PALAOS",
+  "nom_en": "PALAU",
+  "code_iso2": "PW",
+  "code_iso3": "PLW",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "162",
+  "nom_fr": "PAPOUASIE-NOUVELLE-GUINÉE",
+  "nom_en": "PAPUA NEW GUINEA",
+  "code_iso2": "PG",
+  "code_iso3": "PNG",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "163",
+  "nom_fr": "POLOGNE",
+  "nom_en": "POLAND",
+  "code_iso2": "PL",
+  "code_iso3": "POL",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "164",
+  "nom_fr": "PORTO RICO",
+  "nom_en": "PUERTO RICO",
+  "code_iso2": "PR",
+  "code_iso3": "PRI",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "165",
+  "nom_fr": "CORÉE DU NORD",
+  "nom_en": "KOREA (DEMOCRATIC PEOPLES REPUBLIC OF)",
+  "code_iso2": "KP",
+  "code_iso3": "PRK",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "166",
+  "nom_fr": "PORTUGAL",
+  "nom_en": "PORTUGAL",
+  "code_iso2": "PT",
+  "code_iso3": "PRT",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "167",
+  "nom_fr": "PARAGUAY",
+  "nom_en": "PARAGUAY",
+  "code_iso2": "PY",
+  "code_iso3": "PRY",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "168",
+  "nom_fr": "TERRITOIRES PALESTINIENS",
+  "nom_en": "PALESTINE,STATE OF",
+  "code_iso2": "PS",
+  "code_iso3": "PSE",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "169",
+  "nom_fr": "QATAR",
+  "nom_en": "QATAR",
+  "code_iso2": "QA",
+  "code_iso3": "QAT",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "170",
+  "nom_fr": "ROUMANIE",
+  "nom_en": "ROMANIA",
+  "code_iso2": "RO",
+  "code_iso3": "ROU",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "171",
+  "nom_fr": "RUSSIE",
+  "nom_en": "RUSSIAN FEDERATION",
+  "code_iso2": "RU",
+  "code_iso3": "RUS",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "172",
+  "nom_fr": "RWANDA",
+  "nom_en": "RWANDA",
+  "code_iso2": "RW",
+  "code_iso3": "RWA",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "173",
+  "nom_fr": "ARABIE SAOUDITE",
+  "nom_en": "SAUDI ARABIA",
+  "code_iso2": "SA",
+  "code_iso3": "SAU",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "174",
+  "nom_fr": "SOUDAN",
+  "nom_en": "SUDAN",
+  "code_iso2": "SD",
+  "code_iso3": "SDN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "175",
+  "nom_fr": "SÉNÉGAL",
+  "nom_en": "SENEGAL",
+  "code_iso2": "SN",
+  "code_iso3": "SEN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "176",
+  "nom_fr": "SINGAPOUR",
+  "nom_en": "SINGAPORE",
+  "code_iso2": "SG",
+  "code_iso3": "SGP",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "177",
+  "nom_fr": "ÎLES SALOMON",
+  "nom_en": "SOLOMON ISLANDS",
+  "code_iso2": "SB",
+  "code_iso3": "SLB",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "178",
+  "nom_fr": "SIERRA LEONE",
+  "nom_en": "SIERRA LEONE",
+  "code_iso2": "SL",
+  "code_iso3": "SLE",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "179",
+  "nom_fr": "SALVADOR",
+  "nom_en": "EL SALVADOR",
+  "code_iso2": "SV",
+  "code_iso3": "SLV",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "180",
+  "nom_fr": "SAINT-MARIN",
+  "nom_en": "SAN MARINO",
+  "code_iso2": "SM",
+  "code_iso3": "SMR",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "181",
+  "nom_fr": "SOMALIE",
+  "nom_en": "SOMALIA",
+  "code_iso2": "SO",
+  "code_iso3": "SOM",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "182",
+  "nom_fr": "SERBIE",
+  "nom_en": "SERBIA",
+  "code_iso2": "RS",
+  "code_iso3": "SRB",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "183",
+  "nom_fr": "SOUDAN DU SUD",
+  "nom_en": "SOUTH SUDAN",
+  "code_iso2": "SS",
+  "code_iso3": "SSD",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "184",
+  "nom_fr": "SAO TOMÉ-ET-PRINCIPE",
+  "nom_en": "SAO TOME AND PRINCIPE",
+  "code_iso2": "ST",
+  "code_iso3": "STP",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "185",
+  "nom_fr": "SURINAME",
+  "nom_en": "SURINAME",
+  "code_iso2": "SR",
+  "code_iso3": "SUR",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "186",
+  "nom_fr": "SLOVAQUIE",
+  "nom_en": "SLOVAKIA",
+  "code_iso2": "SK",
+  "code_iso3": "SVK",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "187",
+  "nom_fr": "SLOVÉNIE",
+  "nom_en": "SLOVENIA",
+  "code_iso2": "SI",
+  "code_iso3": "SVN",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "188",
+  "nom_fr": "SUÈDE",
+  "nom_en": "SWEDEN",
+  "code_iso2": "SE",
+  "code_iso3": "SWE",
+  "isUE": "1"
+ },
+ {
+  "id_pays": "189",
+  "nom_fr": "ESWATINI",
+  "nom_en": "SWAZILAND",
+  "code_iso2": "SZ",
+  "code_iso3": "SWZ",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "190",
+  "nom_fr": "SAINT MARTIN (PARTIE NÉERLANDAISE)",
+  "nom_en": "SINT MAARTEN (DUTCH PART)",
+  "code_iso2": "SX",
+  "code_iso3": "SXM",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "191",
+  "nom_fr": "SEYCHELLES",
+  "nom_en": "SEYCHELLES",
+  "code_iso2": "SC",
+  "code_iso3": "SYC",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "192",
+  "nom_fr": "SYRIE",
+  "nom_en": "SYRIAN ARAB REPUBLIC",
+  "code_iso2": "SY",
+  "code_iso3": "SYR",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "193",
+  "nom_fr": "ÎLES TURQUES-ET-CAÏQUES",
+  "nom_en": "TURKS AND CAICOS ISLANDS",
+  "code_iso2": "TC",
+  "code_iso3": "TCA",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "194",
+  "nom_fr": "TCHAD",
+  "nom_en": "CHAD",
+  "code_iso2": "TD",
+  "code_iso3": "TCD",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "195",
+  "nom_fr": "TOGO",
+  "nom_en": "TOGO",
+  "code_iso2": "TG",
+  "code_iso3": "TGO",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "196",
+  "nom_fr": "THAÏLANDE",
+  "nom_en": "THAILAND",
+  "code_iso2": "TH",
+  "code_iso3": "THA",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "197",
+  "nom_fr": "TADJIKISTAN",
+  "nom_en": "TAJIKISTAN",
+  "code_iso2": "TJ",
+  "code_iso3": "TJK",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "198",
+  "nom_fr": "TURKMÉNISTAN",
+  "nom_en": "TURKMENISTAN",
+  "code_iso2": "TM",
+  "code_iso3": "TKM",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "199",
+  "nom_fr": "TIMOR ORIENTAL",
+  "nom_en": "TIMOR-LESTE",
+  "code_iso2": "TL",
+  "code_iso3": "TLS",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "200",
+  "nom_fr": "TONGA",
+  "nom_en": "TONGA",
+  "code_iso2": "TO",
+  "code_iso3": "TON",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "201",
+  "nom_fr": "TRINITÉ ET TOBAGO",
+  "nom_en": "TRINIDAD AND TOBAGO",
+  "code_iso2": "TT",
+  "code_iso3": "TTO",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "202",
+  "nom_fr": "TUNISIE",
+  "nom_en": "TUNISIA",
+  "code_iso2": "TN",
+  "code_iso3": "TUN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "203",
+  "nom_fr": "TURQUIE",
+  "nom_en": "TURKEY",
+  "code_iso2": "TR",
+  "code_iso3": "TUR",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "204",
+  "nom_fr": "TUVALU",
+  "nom_en": "TUVALU",
+  "code_iso2": "TV",
+  "code_iso3": "TUV",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "205",
+  "nom_fr": "TAÏWAN",
+  "nom_en": "TAIWAN",
+  "code_iso2": "TW",
+  "code_iso3": "TWN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "206",
+  "nom_fr": "TANZANIE",
+  "nom_en": "TANZANIA,UNITED REPUBLIC OF",
+  "code_iso2": "TZ",
+  "code_iso3": "TZA",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "207",
+  "nom_fr": "UGANDA",
+  "nom_en": "UGANDA",
+  "code_iso2": "UG",
+  "code_iso3": "UGA",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "208",
+  "nom_fr": "UKRAINE",
+  "nom_en": "UKRAINE",
+  "code_iso2": "UA",
+  "code_iso3": "UKR",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "209",
+  "nom_fr": "URUGUAY",
+  "nom_en": "URUGUAY",
+  "code_iso2": "UY",
+  "code_iso3": "URY",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "210",
+  "nom_fr": "ETATS-UNIS",
+  "nom_en": "UNITED STATES OF AMERICA",
+  "code_iso2": "US",
+  "code_iso3": "USA",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "211",
+  "nom_fr": "OUZBÉKISTAN",
+  "nom_en": "UZBEKISTAN",
+  "code_iso2": "UZ",
+  "code_iso3": "UZB",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "212",
+  "nom_fr": "VATICAN",
+  "nom_en": "VATICAN CITY",
+  "code_iso2": "VA",
+  "code_iso3": "VAT",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "213",
+  "nom_fr": "SAINT-VINCENT-ET-LES-GRENADINES",
+  "nom_en": "SAINT VINCENT AND THE GRENADINES",
+  "code_iso2": "VC",
+  "code_iso3": "VCT",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "214",
+  "nom_fr": "VENEZUELA",
+  "nom_en": "VENEZUELA (BOLIVARIAN REPUBLIC OF)",
+  "code_iso2": "VE",
+  "code_iso3": "VEN",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "215",
+  "nom_fr": "ÎLES VIERGES BRITANNIQUES",
+  "nom_en": "VIRGIN ISLANDS (BRITISH)",
+  "code_iso2": "VG",
+  "code_iso3": "VGB",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "216",
+  "nom_fr": "VIÊT NAM",
+  "nom_en": "VIET NAM",
+  "code_iso2": "VN",
+  "code_iso3": "VNM",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "217",
+  "nom_fr": "VANUATU",
+  "nom_en": "VANUATU",
+  "code_iso2": "VU",
+  "code_iso3": "VUT",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "218",
+  "nom_fr": "SAMOA",
+  "nom_en": "SAMOA",
+  "code_iso2": "WS",
+  "code_iso3": "WSM",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "219",
+  "nom_fr": "YÉMEN",
+  "nom_en": "YEMEN",
+  "code_iso2": "YE",
+  "code_iso3": "YEM",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "220",
+  "nom_fr": "AFRIQUE DU SUD",
+  "nom_en": "SOUTH AFRICA",
+  "code_iso2": "ZA",
+  "code_iso3": "ZAF",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "221",
+  "nom_fr": "ZAMBIE",
+  "nom_en": "ZAMBIA",
+  "code_iso2": "ZM",
+  "code_iso3": "ZMB",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "222",
+  "nom_fr": "ZIMBABWE",
+  "nom_en": "ZIMBABWE",
+  "code_iso2": "ZW",
+  "code_iso3": "ZWE",
+  "isUE": "0"
+ },
+ {
+  "id_pays": "999",
+  "nom_fr": "NON DEFINI",
+  "nom_en": "NON DEFINI",
+  "code_iso2": "ND",
+  "code_iso3": "NDI",
+  "isUE": "0"
+ }
+]

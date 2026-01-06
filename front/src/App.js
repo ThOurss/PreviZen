@@ -10,11 +10,16 @@ import Prevision from './components/prevision/Prevision.jsx';
 import DashBoard from './components/admin/DashBoard.jsx';
 import GestionUserModo from './components/admin/GestionUserModo.jsx';
 import Profil from './components/user/Profil.jsx';
+import Rgpd from './components/mention_legale/Rgpd.jsx';
+import Cgu from './components/mention_legale/Cgu.jsx';
 function App() {
   const [isConnected, setIsConnected] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
+
   useEffect(() => {
+    document.title = "PreviZen";
+
     // 1. On lit le cookie avec js-cookie
     const userCookie = Cookies.get('user_infos');
 
@@ -45,6 +50,8 @@ function App() {
           <Route path='/prevision/:ville' element={<Prevision />}></Route>
           <Route path='/admin/dashboard' element={<DashBoard />} ></Route>
           <Route path='/admin/dashboard/:role' element={<GestionUserModo />} ></Route>
+          <Route path='/rgpd' element={<Rgpd />} ></Route>
+          <Route path='/cgu' element={<Cgu />} ></Route>
 
         </Routes>
         <Footer />

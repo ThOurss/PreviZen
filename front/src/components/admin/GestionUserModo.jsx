@@ -9,7 +9,9 @@ const GestionUserModo = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userToUpdate, setUserToUpdate] = useState(null);
+  const [userToDelete, setUserToDelete] = useState(null);
   const [confirmUpdate, setConfirmUpdate] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
   const navigate = useNavigate();
   const [rolesList, setRolesList] = useState([]);
   const [paysList, setPaysList] = useState([]);
@@ -58,7 +60,7 @@ const GestionUserModo = () => {
       }
 
       const data = await response.json();
-      console.log(data);
+
       setUsers(data); // On met à jour la liste
     } catch (error) {
       console.error("Erreur API :", error);
@@ -88,7 +90,7 @@ const GestionUserModo = () => {
     fetchSelectOptions();
     fetchUsersByRole();
   }, [fetchUsersByRole]);
-  console.log(users);
+
   useEffect(() => {
     if (userToUpdate) {
       setFormData({
@@ -178,6 +180,30 @@ const GestionUserModo = () => {
       alert("Une erreur est survenue lors de la connexion au serveur.");
     }
   };
+  const handleSubmitDelete = async (e) => {
+    e.preventDefault();
+    console.log(userToDelete);
+    if (window.confirm("Êtes-vous sûr ?")) {
+      const response = await fetch(
+        `http://localhost:5000/admin/dashboard/users/delete/${userToDelete.id_User}`,
+        {
+          method: "PUT", // On utilise PATCH pour modifier
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
+      if (response.ok) {
+        // Succès !
+        setConfirmDelete(true);
+      } else {
+        // Erreur serveur
+        const errorData = await response.json();
+        alert(`Erreur : ${errorData.message || "Impossible de modifier"}`);
+      }
+    }
+  };
 
   // --- Rendu ---
   if (loading) return <p>Chargement en cours...</p>;
@@ -211,6 +237,13 @@ const GestionUserModo = () => {
               <div>
                 role:<span>{user.role.nom}</span>
               </div>
+              {user.pending_delete === 1 && (
+                <div>
+                  <p style={{ color: "red", fontWeight: "bold" }}>
+                    L'utilisateur a demandé de supprimer son compte
+                  </p>
+                </div>
+              )}
               <div className="btn-gestion-user">
                 <div>
                   <button
@@ -222,15 +255,13 @@ const GestionUserModo = () => {
                   </button>
                 </div>
 
-                <form action="" method="post">
-                  <input type="hidden" name="_token" value="" />
-
+                <form action="" method="post" onSubmit={handleSubmitDelete}>
                   {role === "user" ? (
                     <button
                       type="submit"
                       className="btn btn-danger"
                       onClick={() => {
-                        return window.confirm("Êtes vous sûrs ?");
+                        setUserToDelete(user);
                       }}
                     >
                       Supprimer l'utilisateur
@@ -240,7 +271,7 @@ const GestionUserModo = () => {
                       type="submit"
                       className="btn btn-danger"
                       onClick={() => {
-                        return window.confirm("Êtes vous sûrs ?");
+                        setUserToDelete(user);
                       }}
                     >
                       Supprimer le modérateur
@@ -360,6 +391,7 @@ const GestionUserModo = () => {
                       </button>
 
                       <button
+                        type="button"
                         className="btn-cancel"
                         onClick={() => {
                           setUserToUpdate(null);
@@ -394,6 +426,31 @@ const GestionUserModo = () => {
                     }}
                   >
                     Valider
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+          {confirmDelete && (
+            <div className="modal-overlay">
+              <div className="modal-content">
+                <h3>Succès</h3>
+                {role === "user" ? (
+                  <p>L’utilisateur a bien été supprimé du site. </p>
+                ) : (
+                  <p>Le modérateur a bien été supprimé du site. </p>
+                )}
+
+                <div className="modal-buttons">
+                  <button
+                    className="btn-valid"
+                    onClick={() => {
+                      setUserToDelete(null);
+                      fetchUsersByRole();
+                      setConfirmDelete(false);
+                    }}
+                  >
+                    Continuer
                   </button>
                 </div>
               </div>

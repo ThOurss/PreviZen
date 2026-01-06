@@ -7,7 +7,6 @@ const PrevisionForecast = ({
   return (
     //créer une fonction pour le timezone + dt
     <article className="forecast-previ">
-      {console.log(unePrevi)}
       <div className="div-img">
         <img
           src={`https://openweathermap.org/img/wn/${unePrevi.weather[0].icon}@2x.png`}
