@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../style/profil.css";
 const Profil = ({ user }) => {
+  //variable d’état
   const [fullProfile, setFullProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
@@ -29,15 +30,17 @@ const Profil = ({ user }) => {
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [confirmPending, setConfirmPending] = useState(false);
   const [errors, setErrors] = useState({});
-
   const navigate = useNavigate();
+
+  //fonction activer/desactiver oeil mdp
   const toggle = (field) => {
     setOeilActif((prev) => ({ ...prev, [field]: !prev[field] }));
   };
+
+  //fonction pour recuperer les données d'un user
   const fetchProfile = useCallback(async () => {
     if (!user || !user.userId) return;
     try {
-      // On appelle l'API avec l'ID de l'user connecté
       const userCookie = Cookies.get("user_infos");
 
       if (!userCookie) {
@@ -45,6 +48,7 @@ const Profil = ({ user }) => {
         navigate("/connexion");
         return;
       }
+      // On appelle l'API avec l'ID de l'user connecté
       const response = await fetch(
         `http://localhost:5000/user/profil/${user.userId}`,
         {
@@ -67,10 +71,11 @@ const Profil = ({ user }) => {
   }, [user, navigate]);
 
   useEffect(() => {
+    // fonction pour recuperer toute les civilites et pays de la BDD
     const fetchSelectOptions = async () => {
       try {
         // Exemple : On charge tout en parallèle
-        // Adapte les URLs selon ton backend
+
         const [resPays, resCiv] = await Promise.all([
           fetch("http://localhost:5000/pays/getAll"),
           fetch("http://localhost:5000/civilite/getAll"),
@@ -86,14 +91,20 @@ const Profil = ({ user }) => {
     fetchSelectOptions();
     fetchProfile();
   }, [fetchProfile]);
+
+  //fonction pour mettre a jour l'état de formData
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
+  // pareil mais pour formMdp
   const handleMDP = (e) => {
     const { name, value } = e.target;
     setFormMdp((prev) => ({ ...prev, [name]: value }));
   };
+
+  // Sert a pré-remplir le formulaire avec les données de l'utilisateur une fois qu'elles ont été récupérées
   useEffect(() => {
     if (fullProfile) {
       setFormData({
@@ -107,10 +118,13 @@ const Profil = ({ user }) => {
       });
     }
   }, [fullProfile]);
+
+  // Fonction qui sert à la modification des données user
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     let newErrors = {};
+    // verification front qu'une propriete n'est pas vide
     if (formData.username.trim() === "") {
       newErrors.username = "Le nom est requis";
     }
@@ -129,7 +143,11 @@ const Profil = ({ user }) => {
 
     setErrors(newErrors);
 
+    // s'il y a une erreur on retourne les erreurs
     if (Object.keys(newErrors).length > 0) return;
+
+    // si pas d'erreur on continue
+
     try {
       // 1. Récupération du Token
       const userCookie = Cookies.get("user_infos");
@@ -192,10 +210,13 @@ const Profil = ({ user }) => {
     }
   };
 
+  // Fonction qui sert à la modification du password user
   const handleSubmitMdp = async (e) => {
     e.preventDefault();
 
     let newErrors = {};
+    // verification front qu'une propriete n'est pas vide
+
     if (formMdp.currentPassword.trim() === "") {
       newErrors.currentPassword = "Le mot de passe est requis";
     }
@@ -206,6 +227,7 @@ const Profil = ({ user }) => {
       newErrors.confirmPassword =
         "La confirmation du nouveau mot de passe est requis";
     }
+    // verification front que les mots de passe correspondent
 
     if (formMdp.newPassword !== formMdp.confirmPassword) {
       newErrors.confirmPassword = "Les mots de passe ne correspondent pas !";
@@ -273,6 +295,8 @@ const Profil = ({ user }) => {
       alert("Une erreur est survenue lors de la connexion au serveur.");
     }
   };
+
+  // Fonction qui sert à envoyer la demande de suppression a l'admin
   const handleSubmitDelete = async (e) => {
     e.preventDefault();
 
@@ -322,10 +346,13 @@ const Profil = ({ user }) => {
       alert("Une erreur est survenue lors de la connexion au serveur.");
     }
   };
-  console.log(fullProfile);
+
   // --- Rendu ---
-  if (loading) return <div>Chargement du profil...</div>;
-  if (!fullProfile) return <div>Impossible de charger les informations.</div>;
+  if (loading) return <div className="no-data">Chargement du profil...</div>;
+  if (!fullProfile)
+    return (
+      <div className="no-data">Impossible de charger les informations.</div>
+    );
   const isDeletionPending = fullProfile.pending_delete === 1 ? true : false;
   return (
     <main id="user-profil">

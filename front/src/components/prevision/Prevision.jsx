@@ -6,20 +6,16 @@ import PrevisionForecast from "./PrevisionForecast.jsx";
 import MapPrevi from "../map/Map.jsx";
 import Cookies from "js-cookie";
 import FavoriteButton from "../button/ButtonFavoris.jsx";
-// 👇 Assure-toi que ce nom correspond bien à ton fichier (WeatherFeed ou WeatherSocial)
 import WeatherSocial from "../social/WeatherSocial.jsx";
 
 const Prevision = () => {
+  //variable d’état
   const [listeVillesAffichees, setListeVillesAffichees] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  // 👇 NOUVEAU STATE : Stocke l'ID API de la ville dont le chat est ouvert
   const [activeFeedVilleId, setActiveFeedVilleId] = useState(null);
-
   const { ville } = useParams();
   const location = useLocation();
   const { lat, lon } = location.state || {};
-
   const [mesFavorisBDD, setMesFavorisBDD] = useState([]);
   const userCookie = Cookies.get("user_infos");
   const user = useMemo(
@@ -27,7 +23,7 @@ const Prevision = () => {
     [userCookie]
   );
 
-  // 1. CHARGER FAVORIS
+  // CHARGER FAVORIS
   const fetchFavorisBDD = useCallback(async () => {
     try {
       let data = [];
@@ -47,7 +43,7 @@ const Prevision = () => {
     }
   }, [user]);
 
-  // 2. FETCH DATA CITY
+  // donnée de la ville + prevision
   const fetchFullCityData = async (latitude, longitude) => {
     try {
       const [resWeather, resForecast] = await Promise.all([
@@ -67,8 +63,9 @@ const Prevision = () => {
     }
   };
 
-  // 3. EFFECT INITIAL
   useEffect(() => {
+    // recuperation des villes au lancement de la page
+
     const init = async () => {
       setLoading(true);
       setListeVillesAffichees([]);
@@ -76,6 +73,7 @@ const Prevision = () => {
       const favorisActuels = await fetchFavorisBDD();
       let villesAFetcher = [];
 
+      // Différenciation entre la page des favoris et celle d’une ville
       if (lat && lon) {
         villesAFetcher.push({ lat, lon });
       } else if (ville) {
@@ -105,12 +103,11 @@ const Prevision = () => {
       const villesFinales = resultats.filter((item) => item !== null);
       setListeVillesAffichees(villesFinales);
 
-      // 👇 LOGIQUE D'OUVERTURE AUTOMATIQUE
       // Si on n'affiche qu'une seule ville (Recherche), on ouvre le chat direct
       if (villesFinales.length === 1) {
         setActiveFeedVilleId(villesFinales[0].current.id);
       } else {
-        // Sinon (Liste de favoris), on laisse tout fermé par défaut pour ne pas surcharger
+        // Sinon (Liste de favoris), on laisse tout fermé par défaut
         setActiveFeedVilleId(null);
       }
 
@@ -120,7 +117,7 @@ const Prevision = () => {
     init();
   }, [lat, lon, ville, fetchFavorisBDD]);
 
-  // DELETE CITY HANDLER
+  // Supprimé ville des favoris
   const handleCityDelete = (openWeatherId) => {
     const isModeDashboardFavoris = !ville && (!lat || !lon);
 
@@ -129,7 +126,7 @@ const Prevision = () => {
         prevList.filter((item) => item.current.id !== openWeatherId)
       );
     } else {
-      console.log("Ville retirée des favoris en mode détail.");
+      console.log("Ville retirée des favoris.");
     }
   };
 
@@ -172,7 +169,7 @@ const Prevision = () => {
                 />
               </section>
 
-              {/* SECTION 2 : PRÉVISIONS SEMAINE */}
+              {/* PRÉVISIONS SEMAINE */}
               <section className="prevision-jour">
                 <h2>Prévisions</h2>
                 <section className="forecast-container">

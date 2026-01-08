@@ -259,12 +259,14 @@
   .contenu-connection_inscription
   .contenu-inscription
   form
-  div.check-cgu,
+  div.check-cgu
+  div,
 .connexion_inscription
   .contenu-connection_inscription
   .contenu-inscription
   form
-  div.check-rgpd {
+  div.check-rgpd
+  div {
   display: flex;
 }
 .connexion_inscription
@@ -272,12 +274,14 @@
   .contenu-inscription
   form
   div.check-cgu
+  div
   input,
 .connexion_inscription
   .contenu-connection_inscription
   .contenu-inscription
   form
   div.check-rgpd
+  div
   input {
   margin-right: 10px;
 }

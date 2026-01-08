@@ -2,17 +2,18 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 const SearchBar = ({ menuBurger }) => {
+  //variable d’état
   const [villeSearch, setVilleSearch] = useState([]);
   const [inputVille, setInputVille] = useState("");
   const [previsu, setPrevisu] = useState(false);
   const [erreur, setErreur] = useState({});
   const containerFermer = useRef(null);
 
+  // fonction pour recuperer les données de la ville chercher
   const searchVille = async (e) => {
     e.preventDefault();
     if (!inputVille) return; // rien à chercher
     try {
-      console.log(inputVille);
       const response = await fetch(
         `http://localhost:5000/api/weather/${encodeURIComponent(inputVille)}`,
         {

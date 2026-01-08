@@ -4,13 +4,14 @@ import "../../style/weathersocial.css";
 
 // On reçoit id_ville (ex: 2988507) et nom_ville (ex: "Paris")
 const WeatherSocial = ({ id_ville, nom_ville }) => {
+  //variable d’état
   const [reports, setReports] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
 
-  // 1. Vérifier l'utilisateur connecté au montage
+  //  Vérifier l'utilisateur connecté au montage
   useEffect(() => {
     const userCookie = Cookies.get("user_infos");
     if (userCookie) {
@@ -22,7 +23,8 @@ const WeatherSocial = ({ id_ville, nom_ville }) => {
     }
   }, []);
 
-  // 2. Fonction pour charger les signalements (stable avec useCallback)
+  // Fonction pour charger les commentaires (stable avec useCallback)
+  // (utile plus tard avec les historiques)
   const fetchReports = useCallback(async () => {
     if (!id_ville) return;
     setLoading(true);
@@ -51,7 +53,7 @@ const WeatherSocial = ({ id_ville, nom_ville }) => {
     fetchReports();
   }, [fetchReports]);
 
-  // 3. Gérer l'envoi du formulaire
+  // //fonction qui gère l'envoi des commentaires
   const handlePublish = async (e) => {
     e.preventDefault();
     if (!newMessage.trim() || !user) return;
@@ -80,7 +82,7 @@ const WeatherSocial = ({ id_ville, nom_ville }) => {
     }
   };
 
-  // Helper date relative (ex: "il y a 5 min")
+  // date relative (ex: "il y a 5 min")
   const timeSince = (dateString) => {
     const seconds = Math.floor((new Date() - new Date(dateString)) / 1000);
     let interval = seconds / 3600;
@@ -136,9 +138,8 @@ const WeatherSocial = ({ id_ville, nom_ville }) => {
 
         {reports.map((repo) => (
           <article key={repo.id_live} className="report-card animate-pop">
-            {console.log(repo)}
             <div className="report-header">
-              {/* Avatar (si dispo dans ton user) sinon rond gris */}
+              {/* Avatar sinon rond gris */}
               <div
                 className="author-avatar"
                 style={

@@ -4,6 +4,7 @@ import MapPrevi from "../map/Map.jsx";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  //variable d’état
   const [villes, setVille] = useState(null);
   const [villeSearch, setVilleSearch] = useState([]); // résultats
   const [inputVille, setInputVille] = useState("");
@@ -21,7 +22,6 @@ const Home = () => {
     e.preventDefault();
     if (!inputVille) return; // rien à chercher
     try {
-      console.log(inputVille);
       const response = await fetch(
         `http://localhost:5000/api/weather/${encodeURIComponent(inputVille)}`,
         {

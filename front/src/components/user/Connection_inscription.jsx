@@ -4,54 +4,64 @@ import "../../style/connection_inscription.css";
 import Cookies from "js-cookie";
 
 const ConnectionInscription = ({ setIsConnected }) => {
-  //const navigate = useNavigate();
-
+  //variable d’état
   const [actif, setActif] = useState(true);
   const [oeilActif, setOeilActif] = useState({
     connection: true,
     inscription: true,
     confirmer: true,
   });
+  const [conditions, setConditions] = useState({
+    cgu: false,
+    rgpd: false,
+  });
   const [inscriptionConfirm, setInscriptionConfirm] = useState(false);
-
   const [visible, setVisible] = useState(false);
   const toggleRequirement = () => {
     setVisible((prev) => !prev);
   };
-
   const [civilites, setCivilites] = useState([]);
-
-  // 3. État pour le choix de l'utilisateur
-  const [choixCivilite, setChoixCivilite] = useState("");
   const [pays, setPays] = useState([]);
-  // 2. État pour la langue (exemple)
-
-  // 3. État pour le choix de l'utilisateur
+  // État pour le choix de l'utilisateur
+  const [choixCivilite, setChoixCivilite] = useState("");
   const [choixPays, setChoixPays] = useState("");
-  const [errors, setErrors] = useState({});
 
+  const [errors, setErrors] = useState({});
+  //fonction activer/desactiver oeil mdp
   const toggle = (field) => {
     setOeilActif((prev) => ({ ...prev, [field]: !prev[field] }));
   };
+
   useEffect(() => {
-    fetch("http://localhost:5000/civilite/getAll")
-      .then((res) => res.json())
-      .then((data) => setCivilites(data)) // On met le JSON dans le state
-      .catch((err) => console.error(err));
-  }, []);
-  useEffect(() => {
-    fetch("http://localhost:5000/pays/getAll")
-      .then((res) => res.json())
-      .then((data) => setPays(data)) // On met le JSON dans le state
-      .catch((err) => console.error(err));
+    // fonction pour recuperer toute les civilites et pays de la BDD
+    const fetchSelectOptions = async () => {
+      try {
+        // Exemple : On charge tout en parallèle
+
+        const [resPays, resCiv] = await Promise.all([
+          fetch("http://localhost:5000/pays/getAll"),
+          fetch("http://localhost:5000/civilite/getAll"),
+        ]);
+
+        setPays(await resPays.json());
+        setCivilites(await resCiv.json());
+      } catch (error) {
+        console.error("Erreur chargement options", error);
+      }
+    };
+
+    fetchSelectOptions();
   }, []);
 
+  //fonction qui gère l'inscription
   const submitInscription = async (e) => {
     let newErrors = {};
     e.preventDefault();
     const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
 
+    const data = Object.fromEntries(formData.entries());
+    console.log(data);
+    // verification front qu'une propriete n'est pas vide
     if (data.usernameInscription.trim() === "") {
       newErrors.usernameInscription = "Votre nom est requis";
     }
@@ -80,11 +90,17 @@ const ConnectionInscription = ({ setIsConnected }) => {
     if (!data.civilite) {
       newErrors.civilite = "Veuillez sélectionner une civilité";
     }
+    if (!conditions.cgu) {
+      newErrors.cgu = "Veuillez accepter les CGU";
+    }
+    if (!conditions.rgpd) {
+      newErrors.rgpd = "Veuillez accepter la RGPD";
+    }
 
-    console.log(data);
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
 
+    // mappage des données a envoye au back
     const dataToSend = {
       username: data.usernameInscription,
       firstname: data.firstnameInscription,
@@ -93,7 +109,6 @@ const ConnectionInscription = ({ setIsConnected }) => {
       id_civilite: choixCivilite, // ex: 2 (Madame)
       id_pays: choixPays,
     };
-    console.log(dataToSend);
 
     try {
       const response = await fetch("http://localhost:5000/user/register", {
@@ -101,14 +116,14 @@ const ConnectionInscription = ({ setIsConnected }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(dataToSend), // On envoie l'objet renommé
+        body: JSON.stringify(dataToSend), // On envoie l'objet
       });
 
       const result = await response.json();
 
       if (response.ok) {
         console.log("Succès:", result);
-        // Redirection ou message de succès
+
         setInscriptionConfirm(true);
       } else {
         newErrors = {};
@@ -132,7 +147,7 @@ const ConnectionInscription = ({ setIsConnected }) => {
         } else {
           console.log(result.message || "Une erreur est survenue");
         }
-        console.log(newErrors);
+
         // On met à jour l'affichage
         setErrors(newErrors);
         return;
@@ -141,13 +156,13 @@ const ConnectionInscription = ({ setIsConnected }) => {
       console.error("Erreur Réseau:", error);
     }
   };
-
+  //fonction qui gère la connection
   const submitConnection = async (e) => {
     let newErrors = {};
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-
+    // verification front qu'une propriete n'est pas vide
     if (data.emailConnection.trim() === "") {
       newErrors.emailConnection = "Votre adresse mail est requis";
     }
@@ -482,21 +497,46 @@ const ConnectionInscription = ({ setIsConnected }) => {
               )}
             </div>
             <div className="check-cgu">
-              <input type="checkbox" name="checkCgu" id="checkCgu" />
-              <label htmlFor="checkCgu">
-                J’accepte les{" "}
-                <Link to={"/cgu"}>conditions générales d’utilisation</Link> du
-                site en m’inscrivant *
-              </label>
+              <div>
+                <input
+                  type="checkbox"
+                  name="checkCgu"
+                  id="checkCgu"
+                  checked={conditions.cgu}
+                  onChange={(e) =>
+                    setConditions({ ...conditions, cgu: e.target.checked })
+                  }
+                />
+                <label htmlFor="checkCgu">
+                  J’accepte les{" "}
+                  <Link to={"/cgu"}>conditions générales d’utilisation</Link> du
+                  site en m’inscrivant *
+                </label>{" "}
+              </div>
+
+              {errors.cgu && <p className="error">{errors.cgu}</p>}
             </div>
+
             <div className="check-rgpd">
-              <input type="checkbox" name="checkRgpd" id="checkRgpd" />
-              <label htmlFor="checkRgpd">
-                J’accepte les{" "}
-                <Link to={"/rgpd"}>Politiques de Gestion des Données</Link> à
-                caractère personnel *
-              </label>
+              <div>
+                <input
+                  type="checkbox"
+                  name="checkRgpd"
+                  id="checkRgpd"
+                  checked={conditions.rgpd}
+                  onChange={(e) =>
+                    setConditions({ ...conditions, rgpd: e.target.checked })
+                  }
+                />
+                <label htmlFor="checkRgpd">
+                  J’accepte les{" "}
+                  <Link to={"/rgpd"}>Politiques de Gestion des Données</Link> à
+                  caractère personnel *
+                </label>
+              </div>
+              {errors.rgpd && <p className="error">{errors.rgpd}</p>}
             </div>
+
             <button type="submit" className="btn-inscription">
               s'inscrire
             </button>
@@ -519,6 +559,7 @@ const ConnectionInscription = ({ setIsConnected }) => {
                   setInscriptionConfirm(false);
                   setActif(true);
                   document.querySelector("#formInscription").reset();
+                  setConditions({ cgu: false, rgpd: false });
                 }}
               >
                 Valider

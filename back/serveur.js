@@ -29,7 +29,7 @@ app.use("/civilite", civiliteRoutes);
 app.use('/pays', paysRoutes);
 app.use('/role', roleRoutes);
 app.use('/favoris', favorisRoutes);
-app.use('/admin', auth, isAdmin, adminRoutes);
+app.use('/admin', auth, adminRoutes);
 app.use('/liveupdate', liveUpdateRoutes);
 app.listen(5000, () => console.log("Serveur sur 5000"));
 

@@ -7,7 +7,7 @@ export const getAllRoles = async (req, res) => {
         const list = await Role.findAll({
             where: {
                 id_role: {
-                    [Op.ne]: 1
+                    [Op.notIn]: [1, 4]
                 }
             }
         });

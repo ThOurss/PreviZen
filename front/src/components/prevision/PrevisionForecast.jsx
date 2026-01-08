@@ -5,7 +5,6 @@ const PrevisionForecast = ({
   timezone,
 }) => {
   return (
-    //créer une fonction pour le timezone + dt
     <article className="forecast-previ">
       <div className="div-img">
         <img

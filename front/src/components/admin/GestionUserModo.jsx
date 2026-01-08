@@ -4,8 +4,9 @@ import Cookies from "js-cookie";
 import "../../style/gestionusermodo.css";
 
 const GestionUserModo = () => {
+  //variable d’état
   const { role } = useParams();
-
+  console.log(role === "user");
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userToUpdate, setUserToUpdate] = useState(null);
@@ -25,11 +26,13 @@ const GestionUserModo = () => {
     civilite_id: "",
   });
   const [errors, setErrors] = useState({});
+
+  // fonction pour recuperer les utilisateur en fonction de leur role
   const fetchUsersByRole = useCallback(async () => {
     setLoading(true); // On affiche le chargement au début
 
     try {
-      // A. On récupère le cookie pour avoir le token
+      // On récupère le cookie pour avoir le token
       const userCookie = Cookies.get("user_infos");
 
       if (!userCookie) {
@@ -38,30 +41,49 @@ const GestionUserModo = () => {
         return;
       }
 
-      // B. On construit l'URL avec le Query Param (?role=...)
-      // C'est ici que la magie opère : Front (:role) -> Back (?role)
-      const response = await fetch(
-        `http://localhost:5000/admin/dashboard/users?role=${role}`,
-        {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
+      //  On construit l'URL avec le Query Param (?role=...)
+      // difference entre user et moderateur
+      if (role === "user") {
+        const response = await fetch(
+          `http://localhost:5000/admin/dashboard/users?role=${role}`,
+          {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+          }
+        );
+        if (!response.ok) {
+          if (response.status === 401 || response.status === 403) {
+            alert("Session expirée ou droits insuffisants");
+            navigate("/");
+            return;
+          }
+          throw new Error("Erreur lors de la récupération des données");
         }
-      );
+        const data = await response.json();
 
-      // Gestion des erreurs HTTP (401, 403, 500...)
-      if (!response.ok) {
-        if (response.status === 401 || response.status === 403) {
-          alert("Session expirée ou droits insuffisants");
-          navigate("/connexion");
-          return;
+        setUsers(data); // On met à jour la liste
+      } else {
+        const response = await fetch(
+          `http://localhost:5000/admin/dashboard/moderateur?role=${role}`,
+          {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+          }
+        );
+        if (!response.ok) {
+          if (response.status === 401 || response.status === 403) {
+            alert("Session expirée ou droits insuffisants");
+            navigate("/");
+            return;
+          }
+          throw new Error("Erreur lors de la récupération des données");
         }
-        throw new Error("Erreur lors de la récupération des données");
+        const data = await response.json();
+
+        setUsers(data); // On met à jour la liste
       }
-
-      const data = await response.json();
-
-      setUsers(data); // On met à jour la liste
     } catch (error) {
       console.error("Erreur API :", error);
     } finally {
@@ -69,6 +91,7 @@ const GestionUserModo = () => {
     }
   }, [role, navigate]);
   useEffect(() => {
+    //fonction pour recuperer les roles/civilites/pays pour la modification des users
     const fetchSelectOptions = async () => {
       try {
         // Exemple : On charge tout en parallèle
@@ -98,8 +121,8 @@ const GestionUserModo = () => {
         username: userToUpdate.username,
         email: userToUpdate.email,
 
-        // 👇 GESTION DES CLÉS ÉTRANGÈRES
-        // Si user.role existe (objet), on prend son ID. Sinon chaîne vide.
+        // GESTION DES CLÉS ÉTRANGÈRES
+        // Si user.role existe , on prend son ID. Sinon chaîne vide.
         role_id: userToUpdate.role ? userToUpdate.role.id_role : "",
 
         // Pareil pour pays et civilité
@@ -110,6 +133,7 @@ const GestionUserModo = () => {
       });
     }
   }, [userToUpdate]);
+  //fonction pour mettre a jour l'état de formData
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -118,7 +142,6 @@ const GestionUserModo = () => {
   // Fonction pour sauvegarder les modifications
   const handleSubmit = async (e) => {
     e.preventDefault(); // On bloque le rechargement de la page
-    console.log(formData);
 
     let newErrors = {};
     if (formData.username.trim() === "") {
@@ -140,67 +163,112 @@ const GestionUserModo = () => {
       newErrors.role_id = "Un role est requis";
     }
     setErrors(newErrors);
-    console.log(newErrors);
+
     if (Object.keys(newErrors).length > 0) return;
     try {
-      // 1. Récupération du Token
+      // Récupération du Token
       const userCookie = Cookies.get("user_infos");
       if (!userCookie) {
         navigate("/connexion");
         return;
       }
 
-      console.log(formData);
-
-      // 2. Envoi de la requête au Backend
+      // Envoi de la requête au Backend
       // On utilise l'ID de l'user qu'on est en train de modifier
-      const response = await fetch(
-        `http://localhost:5000/admin/dashboard/users/${userToUpdate.id_User}`,
-        {
-          method: "PATCH", // On utilise PATCH pour modifier
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify(formData), // On envoie nos states (inputs + selects)
-        }
-      );
+      if (role === "user") {
+        const response = await fetch(
+          `http://localhost:5000/admin/dashboard/users/${userToUpdate.id_User}`,
+          {
+            method: "PATCH", // On utilise PATCH pour modifier
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify(formData), // On envoie nos states (inputs + selects)
+          }
+        );
 
-      // 3. Gestion de la réponse
-      if (response.ok) {
-        // Succès !
-        setConfirmUpdate(true);
+        //Gestion de la réponse
+        if (response.ok) {
+          // Succès !
+          setConfirmUpdate(true);
+        } else {
+          // Erreur serveur
+          const errorData = await response.json();
+          alert(`Erreur : ${errorData.message || "Impossible de modifier"}`);
+        }
       } else {
-        // Erreur serveur
-        const errorData = await response.json();
-        alert(`Erreur : ${errorData.message || "Impossible de modifier"}`);
+        const response = await fetch(
+          `http://localhost:5000/admin/dashboard/moderateur/${userToUpdate.id_User}`,
+          {
+            method: "PATCH", // On utilise PATCH pour modifier
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify(formData), // On envoie nos states (inputs + selects)
+          }
+        );
+
+        // 3. Gestion de la réponse
+        if (response.ok) {
+          // Succès !
+          setConfirmUpdate(true);
+        } else {
+          // Erreur serveur
+          const errorData = await response.json();
+          alert(`Erreur : ${errorData.message || "Impossible de modifier"}`);
+        }
       }
     } catch (error) {
       console.error("Erreur technique :", error);
       alert("Une erreur est survenue lors de la connexion au serveur.");
     }
   };
+
+  //fonction pour supprimer un user
   const handleSubmitDelete = async (e) => {
     e.preventDefault();
-    console.log(userToDelete);
+
     if (window.confirm("Êtes-vous sûr ?")) {
-      const response = await fetch(
-        `http://localhost:5000/admin/dashboard/users/delete/${userToDelete.id_User}`,
-        {
-          method: "PUT", // On utilise PATCH pour modifier
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
+      if (role === "user") {
+        const response = await fetch(
+          `http://localhost:5000/admin/dashboard/users/delete/${userToDelete.id_User}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+          }
+        );
+        if (response.ok) {
+          // Succès !
+          setConfirmDelete(true);
+        } else {
+          // Erreur serveur
+          const errorData = await response.json();
+          alert(`Erreur : ${errorData.message || "Impossible de modifier"}`);
         }
-      );
-      if (response.ok) {
-        // Succès !
-        setConfirmDelete(true);
       } else {
-        // Erreur serveur
-        const errorData = await response.json();
-        alert(`Erreur : ${errorData.message || "Impossible de modifier"}`);
+        const response = await fetch(
+          `http://localhost:5000/admin/dashboard/moderateur/delete/${userToDelete.id_User}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+          }
+        );
+        if (response.ok) {
+          // Succès !
+          setConfirmDelete(true);
+        } else {
+          // Erreur serveur
+          const errorData = await response.json();
+          alert(`Erreur : ${errorData.message || "Impossible de modifier"}`);
+        }
       }
     }
   };

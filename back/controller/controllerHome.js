@@ -24,7 +24,7 @@ export const getWeather = async (req, res) => {
 export const getPreviByVille = async (req, res) => {
     try {
         const { ville } = req.params;
-
+        console.log(ville)
         if (!ville) {
             return res.status(400).json({ error: "Veuillez fournir le nom d'une ville" });
         }
