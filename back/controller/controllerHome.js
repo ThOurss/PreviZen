@@ -33,26 +33,13 @@ export const getPreviByVille = async (req, res) => {
         const response = await axios.get(url, {
             params: { q: ville, appid: KEY_API, limit: 5 }
         });
-        // const filtered = response.data.filter(
-        //       c => c.name.toLowerCase() === ville.toLowerCase()
-        //     );
+
         const data = response.data;
 
         if (!data.length) {
             return res.status(404).json({ error: "Aucune ville trouvée" });
         }
-        // const previVille = data.map(c =>
-        //     axios.get("https://api.openweathermap.org/data/2.5/weather", {
-        //         params: {
-        //             lat: c.lat,
-        //             lon: c.lon,
-        //             appid: KEY_API,
-        //             units: "metric",
-        //             lang: "fr"
-        //         }
-        //     }).then(resp => resp.data)
-        // );
-        // const promeseVille = await Promise.all(previVille);
+
         res.json(data);
 
     } catch (error) {
@@ -73,26 +60,9 @@ export const getPreviByLonLat = async (req, res) => {
         const response = await axios.get(url, {
             params: { lat: lat, lon: lon, appid: KEY_API, units: 'metric', lang: 'fr' }
         });
-        // const filtered = response.data.filter(
-        //       c => c.name.toLowerCase() === ville.toLowerCase()
-        //     );
+
         const data = response.data;
 
-        // if (!data.length) {
-        //     return res.status(404).json({ error: "Aucune ville trouvée" });
-        // }
-        // const previVille = data.map(c =>
-        //     axios.get("https://api.openweathermap.org/data/2.5/weather", {
-        //         params: {
-        //             lat: c.lat,
-        //             lon: c.lon,
-        //             appid: KEY_API,
-        //             units: "metric",
-        //             lang: "fr"
-        //         }
-        //     }).then(resp => resp.data)
-        // );
-        // const promeseVille = await Promise.all(previVille);
         res.json(data);
 
     } catch (error) {
@@ -113,9 +83,7 @@ export const getPreviForecast = async (req, res) => {
         const response = await axios.get(url, {
             params: { lat: lat, lon: lon, cnt: 16, appid: KEY_API, units: 'metric', lang: 'fr' }
         });
-        // const filtered = response.data.filter(
-        //       c => c.name.toLowerCase() === ville.toLowerCase()
-        //     );
+
         const data = response.data;
 
         data.list = data.list.slice(1)

@@ -8,7 +8,7 @@ export const getAllCivilites = async (req, res) => {
                 ['id_civilite', 'ASC'] // Tri alphabétique sur le nom français
             ]
         });
-        res.json(list); // <-- Envoie du JSON, pas du HTML !
+        res.json(list);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

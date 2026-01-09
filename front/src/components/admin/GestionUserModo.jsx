@@ -6,7 +6,6 @@ import "../../style/gestionusermodo.css";
 const GestionUserModo = () => {
   //variable d’état
   const { role } = useParams();
-  console.log(role === "user");
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userToUpdate, setUserToUpdate] = useState(null);

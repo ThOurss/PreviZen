@@ -4,7 +4,7 @@ import { SECRET_JWT } from '../config/db.config.js';
 export default (req, res, next) => {
     try {
         // 1. Récupération du token depuis le COOKIE
-        // Rappel : on l'avait nommé 'auth_token' dans le controller login
+
         const token = req.cookies.auth_token;
 
 
@@ -17,7 +17,7 @@ export default (req, res, next) => {
         const decodedToken = jwt.verify(token, SECRET_JWT);
 
         // 4. On transmet les infos décodées aux routes suivantes
-        // req.auth sera accessible dans tes controllers
+        // req.auth sera accessible dans les controllers
         req.auth = {
             userId: decodedToken.userId,
             role: decodedToken.role

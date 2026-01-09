@@ -1,4 +1,5 @@
 
+//fonction pour afficher le jour de la semaine (lundi ,etc)
 export const formatDay = (timestamp, timezone) => {
     // 1. Calcul du timestamp décalé
 
@@ -13,7 +14,7 @@ export const formatDay = (timestamp, timezone) => {
 
     return dateString.charAt(0).toUpperCase() + dateString.slice(1);
 };
-
+//fonction pour afficher le jour et le mois (Ex: 9 décembre)
 export const formatDateComplete = (timestamp, timezone) => {
     // 1. Calcul du timestamp décalé
     const date = new Date((timestamp + timezone) * 1000);
@@ -22,7 +23,7 @@ export const formatDateComplete = (timestamp, timezone) => {
         day: 'numeric',   // "30"
         month: 'long',
         timeZone: 'UTC'
-    }).format(date) // Ex: "9 décembre"
+    }).format(date)
 };
 
 

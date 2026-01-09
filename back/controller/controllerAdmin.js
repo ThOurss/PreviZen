@@ -1,8 +1,8 @@
-import { User, Role, Pays, Civilite } from "../models/index.js"
+import { User, Role, Pays, Civilite, LiveUpdate } from "../models/index.js"
 import crypto from 'crypto'
 export const getAllUserByRole = async (req, res) => {
     try {
-        const { role } = req.query; // ex: "admin" ou "user"
+        const { role } = req.query;
 
         // On prépare les options de la requête
         const options = {
@@ -24,13 +24,13 @@ export const getAllUserByRole = async (req, res) => {
             ]
         };
 
-        // Si un rôle est demandé dans l'URL (?role=admin), on ajoute le filtre
+        // Si un rôle est demandé dans l'URL (?role=user), on ajoute le filtre
         if (role) {
             // On dit : "Dans le modèle Role inclus, la colonne 'nom' doit être égale à 'role'"
             options.include[0].where = { nom: role };
         }
 
-        // Exécution de la requête (User.findAll remplace db.query)
+        // Exécution de la requête 
         const users = await User.findAll(options);
 
         res.status(200).json(users);
@@ -52,13 +52,13 @@ export const updateUser = async (req, res) => {
     } = req.body;
 
     try {
-        // 2. Vérif si l'user existe
+        //  Vérif si l'user existe
         const user = await User.findByPk(id);
         if (!user) {
             return res.status(404).json({ message: "Utilisateur introuvable" });
         }
 
-        // 3. On construit l'objet de mise à jour dynamiquement
+        // On construit l'objet de mise à jour dynamiquement
         // On n'ajoute la propriété QUE si elle est présente dans la requête
         const updateData = {};
 
@@ -77,8 +77,8 @@ export const updateUser = async (req, res) => {
         if (Object.keys(updateData).length === 0) {
             return res.status(400).json({ message: "Aucune donnée valide à modifier." });
         }
-        console.log(updateData)
-        // 4. L'UPDATE SQL
+
+        // L'UPDATE SQL
         // Sequelize va faire : UPDATE users SET ... WHERE id = ...
         await User.update(updateData, { where: { id_User: id } });
 
@@ -94,26 +94,26 @@ export const deleteUser = async (req, res) => {
     const userId = req.params.id;
 
     try {
-        // 1. Vérifier si l'utilisateur existe
+        //  Vérifier si l'utilisateur existe
         const user = await User.findByPk(userId);
 
         if (!user) {
             return res.status(404).json({ message: "Utilisateur non trouvé" });
         }
 
-        // 2. Générer des données aléatoires pour éviter les doublons (conflits d'email)
+        //  Générer des données aléatoires pour éviter les doublons (conflits d'email)
         const randomString = crypto.randomBytes(64).toString('hex') + 'A1!@#';
         const timestamp = Date.now();
 
-        // 3. Exécuter l'UPDATE (L'anonymisation)
+        //  Exécuter l'UPDATE (L'anonymisation)
         await user.update({
             // Remplacement des données identifiables
-            firstname: 'Anonyme',
+            firstname: 'supprime',
             username: 'Utilisateur',
 
             // GESTION DE L'EMAIL UNIQUE :
             // On crée un email bidon mais UNIQUE 
-            email: `deleted_${user.id}_${timestamp}@previzen.anonyme`,
+            email: `deleted_${user.id_User}_${timestamp}@previzen.anonyme`,
 
             // On écrase les données sensibles
             password: randomString,

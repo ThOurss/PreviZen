@@ -4,10 +4,9 @@ import auth from '../middleware/auth.js';
 
 const router = express.Router();
 
-// URL publique pour lire (ex: /api/reports?cityId=...)
-router.get('/', getCityReports);
+router.get('/', getCityReports); // route pour recuperer tout les commentaires d'une ville
 
-// URL protégée pour écrire (nécessite un token valide)
-router.post('/', auth, createReport);
+
+router.post('/', auth, createReport); // route pour creer un commentaire d'une ville
 
 export default router;

@@ -4,7 +4,7 @@ export default (req, res, next) => {
 
         const role = req.auth.role;
 
-        // Si ce n'est pas un admin (ID 1)
+        // Si ce n'est pas un moderateur ou admin (id 2 ou 1)
         if (role !== 2 && role !== 1) {
             return res.status(403).json({ error: "Accès interdit : Droits d'administration requis" });
         }

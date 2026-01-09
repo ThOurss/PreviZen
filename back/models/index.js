@@ -15,10 +15,9 @@ import LiveUpdate from "./modelLiveUpdate.js";
 
 // --- DÉFINITION DES RELATIONS ---
 
-// 1. Un User appartient à un Role
 // C'est cette ligne qui crée la colonne 'id_role' dans la table Users
 User.belongsTo(Role, {
-    foreignKey: 'id_role', // On force le nom de la colonne (sinon ce serait roleId)
+    foreignKey: 'id_role',
     as: 'role'             // Alias pour les requêtes (user.role)
 });
 
@@ -50,7 +49,6 @@ Signalement.belongsTo(User, {
     as: 'user'
 })
 
-// 2. Un Role a plusieurs Users
 
 User.hasMany(Alerte, {
     foreignKey: 'id_user',
@@ -83,6 +81,8 @@ User.hasMany(Favori, {
     as: 'favoriUser',
     onDelete: 'CASCADE'
 });
+
+// fonction pour initialiser les roles au lancement du serveur 
 const initRoles = async () => {
     try {
         // Liste des rôles à avoir
@@ -94,12 +94,12 @@ const initRoles = async () => {
                 defaults: { nom: roleName } // Sinon on le crée
             });
         }
-        console.log('✅ Vérification des rôles terminée');
+        console.log(' Vérification des rôles terminée');
     } catch (e) {
-        console.error('❌ Erreur seeding:', e);
+        console.error(' Erreur seeding:', e);
     }
 };
-
+// fonction pour initialiser les civilite au lancement du serveur 
 const initCivilite = async () => {
     try {
         // Liste des civilites à avoir
@@ -111,20 +111,20 @@ const initCivilite = async () => {
                 defaults: { nom: civiliteName } // Sinon on le crée
             });
         }
-        console.log('✅ Vérification des civilite terminée');
+        console.log(' Vérification des civilite terminée');
     } catch (e) {
-        console.error('❌ Erreur seeding:', e);
+        console.error(' Erreur seeding:', e);
     }
 };
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// --- FONCTION D'IMPORT json ---
+// --- FONCTION D'IMPORT json des pays  ---
 const importCountriesJSON = async () => {
     try {
 
-        console.log('📜 Lecture du fichier JSON en cours...');
+        console.log(' Lecture du fichier JSON en cours...');
 
         // 1. On cherche le fichier 
         const jsonFilePath = path.join(__dirname, '../data/script_pays.json');
@@ -152,10 +152,10 @@ const importCountriesJSON = async () => {
             updateOnDuplicate: ["nom_fr", "nom_en", "code_iso2", "code_iso3", "isUE"]
         });
 
-        console.log('✅ Pays importés depuis le fichier json !');
+        console.log(' Pays importés depuis le fichier json !');
 
     } catch (e) {
-        console.error('❌ Erreur import JSON :', e);
+        console.error(' Erreur import JSON :', e);
     }
 };
 export { User, Role, Civilite, LiveUpdate, Pays, Alerte, Favori, initRoles, initCivilite, importCountriesJSON, };

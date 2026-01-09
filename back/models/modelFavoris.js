@@ -16,7 +16,7 @@ const Favori = sequelize.define('Favori', {
         allowNull: false
     },
     lat: {
-        type: DataTypes.FLOAT, // ou DECIMAL(10, 8) pour plus de précision
+        type: DataTypes.FLOAT,
         allowNull: false
     },
     lon: {

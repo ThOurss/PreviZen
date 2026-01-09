@@ -30,7 +30,7 @@ export const login = async (req, res) => {
     try {
         const { email, password, stayConnected } = req.body;
 
-        // 1. On cherche l'utilisateur par son email
+        //  On cherche l'utilisateur par son email
         const user = await User.findOne({ where: { email: email } });
 
         // S'il n'existe pas -> Erreur
@@ -38,14 +38,14 @@ export const login = async (req, res) => {
             return res.status(401).json({ error: "Email ou mot de passe incorrect" });
         }
 
-        // 2. On compare le mot de passe envoyé avec le hash en BDD
+        //  On compare le mot de passe envoyé avec le hash en BDD
         const validPassword = await bcrypt.compare(password, user.password);
 
         if (!validPassword) {
             return res.status(401).json({ error: "Email ou mot de passe incorrect" });
         }
 
-        // 3. Tout est bon ? On génère le Token
+
         // Le token contient l'ID et le Rôle (pour savoir s'il est admin plus tard)
         const tokenDuration = stayConnected ? 30 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000;
 
@@ -136,13 +136,13 @@ export const updateUser = async (req, res) => {
     } = req.body;
 
     try {
-        // 2. Vérif si l'user existe
+        //  Vérif si l'user existe
         const user = await User.findByPk(id);
         if (!user) {
             return res.status(404).json({ message: "Utilisateur introuvable" });
         }
 
-        // 3. On construit l'objet de mise à jour dynamiquement
+        //  On construit l'objet de mise à jour dynamiquement
         // On n'ajoute la propriété QUE si elle est présente dans la requête
         const updateData = {};
 
@@ -161,7 +161,7 @@ export const updateUser = async (req, res) => {
             return res.status(400).json({ message: "Aucune donnée valide à modifier." });
         }
 
-        // 4. L'UPDATE SQL
+        //  L'UPDATE SQL
         // Sequelize va faire : UPDATE users SET ... WHERE id = ...
         await User.update(updateData, { where: { id_User: id } });
 
@@ -196,7 +196,7 @@ export const updateMdpUser = async (req, res) => {
         if (newPassword !== confirmPassword) {
             return res.status(400).json({ message: "Les mots de passe ne correspondent pas." });
         }
-        // 2. Vérif si l'user existe
+        //  Vérif si l'user existe
 
         const user = await User.findByPk(id);
         if (!user) {

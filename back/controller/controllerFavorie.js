@@ -43,7 +43,7 @@ export const getFavoris = async (req, res) => {
 
 export const deleteFavori = async (req, res) => {
     try {
-        const { id } = req.body; // 👈 On attend maintenant un ID, plus de lat/lon
+        const { id } = req.body; // On attend maintenant un ID, plus de lat/lon
         const userId = req.auth.userId;
 
         // On supprime en vérifiant l'ID ET l'userId (sécurité)

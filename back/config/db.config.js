@@ -10,11 +10,5 @@ export const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
     }
 });
 
-// export const HOST = DB_HOST;
-// export const USER = DB_USER;
-// export const PASSWORD = DB_PASSWORD;
-// export const DB = DB_NAME;
-// export const dialect = "mysql";
-// export const port = DB_PORT;
 export const KEY_API = API_KEY;
 export const SECRET_JWT = JWT_SECRET;

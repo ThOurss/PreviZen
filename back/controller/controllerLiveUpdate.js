@@ -1,18 +1,28 @@
 
 import { LiveUpdate, User } from '../models/index.js';
+import { Op } from 'sequelize';
 
 // GET: Récupérer les signalements d'une ville
 export const getCityReports = async (req, res) => {
-    // On attend l'ID API dans l'URL (ex: /api/reports?id_ville=2988507)
+    // On attend l'ID API dans l'URL 
     const { id_ville } = req.query;
-    console.log(id_ville)
+
     if (!id_ville) {
         return res.status(400).json({ message: "ID de ville manquant" });
     }
+    const startOfDay = new Date();
+    startOfDay.setHours(0, 0, 0, 0); // Aujourd'hui à 00:00:00
 
+    const endOfDay = new Date();
+    endOfDay.setHours(23, 59, 59, 999); // Aujourd'hui à 23:59:59
     try {
         const msg = await LiveUpdate.findAll({
-            where: { ville_id: id_ville }, // Filtre précis
+            where: {
+                ville_id: id_ville,
+                createdAt: {
+                    [Op.between]: [startOfDay, endOfDay]
+                }
+            },
             include: [
                 {
                     model: User,
@@ -20,7 +30,7 @@ export const getCityReports = async (req, res) => {
                     attributes: ['id_user', 'username', 'firstname'] // On ne renvoie que le public
                 }
             ],
-            order: [['createdAt', 'DESC']], // Les plus récents en premier (style feed Insta)
+            order: [['createdAt', 'DESC']], // Les plus récents en premier 
             limit: 50 // Sécurité : on charge pas tout l'historique d'un coup
         });
 
@@ -31,10 +41,9 @@ export const getCityReports = async (req, res) => {
     }
 };
 
-// POST: Créer un signalement (Protégé)
+// POST: Créer un signalement 
 export const createReport = async (req, res) => {
-    // req.user.id vient de ton middleware d'auth
-    // req.body contient { content, id_ville, nom_ville }
+
     try {
 
         // Validation basique côté serveur
@@ -49,7 +58,6 @@ export const createReport = async (req, res) => {
             id_user: req.auth.userId
         });
 
-        // Optionnel : renvoyer le report créé avec les infos de l'auteur pour affichage direct
         const fullReport = await LiveUpdate.findByPk(newMsg.id_live, {
             include: [{ model: User, as: 'liveUser', attributes: ['username', 'firstname'] }]
         });

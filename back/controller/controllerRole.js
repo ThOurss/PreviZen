@@ -11,7 +11,7 @@ export const getAllRoles = async (req, res) => {
                 }
             }
         });
-        res.json(list); // <-- Envoie du JSON, pas du HTML !
+        res.json(list);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

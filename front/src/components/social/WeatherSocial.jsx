@@ -149,7 +149,9 @@ const WeatherSocial = ({ id_ville, nom_ville }) => {
                 }
               ></div>
               <span className="author-name">
-                {repo.liveUser ? repo.liveUser.username : "Anonyme"}
+                {repo.liveUser
+                  ? repo.liveUser.username + " " + repo.liveUser.firstname
+                  : "Anonyme"}
               </span>
               <span className="report-date">{timeSince(repo.createdAt)}</span>
             </div>

@@ -163,7 +163,7 @@ const User = sequelize.define('User', {
         }
     },
 
-    timestamps: false // Ajoute automatiquement createdAt et updatedAt
+    timestamps: false // si true ajoute automatiquement createdAt et updatedAt
 });
 
 export default User

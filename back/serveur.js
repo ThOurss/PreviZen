@@ -37,14 +37,8 @@ app.listen(5000, () => console.log("Serveur sur 5000"));
 async function startApp() {
     await createDatabase();
 
-
     await sequelize.authenticate();
-    console.log('✅ Connexion Sequelize établie !');
-
-
-
-    // initialisation des modèles
-    //UserModel(sequelize);
+    console.log(' Connexion Sequelize établie !');
 
     // synchronisation des tables
 
@@ -52,7 +46,7 @@ async function startApp() {
     await initRoles();
     await initCivilite();
     await importCountriesJSON();
-    console.log('✅ Tables synchronisées');
+    console.log(' Tables synchronisées !!');
 }
 
 startApp();
