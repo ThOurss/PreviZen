@@ -18,7 +18,7 @@ import isAdmin from './middleware/isAdmin.js';
 const app = express();
 app.use(cors({
     origin: 'http://localhost:3000',
-    credentials: true // autorise toutes les origines (pour dev)
+    credentials: true // autorise toutes les origines (pour dev) (limiter au front-end local)
 }));
 app.use(express.json());
 app.use(cookieParser());

@@ -58,7 +58,7 @@ export const login = async (req, res) => {
             httpOnly: true,
             secure: false, // Mettre 'true' en HTTPS
             sameSite: 'strict',
-            tokenDuration: tokenDuration
+            maxAge: tokenDuration
         });
         // 4. On renvoie le token et les infos de l'utilisateur au front
         res.status(200).json({
