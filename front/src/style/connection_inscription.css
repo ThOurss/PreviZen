@@ -285,6 +285,22 @@
   input {
   margin-right: 10px;
 }
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-inscription
+  form
+  div.check-cgu
+  div
+  label,
+.connexion_inscription
+  .contenu-connection_inscription
+  .contenu-inscription
+  form
+  div.check-rgpd
+  div
+  label {
+  text-align: left;
+}
 .btn-inscription {
   margin-bottom: 1rem;
 }

@@ -77,7 +77,7 @@ const Menu = ({
               onClick={handleLogoutClick}
               className="roboto-regular link-connexion"
             >
-              <img src="/assets/picto/sortie.png" alt="picto se deconnecter" />
+              <img src="/assets/picto/sortie.png" alt="se deconnecter" />
             </Link>
           </li>
         ) : (
@@ -85,7 +85,7 @@ const Menu = ({
             <Link to="/connexion" className="roboto-regular link-connexion">
               <img
                 src="/assets/picto/utilisateur.png"
-                alt="picto utilisateur"
+                alt="Se connecter / s’inscrire"
               />
             </Link>
           </li>
@@ -121,8 +121,8 @@ const Menu = ({
 
           <ul>
             <li>
-              <Link to="/" onClick={menuBurger} className="roboto-regular">
-                <img src="../assets/picto/home.png" alt="" />
+              <Link to="/" className="roboto-regular">
+                <img src="../assets/picto/home.png" alt="Accès à l’accueil" />
                 Accueil
               </Link>
             </li>
@@ -132,20 +132,37 @@ const Menu = ({
                 onClick={menuBurger}
                 className="roboto-regular"
               >
-                <img src="../assets/picto/previsions.png" alt="" />
-                Prévision
+                <img src="../assets/picto/coeur.png" alt="Accès page favoris" />
+                Favoris
               </Link>
             </li>
+            {isAdmin || isModerateur ? (
+              // L'utilisateur est ADMIN / Modérateur
+              <li>
+                <Link to="/admin/dashboard" onClick={menuBurger}>
+                  <img
+                    src="/assets/picto/tableau-de-bord.png"
+                    alt="Accès tableau de bord"
+                  />
+                  Tableau de bord
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
             <li>
-              <Link to="/alert" onClick={menuBurger} className="roboto-regular">
-                <img src="../assets/picto/cloche.png" alt="" />
-                Alerte
+              <Link to={linkProfil} onClick={menuBurger}>
+                <img
+                  src="/assets/picto/utilisateur.png"
+                  alt="Accès au profil utilisateur"
+                />
+                Profil
               </Link>
             </li>
             {isConnected ? (
               <li>
                 <Link onClick={handleLogoutClick} className="roboto-regular">
-                  <img src="/assets/picto/sortie.png" alt="picto utilisateur" />
+                  <img src="/assets/picto/sortie.png" alt="Se déconnecter" />
                   Se déconnecter
                 </Link>
               </li>
@@ -158,7 +175,7 @@ const Menu = ({
                 >
                   <img
                     src="/assets/picto/utilisateur.png"
-                    alt="picto utilisateur"
+                    alt="Se connecter / s’inscrire"
                   />
                   connexion / inscription
                 </Link>
