@@ -1,6 +1,7 @@
 import { createDatabase } from './db/createDatabase.js';
 import express from "express";
 import weatherRoutes from "./routes/routesAPI.js";
+import authRoutes from "./routes/routesAuth.js";
 import userRoutes from "./routes/routesUser.js";
 import civiliteRoutes from "./routes/routesCivilite.js";
 import paysRoutes from './routes/routesPays.js';
@@ -13,7 +14,7 @@ import cors from "cors";
 import { sequelize } from './config/db.config.js';
 import cookieParser from 'cookie-parser';
 import auth from './middleware/auth.js';
-import isAdmin from './middleware/isAdmin.js';
+
 
 const app = express();
 app.use(cors({
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api", weatherRoutes);
+app.use('/auth', authRoutes)
 app.use("/user", userRoutes);
 app.use("/civilite", civiliteRoutes);
 app.use('/pays', paysRoutes);
