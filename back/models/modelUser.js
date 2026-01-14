@@ -65,6 +65,9 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
+            notNull: {
+                msg: 'Veuillez renseigner votre mot de passe',
+            },
             len: {
                 args: [8, 255],
                 msg: "Le mot de passe doit contenir entre 8 et 255 caractères."

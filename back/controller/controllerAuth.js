@@ -34,11 +34,12 @@ export const login = async (req, res) => {
             sameSite: 'strict',
             maxAge: tokenDuration
         });
-        //  On renvoie le token et les infos de l'utilisateur au front
+        //  On renvoie les infos de l'utilisateur au front
         res.status(200).json({
             userId: user.id_User,
             username: user.username,
             role: user.id_role,
+            message: 'cookie'
         });
 
     } catch (error) {
@@ -50,7 +51,7 @@ export const login = async (req, res) => {
 
             return res.status(400).json({ errors: fieldErrors });
         }
-
+        console.log(error)
         res.status(500).json({ message: 'Erreur serveur' });
     }
 };

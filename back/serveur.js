@@ -33,7 +33,7 @@ app.use('/role', roleRoutes);
 app.use('/favoris', favorisRoutes);
 app.use('/admin', auth, adminRoutes);
 app.use('/liveupdate', liveUpdateRoutes);
-app.listen(5000, () => console.log("Serveur sur 5000"));
+
 
 
 async function startApp() {
@@ -50,5 +50,14 @@ async function startApp() {
     await importCountriesJSON();
     console.log(' Tables synchronisées !!');
 }
+if (process.env.NODE_ENV !== 'test') {
+    startApp();
 
-startApp();
+
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+        console.log(`Serveur lancé sur le port ${PORT}`);
+    });
+}
+
+export default app
