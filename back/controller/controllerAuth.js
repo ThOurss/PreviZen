@@ -5,7 +5,6 @@ import { User } from '../models/index.js';
 export const login = async (req, res) => {
     try {
         const { email, password, stayConnected } = req.body;
-
         //  On cherche l'utilisateur par son email
         const user = await User.findOne({ where: { email: email } });
 
@@ -40,7 +39,6 @@ export const login = async (req, res) => {
             userId: user.id_User,
             username: user.username,
             role: user.id_role,
-            token: token
         });
 
     } catch (error) {
