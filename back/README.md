@@ -7,9 +7,9 @@
 
 1.  Installez les dépendances :
 
-```sh
-npm install
-```
+    ```sh
+    npm install
+    ```
 
 2.  **Configuration (.env) :**
     Créez un fichier `.env` à la racine du dossier `back` et renseignez les variables suivantes :
@@ -17,13 +17,15 @@ npm install
     ```env
 
     PORT=5000
-    NODE_ENV=development # Configuration Base de données
+    NODE_ENV=development
+    # Configuration Base de données
     DB_HOST=localhost
     DB_USER=root
     DB_PASS=votre_mot_de_passe
     DB_NAME=PreviZen
     DB_PORT=votre_port
-    DB_DIALECT=mysql # Sécurité
+    DB_DIALECT=mysql
+    # Sécurité
     JWT_SECRET=votre_cle_secrete_tres_longue_et_complexe
 
     # API Externe
@@ -42,7 +44,7 @@ _Note : Au premier lancement, Sequelize créera automatiquement les tables dans 
 ## Run tests
 
 ```sh
-npm run test
+npm test
 ```
 
 ## Author

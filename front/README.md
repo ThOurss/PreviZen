@@ -13,13 +13,13 @@ npm install
 2.  Lancement en mode développement :
 
 ```sh
-npm run start
+npm start
 ```
 
 ## Run tests
 
 ```sh
-npm run test
+npm test
 ```
 
 ## Author
