@@ -38,8 +38,8 @@ Pour tester le projet localement, suivez ces étapes :
 
 Le projet est divisé en deux parties distinctes :
 
-1.  **Backend (API & Base de données) :** [Voir la documentation technique Backend](./backend/README.md)
-2.  **Frontend (Interface React) :** [Voir la documentation technique Frontend](./frontend/README.md)
+1.  **Backend (API & Base de données) :** [Voir la documentation technique Backend](./back/README.md)
+2.  **Frontend (Interface React) :** [Voir la documentation technique Frontend](./front/README.md)
 
 **Démarrage rapide :**
 Il est nécessaire de lancer les deux terminaux simultanément pour que l'application fonctionne.
