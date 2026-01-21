@@ -35,6 +35,7 @@ Pour tester le projet localement, suivez ces étapes :
 - Node.js installé
 - MySQL installé
 - Une clé API OpenWeatherMap
+- un serveur local (MAMP, WAMP, etc...)
 
 Le projet est divisé en deux parties distinctes :
 

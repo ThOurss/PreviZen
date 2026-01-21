@@ -35,6 +35,8 @@
 
 3.  Lancement du serveur :
 
+Lancer votre serveur local puis
+
 ```sh
 node .\serveur.js
 ```
