@@ -1,16 +1,16 @@
-# Welcome to PreviZen 👋
+# 💻 PreviZen - Interface Frontend
 
 ![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000)
 
-> Plateforme météo sociale permettant de suivre les prévisions mondiales et d'interagir localement via un mur de signalements en direct. Stack moderne React/Node/MySQL avec sécurité renforcée
+> Ce dossier contient l'interface utilisateur de l'application, développée avec **React** .
 
-## Install
+1.  Installez les dépendances :
 
 ```sh
 npm install
 ```
 
-## Usage
+2.  Lancement en mode développement :
 
 ```sh
 npm run start

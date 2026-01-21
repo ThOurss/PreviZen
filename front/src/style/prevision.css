@@ -159,6 +159,9 @@
   @media screen and (max-width: 1300px) {
     height: 10.5vh;
   }
+  @media screen and (max-width: 767px) {
+    height: 15vh;
+  }
 }
 #sect-prevision
   .container-prevision
@@ -183,11 +186,10 @@
   @media screen and (max-width: 1200px) {
     width: 40%;
   }
-  @media screen and (min-width: 767px) and (max-width: 992px) {
-    align-items: center;
-  }
-  @media screen and (max-width: 767px) {
+
+  @media screen and (max-width: 992px) {
     text-align: left;
+    width: 45%;
   }
 }
 #sect-prevision

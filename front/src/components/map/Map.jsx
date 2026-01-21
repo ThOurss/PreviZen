@@ -38,7 +38,8 @@ const MapPrevi = ({
           </h3>
           <div className="temp-previ">
             <p>
-              {Math.round(ville.main.temp)} °C, {ville.weather[0].description}{" "}
+              {Math.round(ville.main.temp)}°C,{" "}
+              {ville.weather[0].description}{" "}
             </p>
           </div>
         </div>
@@ -58,7 +59,8 @@ const MapPrevi = ({
 
           <div className="temp-previ">
             <p>
-              {ville.weather[0].description}, {Math.round(ville.main.temp)} °C{" "}
+              {ville.weather[0].description}, {Math.round(ville.main.temp)}
+              °C{" "}
             </p>
           </div>
         </div>

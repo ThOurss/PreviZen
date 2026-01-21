@@ -3,10 +3,9 @@ import { SECRET_JWT } from '../config/db.config.js';
 
 export default (req, res, next) => {
     try {
+
         // 1. Récupération du token depuis le COOKIE
-
         const token = req.cookies.auth_token;
-
 
         // 2. Si pas de token, on bloque tout de suite
         if (!token) {

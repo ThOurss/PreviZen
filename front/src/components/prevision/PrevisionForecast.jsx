@@ -20,7 +20,7 @@ const PrevisionForecast = ({
         <span>{unePrevi.weather[0].description}</span>
       </h3>
       <div className="temperature">
-        <p>{Math.round(unePrevi.temp.day)} °C</p>
+        <p>{Math.round(unePrevi.temp.day)}°C</p>
       </div>
     </article>
   );
