@@ -41,7 +41,7 @@ const FavoriteButton = ({
       if (listeFavorisBDD && listeFavorisBDD.length > 0) {
         const favoriTrouve = listeFavorisBDD.find(
           (fav) =>
-            Math.abs(fav.lat - lat) < 0.001 && Math.abs(fav.lon - lon) < 0.001
+            Math.abs(fav.lat - lat) < 0.001 && Math.abs(fav.lon - lon) < 0.001,
         );
         setCurrentFavoriId(favoriTrouve ? favoriTrouve.id_favori : null);
       } else {
@@ -51,7 +51,7 @@ const FavoriteButton = ({
       const ls = JSON.parse(localStorage.getItem("favoris_guest")) || [];
       const existe = ls.some(
         (fav) =>
-          Math.abs(fav.lat - lat) < 0.001 && Math.abs(fav.lon - lon) < 0.001
+          Math.abs(fav.lat - lat) < 0.001 && Math.abs(fav.lon - lon) < 0.001,
       );
       setCurrentFavoriId(existe ? "guest" : null);
     }
@@ -119,7 +119,7 @@ const FavoriteButton = ({
           (fav) =>
             !(
               Math.abs(fav.lat - lat) < 0.001 && Math.abs(fav.lon - lon) < 0.001
-            )
+            ),
         );
         setCurrentFavoriId(null);
 
@@ -151,7 +151,7 @@ const FavoriteButton = ({
             ? "../assets/picto/bouton-supprimer.png"
             : "../assets/picto/cercle.png"
         }
-        alt={isFavorite ? "Retirer" : "Ajouter"}
+        alt={isFavorite ? "Retirer des favoris" : "Ajouter des favoris"}
         style={{ opacity: loading ? 0.5 : 1 }}
       />
     </button>

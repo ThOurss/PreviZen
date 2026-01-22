@@ -9,7 +9,7 @@ const PrevisionForecast = ({
       <div className="div-img">
         <img
           src={`https://openweathermap.org/img/wn/${unePrevi.weather[0].icon}@2x.png`}
-          alt=""
+          alt="icon temps"
         />
       </div>
       <h3>

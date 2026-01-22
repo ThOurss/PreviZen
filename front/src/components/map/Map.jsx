@@ -49,7 +49,7 @@ const MapPrevi = ({
           <div className="img-temp">
             <img
               src={`https://openweathermap.org/img/wn/${ville.weather[0].icon}@2x.png`}
-              alt=""
+              alt="icon temps"
             />
           </div>
           <h3>

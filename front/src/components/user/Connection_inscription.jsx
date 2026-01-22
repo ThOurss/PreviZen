@@ -267,13 +267,13 @@ const ConnectionInscription = ({ setIsConnected }) => {
                   />
                   <img
                     src="../assets/picto/oeil.png"
-                    alt=""
+                    alt="Voir mot de passe"
                     className={`${oeilActif.connection ? "oeilActif" : ""} `}
                     onClick={() => toggle("connection")}
                   />
                   <img
                     src="../assets/picto/oeil_close.png"
-                    alt=""
+                    alt="cacher mot de passe"
                     className={`${!oeilActif.connection ? "oeilActif" : ""} `}
                     onClick={() => toggle("connection")}
                   />
@@ -436,7 +436,7 @@ const ConnectionInscription = ({ setIsConnected }) => {
                     <img
                       className="icon-info"
                       src="../assets/picto/icon_info.png"
-                      alt="icon-info"
+                      alt="Exigence mot de passe"
                     />
                   </button>
                 </legend>
@@ -450,13 +450,13 @@ const ConnectionInscription = ({ setIsConnected }) => {
                   />
                   <img
                     src="../assets/picto/oeil.png"
-                    alt=""
+                    alt="Voir nouveau mot de passe"
                     className={`${oeilActif.inscription ? "oeilActif" : ""} `}
                     onClick={() => toggle("inscription")}
                   />
                   <img
                     src="../assets/picto/oeil_close.png"
-                    alt=""
+                    alt="Cacher nouveau mot de passe"
                     className={`${!oeilActif.inscription ? "oeilActif" : ""} `}
                     onClick={() => toggle("inscription")}
                   />
@@ -480,13 +480,13 @@ const ConnectionInscription = ({ setIsConnected }) => {
                   />
                   <img
                     src="../assets/picto/oeil.png"
-                    alt=""
+                    alt="Voir confirmation mot de passe"
                     className={`${oeilActif.confirmer ? "oeilActif" : ""} `}
                     onClick={() => toggle("confirmer")}
                   />
                   <img
                     src="../assets/picto/oeil_close.png"
-                    alt=""
+                    alt="Ccaher confirmation mot de passe"
                     className={`${!oeilActif.confirmer ? "oeilActif" : ""} `}
                     onClick={() => toggle("confirmer")}
                   />

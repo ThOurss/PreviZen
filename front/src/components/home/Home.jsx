@@ -26,7 +26,7 @@ const Home = () => {
         `http://localhost:5000/api/weather/${encodeURIComponent(inputVille)}`,
         {
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
       if (response.ok) {
         const data = await response.json();
@@ -90,7 +90,7 @@ const Home = () => {
                       {uneVille.name}, {uneVille.country}{" "}
                       <img
                         src={`../assets/drapeaux/${uneVille.country.toLowerCase()}.svg`}
-                        alt=""
+                        alt={`Drapeaux ${uneVille.country.toLowerCase()}`}
                       />
                     </Link>
                   </li> //

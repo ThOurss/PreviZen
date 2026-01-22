@@ -56,7 +56,7 @@ const Profil = ({ user }) => {
 
           headers: { "Content-Type": "application/json" },
           credentials: "include",
-        }
+        },
       );
 
       if (response.ok) {
@@ -167,7 +167,7 @@ const Profil = ({ user }) => {
           },
           credentials: "include",
           body: JSON.stringify(formData), // On envoie nos states (inputs + selects)
-        }
+        },
       );
 
       // 3. Gestion de la réponse
@@ -255,7 +255,7 @@ const Profil = ({ user }) => {
           },
           credentials: "include",
           body: JSON.stringify(formMdp), // On envoie nos states (inputs + selects)
-        }
+        },
       );
 
       // 3. Gestion de la réponse
@@ -320,7 +320,7 @@ const Profil = ({ user }) => {
             "Content-Type": "application/json",
           },
           credentials: "include",
-        }
+        },
       );
 
       // 3. Gestion de la réponse
@@ -495,13 +495,13 @@ const Profil = ({ user }) => {
                 />
                 <img
                   src="../assets/picto/oeil.png"
-                  alt=""
+                  alt="Voir mot de passe actuel"
                   className={`${oeilActif.current ? "oeilActif" : ""} `}
                   onClick={() => toggle("current")}
                 />
                 <img
                   src="../assets/picto/oeil_close.png"
-                  alt=""
+                  alt="Cacher mot de passe actuel"
                   className={`${!oeilActif.current ? "oeilActif" : ""} `}
                   onClick={() => toggle("current")}
                 />
@@ -525,13 +525,13 @@ const Profil = ({ user }) => {
                 />
                 <img
                   src="../assets/picto/oeil.png"
-                  alt=""
+                  alt="Voir nouveau mot de passe"
                   className={`${oeilActif.new ? "oeilActif" : ""} `}
                   onClick={() => toggle("new")}
                 />
                 <img
                   src="../assets/picto/oeil_close.png"
-                  alt=""
+                  alt="Cacher nouveau mot de passe"
                   className={`${!oeilActif.new ? "oeilActif" : ""} `}
                   onClick={() => toggle("new")}
                 />
@@ -555,13 +555,13 @@ const Profil = ({ user }) => {
                 />
                 <img
                   src="../assets/picto/oeil.png"
-                  alt=""
+                  alt="Voir confirmation nouveau mot de passe"
                   className={`${oeilActif.confirm ? "oeilActif" : ""} `}
                   onClick={() => toggle("confirm")}
                 />
                 <img
                   src="../assets/picto/oeil_close.png"
-                  alt=""
+                  alt="Cacher confirmation nouveau mot de passe"
                   className={`${!oeilActif.confirm ? "oeilActif" : ""} `}
                   onClick={() => toggle("confirm")}
                 />
