@@ -2,7 +2,7 @@ import { DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT, API_KEY, DB_DIALECT, J
 import { Sequelize } from 'sequelize';
 
 export const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
-    host: DB_HOST,
+    host: process.env.DB_HOST || 'localhost',
     dialect: DB_DIALECT,
     port: DB_PORT,
     dialectOptions: {

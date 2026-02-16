@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  # --- Service Base de Données ---
+  db:
+    image: mysql:8.0
+    container_name: mon-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root # Votre mdp MAMP
+      MYSQL_DATABASE: PreviZen
+    ports:
+      - "3307:3306" # Permet d'accéder à la BDD depuis votre PC (ex: via Workbench)
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - mysql_data:/var/lib/mysql
+      # AJOUTEZ CETTE LIGNE CI-DESSOUS :
+      #- ./init-db:/docker-entrypoint-initdb.d
+
+  # --- Service Backend (Express) ---
+  api:
+    build: ./back
+    container_name: mon-api
+    ports:
+      - "5000:5000"
+    environment:
+      - DB_HOST=db # <--- TRÈS IMPORTANT
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_NAME=PreviZen
+      - DB_PORT=3306
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # --- Service Frontend (React) ---
+  client:
+    build: ./front
+    container_name: mon-react
+    ports:
+      - "3000:3000"
+    stdin_open: true # Nécessaire pour React en mode Docker
+    tty: true
+
+# Déclaration du volume pour la persistance des données
+volumes:
+  mysql_data:

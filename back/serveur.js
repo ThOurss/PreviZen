@@ -1,6 +1,6 @@
 import { createDatabase } from './db/createDatabase.js';
 import express from "express";
-import weatherRoutes from "./routes/routesAPI.js";
+import weatherRoutes from "./routes/routesApi.js";
 import authRoutes from "./routes/routesAuth.js";
 import userRoutes from "./routes/routesUser.js";
 import civiliteRoutes from "./routes/routesCivilite.js";
