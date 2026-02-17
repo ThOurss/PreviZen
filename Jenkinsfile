@@ -3,63 +3,46 @@ pipeline {
 
     tools {
         nodejs 'node-18'
-        dockerTool 'docker-linux'
-    }
-
-    environment {
-        // On définit une variable globale pour ne pas retaper la recherche à chaque fois
-        // (Note: On initialise vide, on la remplira au premier stage)
-        DOCKER_CMD = '' 
+        dockerTool 'docker-linux' // On s'assure que l'outil est téléchargé
     }
 
     stages {
-        // Étape 1 : Préparation technique (Le fix qu'on a trouvé)
-        stage('Initialisation Docker') {
+        // Étape 1 : Installation (Backend)
+        stage('Installation Backend') {
             steps {
-                script {
-                    // On retrouve notre exécutable Docker
-                    def dockerPath = sh(script: 'find /var/jenkins_home/tools -name "docker" -type f | head -n 1', returnStdout: true).trim()
-                    sh "chmod +x ${dockerPath}"
-                    // On le sauvegarde dans la variable d'environnement pour l'utiliser partout
-                    env.DOCKER_CMD = dockerPath
-                    echo "Docker est prêt : ${env.DOCKER_CMD}"
-                }
-            }
-        }
-
-        // Étape 2 : Installation des dépendances (Backend)
-        stage('Install Backend') {
-            steps {
-                dir('back') { // On rentre dans le dossier 'server'
+                dir('back') { 
                     sh 'npm install'
                 }
             }
         }
 
-        // Étape 3 : Tests (Si vous en avez)
-        stage('Test Backend') {
-            steps {
-                dir('back') {
-                    echo "Lancement des tests..."
-                    // sh 'npm test' // Décommentez quand vous aurez des tests
-                }
-            }
-        }
-
-        // Étape 4 : Construction et Redéploiement
+        // Étape 2 : Construction et Déploiement
         stage('Build & Deploy') {
             steps {
                 script {
-                    echo "Construction de la nouvelle image..."
-                    // On utilise notre Docker pour reconstruire l'API
-                    sh "${env.DOCKER_CMD} build -t previzen-api ./back"
+                    echo "--- RECHERCHE DE DOCKER (JUSTE AVANT LE BUILD) ---"
+                   
+                    def dockerCmd = sh(script: 'find /var/jenkins_home/tools -name "docker" -type f | head -n 1', returnStdout: true).trim()
                     
-                    echo "Redémarrage du conteneur..."
-                    // On arrête l'ancien conteneur et on lance le nouveau
-                    // Note : Pour l'instant on fait simple, plus tard on utilisera docker-compose
-                    sh "${env.DOCKER_CMD} stop mon-api || true"
-                    sh "${env.DOCKER_CMD} rm mon-api || true"
-                    sh "${env.DOCKER_CMD} run -d --name mon-api -p 5000:5000 --network previzen_default previzen-api"
+                    
+                    sh "chmod +x ${dockerCmd}"
+                    
+                    echo "Docker trouvé : ${dockerCmd}"
+                    echo "Construction de l'image..."
+
+                   
+                  
+                    sh "${dockerCmd} build -t previzen-api ./back"
+                    
+                    echo "--- REDÉMARRAGE DU CONTENEUR ---"
+                    
+                    // "|| true" permet de ne pas planter si le conteneur n'existe pas encore
+                    sh "${dockerCmd} stop mon-api || true"
+                    sh "${dockerCmd} rm mon-api || true"
+                    
+                    // Lancement final (Port 5000, Réseau par défaut)
+                   
+                    sh "${dockerCmd} run -d --name mon-api -p 5000:5000 --network previzen_default previzen-api"
                 }
             }
         }
