@@ -45,7 +45,21 @@ services:
       - "3000:3000"
     stdin_open: true # Nécessaire pour React en mode Docker
     tty: true
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: mon-jenkins
+    restart: unless-stopped
+    user: root # Important : Pour avoir le droit d'utiliser Docker
+    ports:
+      - "9090:8080" # Accès via http://localhost:9090
+      - "50000:50000" # Port pour les agents esclaves (standard)
+    volumes:
+      - jenkins_home:/var/jenkins_home # Pour sauvegarder vos configurations
+      - /var/run/docker.sock:/var/run/docker.sock # LA CLÉ : Permet à Jenkins de piloter Docker sur votre PC
+    networks:
+      - default
 
 # Déclaration du volume pour la persistance des données
 volumes:
   mysql_data:
+  jenkins_home:
