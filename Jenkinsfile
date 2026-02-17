@@ -52,7 +52,7 @@ pipeline {
                 script {
                     echo "Construction de la nouvelle image..."
                     // On utilise notre Docker pour reconstruire l'API
-                    sh "${env.DOCKER_CMD} build -t previzen-api ./server"
+                    sh "${env.DOCKER_CMD} build -t previzen-api ./back"
                     
                     echo "Redémarrage du conteneur..."
                     // On arrête l'ancien conteneur et on lance le nouveau
