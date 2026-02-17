@@ -30,7 +30,7 @@ pipeline {
         // Étape 2 : Installation des dépendances (Backend)
         stage('Install Backend') {
             steps {
-                dir('server') { // On rentre dans le dossier 'server'
+                dir('back') { // On rentre dans le dossier 'server'
                     sh 'npm install'
                 }
             }
@@ -39,7 +39,7 @@ pipeline {
         // Étape 3 : Tests (Si vous en avez)
         stage('Test Backend') {
             steps {
-                dir('server') {
+                dir('back') {
                     echo "Lancement des tests..."
                     // sh 'npm test' // Décommentez quand vous aurez des tests
                 }
